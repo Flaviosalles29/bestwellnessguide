@@ -99,21 +99,17 @@ const products = [
 
 function productCard(product) {
   return `
-    <article class="product-card">
+    <article class="gallery-card">
       <div class="product-art">
         <img src="${product.image}" alt="${product.name} product category image" loading="lazy">
-        <span>${product.category}</span>
+        <span>${product.badge}</span>
       </div>
-      <div class="product-body">
-        <div class="meta-row">
-          <span>${product.badge}</span>
-          <span>${product.vendor}</span>
-        </div>
+      <div class="gallery-body">
+        <div class="category">${product.category}</div>
         <h3>${product.name}</h3>
         <p>${product.summary}</p>
-        <ul>${product.bullets.map((item) => `<li>${item}</li>`).join("")}</ul>
-        <div class="market"><strong>Market:</strong> ${product.market}</div>
-        <a class="button" href="${product.href}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
+        <a class="buy-button" href="${product.href}" rel="nofollow sponsored noopener" target="_blank">Buy Now</a>
+        <div class="microcopy">Official checkout. Delivery and refund terms are confirmed by the seller.</div>
       </div>
     </article>
   `;
@@ -138,10 +134,10 @@ function page() {
     .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;background:var(--green);color:#fff;font-weight:950;box-shadow:0 14px 28px rgba(19,116,92,.24)}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:10px;box-shadow:none}.button:hover{transform:translateY(-1px)}
     .showcase{border:1px solid rgba(18,21,19,.12);border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 24px 70px rgba(18,21,19,.12);overflow:hidden}.showcase img{width:100%;height:250px;object-fit:cover}.showcase-body{padding:24px}.showcase-kicker{color:var(--coral);font-weight:950;font-size:12px;text-transform:uppercase}.showcase h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:34px;line-height:1}.showcase p{font-size:15px;line-height:1.55;color:var(--muted)}
     .section,.capture{padding:76px 22px}.section-head{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:34px;align-items:end;margin-bottom:30px}.section-head h2,.capture h2{margin:0 0 12px;font-family:Georgia,serif;font-size:clamp(36px,5vw,64px);line-height:1}.section-head p,.capture p{color:var(--muted);line-height:1.65}.score-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}.score-strip div{padding:18px;border-right:1px solid var(--line)}.score-strip div:last-child{border-right:0}.score-strip strong{display:block;font-family:Georgia,serif;font-size:34px}.score-strip span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 18px 48px rgba(18,21,19,.07);overflow:hidden}.product-card:nth-child(1),.product-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:255px;object-fit:cover;display:block}.product-card:nth-child(1) .product-art img,.product-card:nth-child(2) .product-art img{height:340px}.product-art span{position:absolute;left:14px;bottom:14px;padding:8px 10px;border-radius:8px;background:rgba(18,21,19,.86);color:#fff;font-size:12px;font-weight:950;text-transform:uppercase}.product-body{display:flex;flex-direction:column;flex:1;padding:22px}.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.meta-row span{padding:7px 9px;border-radius:7px;background:#eef5f2;color:var(--green);font-size:11px;font-weight:950;text-transform:uppercase}.meta-row span:last-child{background:#fff2dc;color:#8b5a08}.product-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.product-card p,.product-card li,.market{color:var(--muted);line-height:1.55}.product-card ul{display:grid;gap:8px;padding-left:19px}.market{padding:12px;border:1px solid var(--line);border-radius:8px;background:#f9fbf7;margin:16px 0}.product-body .button{margin-top:auto;width:100%}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}
     .capture{display:grid;grid-template-columns:minmax(0,1fr)420px;gap:34px;border-top:1px solid var(--line);background:#fff}.capture-card{border:1px solid var(--line);border-radius:8px;background:#fffdfa;padding:24px}.capture-card input{width:100%;min-height:46px;border:1px solid var(--line);border-radius:8px;padding:0 12px;margin:8px 0 14px}.capture-card .button{border:0;width:100%}.footer{display:flex;justify-content:space-between;gap:18px;padding:30px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-    @media(max-width:980px){.hero-grid,.section-head,.capture{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.product-card:nth-child(1),.product-card:nth-child(2){grid-column:span 1}}
-    @media(max-width:640px){.nav,.nav-links,.footer{align-items:flex-start;flex-direction:column}.grid,.score-strip{grid-template-columns:1fr}.score-strip div{border-right:0;border-bottom:1px solid var(--line)}.score-strip div:last-child{border-bottom:0}.secondary{margin:10px 0 0}.hero{min-height:auto}.product-card:nth-child(1) .product-art img,.product-card:nth-child(2) .product-art img,.product-art img{height:240px}}
+    @media(max-width:980px){.hero-grid,.section-head,.capture{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 1}}
+    @media(max-width:640px){.nav,.nav-links,.footer{align-items:flex-start;flex-direction:column}.grid,.score-strip{grid-template-columns:1fr}.score-strip div{border-right:0;border-bottom:1px solid var(--line)}.score-strip div:last-child{border-bottom:0}.secondary{margin:10px 0 0}.hero{min-height:auto}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img,.product-art img{height:250px}}
   </style>
 </head>
 <body>
@@ -174,8 +170,8 @@ function page() {
       <div class="section-head">
         <div>
           <p class="eyebrow">Product showcase</p>
-          <h2>Validated offers, arranged like a real storefront.</h2>
-          <p>Each card sends the buyer to the official page. Shipping, pricing, subscriptions and refunds must be confirmed on the official checkout before purchase.</p>
+          <h2>Premium gallery of active offers.</h2>
+          <p>Choose a product, click Buy Now, and continue on the official checkout page. Shipping, pricing, subscriptions and refunds are confirmed by the seller before purchase.</p>
         </div>
         <div class="score-strip">
           <div><strong>8</strong><span>offers live</span></div>
