@@ -9,7 +9,7 @@ const products = [
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching teeth, gums, and fresh-breath routines.",
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official checkout handles pricing, bundles, shipping and refund terms"],
     cta: "View ProDentim official offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=prodentim"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim"
   },
   {
     name: "NeuroVera",
@@ -21,7 +21,7 @@ const products = [
     summary: "A brain-health supplement offer for adults comparing memory, focus, and daily cognitive-support routines.",
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets"],
     cta: "View NeuroVera official offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=neurovera"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=neurovera"
   },
   {
     name: "Audifort",
@@ -33,7 +33,7 @@ const products = [
     summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
     cta: "Check Audifort availability",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=audifort"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=audifort"
   },
   {
     name: "Soulmate Sketch",
@@ -45,7 +45,7 @@ const products = [
     summary: "A long-running digital spirituality offer for buyers interested in soulmate art, relationship insight, and personal readings.",
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Digital delivery removes physical shipping friction"],
     cta: "View Soulmate Sketch official offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=tinapsc"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=tinapsc"
   },
   {
     name: "Energy Revolution System",
@@ -57,7 +57,7 @@ const products = [
     summary: "A digital guide offer for homeowners and preparedness buyers researching lower-cost energy ideas and self-reliance projects.",
     bullets: ["Featured by ClickBank in July 2026 top offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
     cta: "View Energy Revolution official offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=enrev"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=enrev"
   },
   {
     name: "Lymph Tonic",
@@ -69,7 +69,7 @@ const products = [
     summary: "A wellness offer for readers researching lymphatic drainage support, herbal formulas, and daily detox-style routines.",
     bullets: ["Confirmed affiliate HopLink", "Clear supplement niche angle", "Official checkout controls delivery, refund and bundle details"],
     cta: "View Lymph Tonic official offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=lymphtonic"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=lymphtonic"
   },
   {
     name: "Java Burn 2.0",
@@ -81,7 +81,7 @@ const products = [
     summary: "A coffee-compatible wellness offer for buyers who want a supplement that fits an existing morning habit.",
     bullets: ["Built around a daily coffee routine", "Good fit for capsule-resistant buyers", "Official page confirms current bundles and terms"],
     cta: "View Java Burn official page",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=JAVABURN"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=JAVABURN"
   },
   {
     name: "VisiFlora",
@@ -93,7 +93,7 @@ const products = [
     summary: "A wellness offer for readers researching eye-support routines and gut-health education.",
     bullets: ["Less generic than standard eye-vitamin pages", "Good educational SEO angle", "Official checkout confirms label and terms"],
     cta: "See VisiFlora official page",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=VISIFLORA"
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=VISIFLORA"
   }
 ];
 
@@ -165,7 +165,7 @@ function page() {
             <div class="showcase-kicker">Featured today</div>
             <h2>ProDentim</h2>
             <p>One of ClickBank's top offers for August 2026, placed first in the storefront because the niche, payout profile and buyer intent are strong.</p>
-            <a class="button" href="https://hop.clickbank.net/?affiliate=ciacomrep&vendor=prodentim" rel="nofollow sponsored noopener" target="_blank">Open official offer</a>
+            <a class="button" href="https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim" rel="nofollow sponsored noopener" target="_blank">Open official offer</a>
           </div>
         </aside>
       </div>
