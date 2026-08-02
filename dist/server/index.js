@@ -3,48 +3,36 @@ const products = [
     name: "Audifort",
     vendor: "audifort",
     category: "Hearing Support",
-    badge: "Top wellness offer",
+    badge: "Confirmed HopLink",
     market: "United States confirmed; other countries verify at checkout",
     image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
-    summary: "A hearing-support wellness supplement offer for adults comparing natural routines and official bundle discounts.",
+    summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
     bullets: ["Official ClickBank-tracked checkout", "US shipping shown on selected bundles", "90-day refund policy shown on official page"],
-    cta: "Check today's Audifort offer",
+    cta: "Check Audifort availability",
     href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=audifort"
   },
   {
     name: "Java Burn 2.0",
     vendor: "JAVABURN",
     category: "Coffee Routine",
-    badge: "Coffee-friendly format",
+    badge: "Confirmed HopLink",
     market: "English-speaking buyers; verify delivery at checkout",
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
     summary: "A coffee-compatible wellness offer for buyers who want a supplement that fits an existing morning habit.",
     bullets: ["Built around a daily coffee routine", "Good fit for capsule-resistant buyers", "Official page confirms current bundles and terms"],
-    cta: "View Java Burn details",
+    cta: "View Java Burn official page",
     href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=JAVABURN"
-  },
-  {
-    name: "All Day Slimming Tea",
-    vendor: "ALLSLIMTEA",
-    category: "Tea Routine",
-    badge: "Morning and evening ritual",
-    market: "English-speaking buyers; approval and checkout availability should be verified",
-    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=80",
-    summary: "A tea-based wellness routine positioned for buyers who prefer beverages over capsules or powders.",
-    bullets: ["Simple habit-led positioning", "Strong angle for wellness content", "Checkout controls final pricing and delivery"],
-    cta: "Explore tea offer",
-    href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=ALLSLIMTEA"
   },
   {
     name: "VisiFlora",
     vendor: "VISIFLORA",
     category: "Eye + Gut Wellness",
-    badge: "Differentiated angle",
+    badge: "Confirmed HopLink",
     market: "English-speaking buyers; verify delivery at checkout",
     image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80",
     summary: "A wellness offer for readers researching eye-support routines and gut-health education.",
     bullets: ["Less generic than standard eye-vitamin pages", "Good educational SEO angle", "Official checkout confirms label and terms"],
-    cta: "See VisiFlora offer",
+    cta: "See VisiFlora official page",
     href: "https://hop.clickbank.net/?affiliate=ciacomrep&vendor=VISIFLORA"
   }
 ];
@@ -59,6 +47,7 @@ function productCard(product) {
           <span>${product.badge}</span>
         </div>
         <h3>${product.name}</h3>
+        <div class="vendor">Vendor: ${product.vendor}</div>
         <p>${product.summary}</p>
         <ul>${product.bullets.map((item) => `<li>${item}</li>`).join("")}</ul>
         <div class="market"><strong>Market:</strong> ${product.market}</div>
@@ -87,7 +76,7 @@ function page() {
     .panel,.product-card,.capture-card{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.94);box-shadow:0 20px 55px rgba(20,33,29,.08)}.panel{padding:26px}.panel h2{margin:0 0 12px;font-family:Georgia,serif;font-size:30px}.panel ul{display:grid;gap:12px;margin:0;padding-left:20px;color:var(--muted);line-height:1.55}
     .button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:8px;background:var(--green);color:#fff;font-weight:900}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:10px}
     .section,.capture{padding:72px 22px}.section-head{max-width:760px;margin-bottom:26px}.section-head h2,.capture h2{margin:0 0 12px;font-family:Georgia,serif;font-size:clamp(34px,4vw,56px);line-height:1.05}.section-head p,.capture p{color:var(--muted);line-height:1.65}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.product-card{overflow:hidden}.product-card img{width:100%;height:235px;object-fit:cover}.product-body{padding:24px}.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.meta-row span{padding:7px 10px;border-radius:8px;background:#edf5ef;color:var(--green);font-size:12px;font-weight:900;text-transform:uppercase}.product-card h3{margin:0 0 8px;font-family:Georgia,serif;font-size:34px}.product-card p,.product-card li,.market{color:var(--muted);line-height:1.55}.product-card ul{display:grid;gap:8px;padding-left:20px}.market{padding:12px;border:1px solid var(--line);border-radius:8px;background:#f9fbf7;margin:18px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.product-card{overflow:hidden}.product-card img{width:100%;height:235px;object-fit:cover}.product-body{padding:24px}.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.meta-row span{padding:7px 10px;border-radius:8px;background:#edf5ef;color:var(--green);font-size:12px;font-weight:900;text-transform:uppercase}.product-card h3{margin:0 0 6px;font-family:Georgia,serif;font-size:34px}.vendor{margin-bottom:12px;color:var(--rose);font-size:13px;font-weight:900;text-transform:uppercase}.product-card p,.product-card li,.market{color:var(--muted);line-height:1.55}.product-card ul{display:grid;gap:8px;padding-left:20px}.market{padding:12px;border:1px solid var(--line);border-radius:8px;background:#f9fbf7;margin:18px 0}
     .capture{display:grid;grid-template-columns:minmax(0,1fr)420px;gap:34px;border-top:1px solid var(--line)}.capture-card{padding:24px}.capture-card input{width:100%;min-height:46px;border:1px solid var(--line);border-radius:8px;padding:0 12px;margin:8px 0 14px}.capture-card .button{border:0;width:100%}.footer{display:flex;justify-content:space-between;gap:18px;padding:30px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
     @media(max-width:860px){.nav,.nav-links,.footer{align-items:flex-start;flex-direction:column}.hero-grid,.grid,.capture{grid-template-columns:1fr}.secondary{margin:10px 0 0}.hero{min-height:auto}}
   </style>
