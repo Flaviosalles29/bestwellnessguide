@@ -283,12 +283,12 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
     if (url.pathname === "/robots.txt") {
-      return new Response("User-agent: *\nAllow: /\nSitemap: https://bestwellnessguide.com/sitemap.xml\n", {
+      return new Response("User-agent: *\nAllow: /\nSitemap: https://www.bestwellnessguide.com/sitemap.xml\n", {
         headers: { "content-type": "text/plain; charset=utf-8" }
       });
     }
     if (url.pathname === "/sitemap.xml") {
-      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://bestwellnessguide.com/</loc></url></urlset>`, {
+      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.bestwellnessguide.com/</loc></url></urlset>`, {
         headers: { "content-type": "application/xml; charset=utf-8" }
       });
     }
