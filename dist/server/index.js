@@ -513,6 +513,15 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
   <div class="blog-nav"><a href="/">&larr; Best Wellness Guide</a><a href="/blog">All guides</a></div>
   <main class="blog-wrap">${bodyHtml}</main>
   <footer class="blog-footer">Best Wellness Guide. Informational content only, not medical advice. We may earn a commission when readers buy through links on this site.</footer>
+  <script>
+    document.querySelectorAll("[data-tid]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const eventData = { product: link.dataset.product, vendor: link.dataset.vendor, tid: link.dataset.tid };
+        if (window.gtag) window.gtag("event", "affiliate_click", eventData);
+        if (window.clarity) window.clarity("event", "affiliate_click_" + link.dataset.tid);
+      });
+    });
+  </script>
 </body>
 </html>`;
 }
@@ -526,6 +535,7 @@ function relatedPosts(post, count = 3) {
 
 function blogPostPage(post) {
   const href = trackedHref(post.product, "blog");
+  const tid = new URL(href).searchParams.get("tid");
   const faqHtml = post.faqs.map((faq) => `<div class="faq"><h3>${faq.q}</h3><p>${faq.a}</p></div>`).join("");
   const related = relatedPosts(post);
   const relatedHtml = related.map((other) => `
@@ -540,7 +550,7 @@ function blogPostPage(post) {
     <p><a href="${productUrl(post.product)}">See the full ${post.product.name} offer page on Best Wellness Guide &rarr;</a></p>
     <div class="cta-box">
       <p style="margin:0 0 14px;color:var(--muted)">Ready to compare pricing, bundles and the official checkout?</p>
-      <a href="${href}" data-product="${post.product.name}" data-vendor="${post.product.vendor}" rel="nofollow sponsored noopener" target="_blank">${post.product.cta}</a>
+      <a href="${href}" data-product="${post.product.name}" data-vendor="${post.product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">${post.product.cta}</a>
     </div>
     <h2>FAQ</h2>
     ${faqHtml}
@@ -629,6 +639,7 @@ function productStructuredData(product, relatedGuide) {
 
 function productPage(product) {
   const href = trackedHref(product, "offer");
+  const tid = new URL(href).searchParams.get("tid");
   const relatedGuide = blogPosts.find((post) => post.product.vendor === product.vendor);
   const otherProducts = products.filter((candidate) => candidate.vendor !== product.vendor).slice(0, 3);
   const bulletsHtml = product.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
@@ -646,7 +657,7 @@ function productPage(product) {
     ${guideHtml}
     <div class="cta-box">
       <p style="margin:0 0 14px;color:var(--muted)">${product.market}</p>
-      <a href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
+      <a href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
     </div>
     <h2>FAQ</h2>
     <div class="faq"><h3>Is ${product.name} a legitimate offer?</h3><p>${product.name} is listed with an active, confirmed affiliate link. Pricing, guarantees and shipping are set by the official seller and confirmed at checkout.</p></div>
