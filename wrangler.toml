@@ -1,0 +1,4 @@
+name = "bestwellnessguide"
+main = "dist/server/index.js"
+compatibility_date = "2026-08-01"
+account_id = "c86da53aa7d381a92989bef392330783"

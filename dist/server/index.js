@@ -1,6 +1,22 @@
 import { prodentimProductHeroV2Base64 } from "./prodentim-product-hero-v2.js";
 import { audifortGalleryV1Base64 } from "./audifort-gallery-v1.js";
 import { soulmateSketchGalleryV1Base64 } from "./soulmate-sketch-gallery-v1.js";
+import { faviconIcoBase64, appleTouchIconBase64, logoPngBase64 } from "./favicon-assets.js";
+
+const faviconSvg = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#171b18"/>
+      <stop offset="1" stop-color="#0e100f"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="104" fill="url(#bg)"/>
+  <rect x="18" y="18" width="476" height="476" rx="90" fill="none" stroke="#2a322c" stroke-width="4"/>
+  <text x="256" y="312" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="230" fill="#fffdfa" text-anchor="middle" letter-spacing="-4">BW</text>
+  <rect x="146" y="378" width="220" height="14" rx="7" fill="#d49b2c"/>
+</svg>`;
+
+const faviconHeadLinks = `<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
 
 const products = [
   {
@@ -165,6 +181,13 @@ function structuredData() {
         "@id": `${siteUrl}/#organization`,
         name: "Best Wellness Guide",
         url: `${siteUrl}/`,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/logo.png`,
+          width: 512,
+          height: 512
+        },
+        image: `${siteUrl}/logo.png`,
         description: "An independent wellness product discovery brand for English-speaking buyers.",
         keywords: allSeoKeywords().join(", "),
         sameAs: []
@@ -445,6 +468,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
   <meta name="description" content="${description}">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#fffdfa">
+  ${faviconHeadLinks}
   <link rel="canonical" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
@@ -562,6 +586,7 @@ function page(activeProduct = null) {
   <meta name="description" content="${description}">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#fffdfa">
+  ${faviconHeadLinks}
   <link rel="canonical" href="${canonical}">
   <link rel="alternate" hreflang="en-US" href="${canonical}">
   <link rel="alternate" hreflang="en" href="${canonical}">
@@ -743,6 +768,29 @@ export default {
           "content-type": "image/png",
           "cache-control": "public, max-age=31536000, immutable"
         }
+      });
+    }
+    if (url.pathname === "/favicon.svg") {
+      return new Response(faviconSvg, {
+        headers: { "content-type": "image/svg+xml; charset=utf-8", "cache-control": "public, max-age=31536000, immutable" }
+      });
+    }
+    if (url.pathname === "/favicon.ico") {
+      const binary = Uint8Array.from(atob(faviconIcoBase64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: { "content-type": "image/x-icon", "cache-control": "public, max-age=31536000, immutable" }
+      });
+    }
+    if (url.pathname === "/apple-touch-icon.png") {
+      const binary = Uint8Array.from(atob(appleTouchIconBase64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: { "content-type": "image/png", "cache-control": "public, max-age=31536000, immutable" }
+      });
+    }
+    if (url.pathname === "/logo.png") {
+      const binary = Uint8Array.from(atob(logoPngBase64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: { "content-type": "image/png", "cache-control": "public, max-age=31536000, immutable" }
       });
     }
     if (url.pathname === "/sitemap.xml") {
