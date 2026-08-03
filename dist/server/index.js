@@ -292,6 +292,11 @@ export default {
         headers: { "content-type": "application/xml; charset=utf-8" }
       });
     }
+    if (url.pathname === "/google91c906099c1867d2.html") {
+      return new Response("google-site-verification: google91c906099c1867d2.html", {
+        headers: { "content-type": "text/html; charset=utf-8" }
+      });
+    }
     return new Response(page(), {
       headers: {
         "content-type": "text/html; charset=utf-8",
