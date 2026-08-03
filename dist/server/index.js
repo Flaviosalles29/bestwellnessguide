@@ -24,6 +24,30 @@ const products = [
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=neurovera"
   },
   {
+    name: "Joint Genesis",
+    vendor: "jointgen",
+    category: "Joint Support",
+    badge: "Ranked ClickBank offer",
+    market: "Physical product; buyer must confirm delivery country on the official checkout",
+    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+    summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
+    bullets: ["Cited by ClickBank among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
+    cta: "View Joint Genesis official offer",
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=jointgen"
+  },
+  {
+    name: "Sugar Defender",
+    vendor: "sugardef",
+    category: "Blood Sugar Support",
+    badge: "Ranked ClickBank offer",
+    market: "Physical product; buyer must confirm delivery country on the official checkout",
+    image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1200&q=80",
+    summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
+    bullets: ["Ranked in ClickBank's supplement affiliate list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
+    cta: "View Sugar Defender official offer",
+    href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=sugardef"
+  },
+  {
     name: "Audifort",
     vendor: "audifort",
     category: "Hearing Support",
@@ -174,8 +198,8 @@ function page() {
           <p>Choose a product, click Buy Now, and continue on the official checkout page. Shipping, pricing, subscriptions and refunds are confirmed by the seller before purchase.</p>
         </div>
         <div class="score-strip">
-          <div><strong>8</strong><span>offers live</span></div>
-          <div><strong>5</strong><span>top-list picks</span></div>
+          <div><strong>10</strong><span>offers live</span></div>
+          <div><strong>7</strong><span>ranked picks</span></div>
           <div><strong>100%</strong><span>links checked</span></div>
         </div>
       </div>
