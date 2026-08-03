@@ -685,7 +685,7 @@ function page(activeProduct = null) {
         <div>
           <p class="eyebrow">Brand profile</p>
           <h2>Best Wellness Guide is a trusted wellness supplement reviews and discovery platform.</h2>
-          <p>We help shoppers across the United States and English-speaking markets compare official wellness supplement offers, read independent research-driven reviews, and continue securely to each seller's official checkout page.</p>
+          <p>We help shoppers across the United States, Canada, the United Kingdom and Australia find, compare and research trusted wellness supplement offers, including blood sugar support, dental probiotics, brain and memory formulas, natural energy and vision health, before continuing securely to each official seller's checkout page.</p>
         </div>
         <div class="profile-grid">
           <div class="profile-card"><strong>Audience</strong><span>Health-conscious, English-speaking shoppers across the US, Canada, UK and Australia searching for trusted wellness supplement reviews and clear buying guidance.</span></div>
