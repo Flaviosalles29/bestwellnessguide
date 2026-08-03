@@ -162,7 +162,7 @@ function productUrl(product) {
 }
 
 function trackedHref(product, placement = "gallery") {
-  const suffix = placement === "featured" ? "feat" : placement === "blog" ? "blog" : "";
+  const suffix = placement === "featured" ? "feat" : placement === "blog" ? "blog" : placement === "offer" ? "offer" : "";
   const tid = `bwg${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}${suffix}`;
   const separator = product.href.includes("?") ? "&" : "?";
   return `${product.href}${separator}tid=${tid}`;
@@ -583,14 +583,92 @@ function blogIndexPage() {
   });
 }
 
-function page(activeProduct = null) {
-  const title = activeProduct
-    ? `${activeProduct.name} Official Offer, Reviews and Checkout | Best Wellness Guide`
-    : "Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts";
-  const description = activeProduct
-    ? `Compare ${activeProduct.name} details, reviews, price research and official checkout access through Best Wellness Guide.`
-    : "Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
-  const canonical = activeProduct ? productUrl(activeProduct) : `${siteUrl}/`;
+function productStructuredData(product, relatedGuide) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `${productUrl(product)}#product`,
+        name: product.name,
+        category: product.category,
+        image: product.image,
+        description: product.summary,
+        url: productUrl(product),
+        offers: {
+          "@type": "Offer",
+          url: trackedHref(product, "offer"),
+          availability: "https://schema.org/InStock",
+          seller: { "@type": "Organization", name: "Best Wellness Guide" }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${productUrl(product)}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Is ${product.name} a legitimate offer?`,
+            acceptedAnswer: { "@type": "Answer", text: `${product.name} is listed with an active, confirmed affiliate link. Pricing, guarantees and shipping are set by the official seller and confirmed at checkout.` }
+          },
+          {
+            "@type": "Question",
+            name: `Where can I buy ${product.name}?`,
+            acceptedAnswer: { "@type": "Answer", text: `Through the official checkout page linked from this page. We recommend avoiding third-party marketplaces that are not the seller's own official page.` }
+          },
+          {
+            "@type": "Question",
+            name: `Does ${product.name} offer a refund?`,
+            acceptedAnswer: { "@type": "Answer", text: `Refund terms are set by the seller and disclosed on the official checkout page before you complete payment.` }
+          }
+        ]
+      }
+    ]
+  });
+}
+
+function productPage(product) {
+  const href = trackedHref(product, "offer");
+  const relatedGuide = blogPosts.find((post) => post.product.vendor === product.vendor);
+  const otherProducts = products.filter((candidate) => candidate.vendor !== product.vendor).slice(0, 3);
+  const bulletsHtml = product.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
+  const otherHtml = otherProducts.map((other) => `<li><a href="${productUrl(other)}">${other.name} &mdash; ${other.category}</a></li>`).join("");
+  const guideHtml = relatedGuide
+    ? `<p><a href="/blog/${relatedGuide.slug}">Read our full ${product.name} buying guide &rarr;</a></p>`
+    : `<p><a href="/blog">See all Best Wellness Guide buying guides &rarr;</a></p>`;
+  const body = `
+    <p class="blog-eyebrow">${product.category}</p>
+    <h1>${product.name} Official Website: Reviews, Price &amp; Where to Buy</h1>
+    <p class="blog-meta">${product.badge} &middot; Best Wellness Guide editorial team</p>
+    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links on this page. Informational content only, not medical advice.</div>
+    <p>${product.summary}</p>
+    <ul>${bulletsHtml}</ul>
+    ${guideHtml}
+    <div class="cta-box">
+      <p style="margin:0 0 14px;color:var(--muted)">${product.market}</p>
+      <a href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
+    </div>
+    <h2>FAQ</h2>
+    <div class="faq"><h3>Is ${product.name} a legitimate offer?</h3><p>${product.name} is listed with an active, confirmed affiliate link. Pricing, guarantees and shipping are set by the official seller and confirmed at checkout.</p></div>
+    <div class="faq"><h3>Where can I buy ${product.name}?</h3><p>Through the official checkout page linked above. We recommend avoiding third-party marketplaces that are not the seller's own official page.</p></div>
+    <div class="faq"><h3>Does ${product.name} offer a refund?</h3><p>Refund terms are set by the seller and disclosed on the official checkout page before you complete payment.</p></div>
+    <h2>Other featured offers</h2>
+    <ul class="blog-related">${otherHtml}</ul>
+  `;
+  return blogLayout({
+    title: `${product.name} Official Offer, Reviews and Checkout | Best Wellness Guide`,
+    description: `Compare ${product.name} details, reviews, price research and official checkout access through Best Wellness Guide.`,
+    canonical: productUrl(product),
+    bodyHtml: body,
+    jsonLd: productStructuredData(product),
+    image: product.image
+  });
+}
+
+function page() {
+  const title = "Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts";
+  const description = "Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
+  const canonical = `${siteUrl}/`;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -611,7 +689,7 @@ function page(activeProduct = null) {
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="${activeProduct ? activeProduct.image : "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82"}">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82">
   <meta name="twitter:card" content="summary_large_image">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
   <script>
@@ -828,7 +906,17 @@ export default {
     if (productMatch && !activeProduct) {
       return Response.redirect(`${siteUrl}/`, 301);
     }
-    return new Response(page(activeProduct), {
+    if (activeProduct) {
+      return new Response(productPage(activeProduct), {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "public, max-age=300",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        }
+      });
+    }
+    return new Response(page(), {
       headers: {
         "content-type": "text/html; charset=utf-8",
         "cache-control": "public, max-age=300",
