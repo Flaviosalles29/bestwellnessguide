@@ -254,6 +254,13 @@ function page(activeProduct = null) {
   <meta property="og:type" content="website">
   <meta property="og:image" content="${activeProduct ? activeProduct.image : "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82"}">
   <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XJZLDPC7DZ");
+  </script>
   <script type="application/ld+json">${structuredData()}</script>
   <style>
     :root{--ink:#121513;--muted:#5b6560;--paper:#f7f8f4;--panel:#fffdfa;--line:#d8ded6;--green:#13745c;--teal:#075e67;--gold:#d49b2c;--coral:#c94f42}
