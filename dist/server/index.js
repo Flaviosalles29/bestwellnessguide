@@ -684,14 +684,14 @@ function page(activeProduct = null) {
       <div class="profile-inner">
         <div>
           <p class="eyebrow">Brand profile</p>
-          <h2>Best Wellness Guide is a curated product discovery brand.</h2>
-          <p>We help buyers in the United States and English-speaking countries compare selected wellness, lifestyle, and self-care offers before continuing to the seller's official checkout.</p>
+          <h2>Best Wellness Guide is a trusted wellness supplement reviews and discovery platform.</h2>
+          <p>We help shoppers across the United States and English-speaking markets compare official wellness supplement offers, read independent research-driven reviews, and continue securely to each seller's official checkout page.</p>
         </div>
         <div class="profile-grid">
-          <div class="profile-card"><strong>Audience</strong><span>English-speaking shoppers looking for clear, direct wellness product options.</span></div>
-          <div class="profile-card"><strong>Positioning</strong><span>Premium storefront, independent curation, official seller checkout.</span></div>
-          <div class="profile-card"><strong>Selection</strong><span>Active affiliate links, ranked offers, strong market fit, and clear buyer intent.</span></div>
-          <div class="profile-card"><strong>Responsibility</strong><span>We do not ship products. Delivery, billing, refunds, and final terms are handled by each seller.</span></div>
+          <div class="profile-card"><strong>Audience</strong><span>Health-conscious, English-speaking shoppers across the US, Canada, UK and Australia searching for trusted wellness supplement reviews and clear buying guidance.</span></div>
+          <div class="profile-card"><strong>Positioning</strong><span>An independent, premium wellness reviews platform connecting readers directly to official seller checkout pages, with no middlemen and no guesswork.</span></div>
+          <div class="profile-card"><strong>Selection</strong><span>Every featured offer is vetted for an active official link, verified marketplace ranking, strong buyer intent, and proven demand in its category.</span></div>
+          <div class="profile-card"><strong>Responsibility</strong><span>We do not manufacture or ship products. Pricing, delivery, billing, and refunds are handled directly by each official seller.</span></div>
         </div>
       </div>
     </section>
