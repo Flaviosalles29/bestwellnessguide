@@ -146,7 +146,8 @@ function productUrl(product) {
 }
 
 function trackedHref(product, placement = "gallery") {
-  const tid = `bwg${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}${placement === "featured" ? "feat" : ""}`;
+  const suffix = placement === "featured" ? "feat" : placement === "blog" ? "blog" : "";
+  const tid = `bwg${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}${suffix}`;
   const separator = product.href.includes("?") ? "&" : "?";
   return `${product.href}${separator}tid=${tid}`;
 }
@@ -227,6 +228,321 @@ function productCard(product) {
       </div>
     </article>
   `;
+}
+
+const blogPosts = [
+  {
+    slug: "best-blood-sugar-supplement-sugar-defender-review",
+    category: "Blood Sugar Support",
+    title: "Best Blood Sugar Supplement 2026: Sugar Defender Review",
+    description: "A buyer's guide to Sugar Defender for readers comparing natural blood sugar support formulas, ingredients, and where to buy.",
+    keywords: ["blood sugar formula", "blood sugar supplement", "glucose control", "natural blood sugar control", "blood sugar support", "diabetes supplement natural", "blood sugar management"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "sugardef"),
+    bodyHtml: `
+      <p>Readers researching a natural blood sugar control routine usually land on the same short list of plant-based drop formulas. Sugar Defender is one of the offers we get asked about most, so this guide breaks down what the formula is built around, who it tends to fit, and what to confirm before buying.</p>
+      <h2>What Sugar Defender is positioned for</h2>
+      <p>Sugar Defender is marketed as a liquid blood sugar support formula aimed at adults who want a daily routine that also supports steady energy. It sits in the broader glucose control supplement category alongside capsule-based competitors, but the drop format is the main differentiator buyers mention.</p>
+      <h2>What to check before you buy</h2>
+      <ul>
+        <li>Full ingredient list and any allergens, reviewed against your own health history</li>
+        <li>Whether the listing is a one-time purchase or an auto-ship subscription</li>
+        <li>Bundle pricing versus single-bottle pricing on the official checkout</li>
+        <li>Stated refund window and how to request it</li>
+        <li>Delivery country and shipping timelines</li>
+      </ul>
+      <h2>Who tends to research this offer</h2>
+      <p>Most visitors comparing blood sugar management supplements are looking for a natural add-on to an existing routine, not a replacement for medical care. If you're managing diagnosed diabetes, loop in your doctor before adding any new supplement.</p>
+    `,
+    faqs: [
+      { q: "Is Sugar Defender a substitute for medication?", a: "No. It is marketed as a wellness supplement, not a medical treatment. Speak with a doctor about any diagnosed condition before changing your routine." },
+      { q: "How is Sugar Defender taken?", a: "As a liquid drop formula, typically added to water or taken directly, per the label on the official product page." },
+      { q: "Where should I buy Sugar Defender?", a: "Through the official checkout page linked from this guide, so you get the current price, bundle options, and stated refund terms directly from the seller." }
+    ]
+  },
+  {
+    slug: "prodentim-review-best-probiotics-for-teeth",
+    category: "Dental Health",
+    title: "ProDentim Review: Best Probiotics for Teeth and Gums",
+    description: "An overview of ProDentim for readers comparing oral probiotic supplements, gum health support, and natural teeth care routines.",
+    keywords: ["probiotics for teeth", "best probiotics for teeth", "teeth probiotics", "gum health supplement", "oral probiotics", "natural teeth whitening"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "prodentim"),
+    bodyHtml: `
+      <p>Oral probiotics are a newer category compared to traditional toothpaste and mouthwash, so it's a reasonable question: how does ProDentim fit into a daily teeth and gum routine, and what should you check before ordering?</p>
+      <h2>How ProDentim is positioned</h2>
+      <p>ProDentim is one of the more established oral probiotic offers, built around supporting the mouth's natural bacterial balance rather than just masking symptoms topically. It's usually compared against other probiotic-for-teeth capsules and chewables.</p>
+      <h2>Buyer checklist</h2>
+      <ul>
+        <li>Confirm the current bundle pricing and per-bottle cost on the official page</li>
+        <li>Check the ingredient panel for anything relevant to your own sensitivities</li>
+        <li>Note the refund window before ordering multiple bottles</li>
+        <li>Verify shipping country and expected delivery time</li>
+      </ul>
+      <h2>Who this fits</h2>
+      <p>Readers usually land here after researching gum health support or natural teeth whitening options and wanting something that complements, not replaces, brushing, flossing, and regular dental checkups.</p>
+    `,
+    faqs: [
+      { q: "Does ProDentim replace brushing and flossing?", a: "No. It is designed to complement a normal oral hygiene routine, not replace it." },
+      { q: "Is ProDentim the same as probiotic toothpaste?", a: "No, ProDentim is taken as a supplement rather than applied topically like toothpaste." },
+      { q: "Where can I confirm the current ProDentim price?", a: "Pricing, bundles, and refund terms are set and confirmed on the official checkout page linked in this guide." }
+    ]
+  },
+  {
+    slug: "neurovera-brain-supplement-review",
+    category: "Brain Wellness",
+    title: "Brain Supplements That Actually Get Researched: NeuroVera Overview",
+    description: "A practical look at NeuroVera for readers comparing brain, memory, and focus supplements before buying.",
+    keywords: ["brain supplement", "memory supplement", "nootropic supplement", "best brain health supplement", "cognitive function supplement", "memory enhancement"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "neurovera"),
+    bodyHtml: `
+      <p>The brain supplement category is crowded, which makes side-by-side research more important than picking whatever ranks first. Here's what to know about NeuroVera before adding it to a memory and focus routine.</p>
+      <h2>Positioning</h2>
+      <p>NeuroVera is positioned as a daily cognitive-support supplement for adults comparing memory, focus, and general brain health routines, rather than a fast-acting nootropic.</p>
+      <h2>What to verify first</h2>
+      <ul>
+        <li>Full ingredient breakdown against any medications you currently take</li>
+        <li>Serving size and how long a bottle is expected to last</li>
+        <li>Current bundle pricing versus single-bottle pricing</li>
+        <li>Refund policy and delivery region on the official page</li>
+      </ul>
+      <h2>Setting expectations</h2>
+      <p>Cognitive supplements are typically framed as a support routine alongside sleep, diet, and exercise, not a standalone fix. Treat marketing claims with a healthy amount of skepticism and confirm details on the seller's own page.</p>
+    `,
+    faqs: [
+      { q: "How long before NeuroVera shows results?", a: "Timelines vary by person; the official product page outlines the seller's suggested usage window." },
+      { q: "Is NeuroVera safe with other supplements?", a: "Check the full ingredient list against anything else you take, and ask a doctor or pharmacist if you're unsure." },
+      { q: "Is there a refund option?", a: "Refund terms are set by the seller and confirmed at checkout on the official page." }
+    ]
+  },
+  {
+    slug: "natural-energy-without-caffeine-energy-revolution-system",
+    category: "Alternative Energy",
+    title: "Natural Energy Without Caffeine Crash: Energy Revolution System Guide",
+    description: "What to know about the Energy Revolution System digital guide before buying, including who it fits and what to check at checkout.",
+    keywords: ["natural energy supplement", "energy without caffeine", "sustained energy", "best energy supplement", "natural energy drink alternative"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "enrev"),
+    bodyHtml: `
+      <p>Energy Revolution System is a different kind of offer from most items on this site: it's a digital guide rather than a supplement, aimed at homeowners and preparedness-minded buyers researching lower-cost, self-reliant energy ideas.</p>
+      <h2>What it actually is</h2>
+      <p>Instead of a pill or drop, this is an information product delivered digitally after purchase. Readers researching "natural energy without caffeine crash" sometimes land here expecting a supplement, so it's worth being clear upfront: this offer is about home energy independence, not a stimulant-free drink mix.</p>
+      <h2>Before you buy</h2>
+      <ul>
+        <li>Confirm delivery format (digital access) and platform requirements</li>
+        <li>Review the stated refund window on the official page</li>
+        <li>Check whether the price shown includes any bundled bonuses</li>
+      </ul>
+      <h2>Who it fits</h2>
+      <p>Best suited to readers specifically interested in home energy cost reduction and DIY-style projects, rather than buyers looking for a caffeine-free energy supplement.</p>
+    `,
+    faqs: [
+      { q: "Is this a physical product?", a: "No, it is a digital guide delivered online after purchase." },
+      { q: "Is there a refund policy?", a: "Refund terms are set by the seller and shown on the official checkout page." },
+      { q: "Does this replace a licensed electrician?", a: "No. Any electrical or structural work should be reviewed by a qualified professional in your area." }
+    ]
+  },
+  {
+    slug: "visiflora-vision-health-supplement-guide",
+    category: "Eye + Gut Wellness",
+    title: "Vision Health Supplements for Eye Strain and Blue Light: VisiFlora Guide",
+    description: "An overview of VisiFlora for readers comparing eye health and gut wellness supplements, including what to confirm before buying.",
+    keywords: ["vision health supplement", "eye health supplement", "best supplement for vision", "natural vision improvement", "eye strain relief", "blue light protection"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "VISIFLORA"),
+    bodyHtml: `
+      <p>Between screen time and blue light exposure, eye strain relief is one of the more common wellness searches. VisiFlora pairs an eye-support angle with gut-health education, which is a slightly different combination than most single-focus eye vitamin offers.</p>
+      <h2>Positioning</h2>
+      <p>VisiFlora is marketed toward readers researching vision support routines who are also open to a gut-health connection, rather than a narrow single-nutrient eye vitamin.</p>
+      <h2>Buyer checklist</h2>
+      <ul>
+        <li>Review the ingredient label for anything relevant to existing conditions or medications</li>
+        <li>Confirm current bundle pricing on the official checkout</li>
+        <li>Check the refund window before committing to multiple bottles</li>
+      </ul>
+      <h2>Who this fits</h2>
+      <p>Readers dealing with screen-related eye strain who want an educational angle on the eye-gut connection, alongside a standard supplement routine.</p>
+    `,
+    faqs: [
+      { q: "Does VisiFlora replace an eye exam?", a: "No. Regular eye exams with a licensed professional are still recommended, especially for any change in vision." },
+      { q: "What makes VisiFlora different from typical eye vitamins?", a: "It combines an eye-support angle with gut-health education rather than focusing on a single nutrient." },
+      { q: "Where do I check current pricing?", a: "Pricing and bundle options are confirmed on the official checkout page linked in this guide." }
+    ]
+  },
+  {
+    slug: "lymph-tonic-lymphatic-immune-support-guide",
+    category: "Lymphatic Support",
+    title: "Lymphatic System Cleanse and Immune Support: Lymph Tonic Guide",
+    description: "What to know about Lymph Tonic for readers researching lymphatic drainage support and herbal immune-support routines.",
+    keywords: ["lymphatic system cleanse", "immune system boost", "natural detox supplement", "lymph drainage support"],
+    publishDate: "2026-08-03",
+    product: products.find((product) => product.vendor === "lymphtonic"),
+    bodyHtml: `
+      <p>Lymphatic drainage and detox-style routines get a lot of search interest, and Lymph Tonic is the herbal formula offer on our shelf built around that angle.</p>
+      <h2>Positioning</h2>
+      <p>Lymph Tonic is framed as a daily herbal wellness routine supporting lymphatic drainage, rather than a medical detox protocol. It's aimed at readers already comfortable with herbal supplement routines.</p>
+      <h2>What to check first</h2>
+      <ul>
+        <li>Full herbal ingredient list against any allergies or medications</li>
+        <li>Serving instructions and expected bottle duration</li>
+        <li>Current pricing and bundle discounts on the official page</li>
+        <li>Refund terms and delivery country</li>
+      </ul>
+      <h2>Who this fits</h2>
+      <p>Readers researching lymphatic support or general immune-routine supplements as a daily herbal add-on, not a replacement for medical treatment.</p>
+    `,
+    faqs: [
+      { q: "Is Lymph Tonic a medical detox treatment?", a: "No. It's marketed as an herbal wellness supplement, not a medical procedure or treatment." },
+      { q: "Can I take Lymph Tonic with other supplements?", a: "Review the ingredient list against anything else you take, and check with a doctor or pharmacist if unsure." },
+      { q: "Where do I buy the official product?", a: "Through the official checkout page linked from this guide, to confirm current price and terms directly from the seller." }
+    ]
+  }
+];
+
+function blogPostUrl(post) {
+  return `${siteUrl}/blog/${post.slug}`;
+}
+
+function blogStructuredData(post) {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${blogPostUrl(post)}#article`,
+        headline: post.title,
+        description: post.description,
+        image: post.product.image,
+        datePublished: post.publishDate,
+        dateModified: post.publishDate,
+        inLanguage: "en-US",
+        author: { "@type": "Organization", name: "Best Wellness Guide" },
+        publisher: { "@type": "Organization", name: "Best Wellness Guide", "@id": `${siteUrl}/#organization` },
+        mainEntityOfPage: blogPostUrl(post),
+        keywords: post.keywords.join(", ")
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${blogPostUrl(post)}#faq`,
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a }
+        }))
+      }
+    ]
+  });
+}
+
+function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#fffdfa">
+  <link rel="canonical" href="${canonical}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="${image}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XJZLDPC7DZ");
+  </script>
+  <script type="application/ld+json">${jsonLd}</script>
+  <style>
+    :root{--ink:#121513;--muted:#5b6560;--paper:#f7f8f4;--panel:#fffdfa;--line:#d8ded6;--green:#13745c;--gold:#d49b2c}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:var(--green)}
+    .blog-nav{max-width:760px;margin:0 auto;padding:24px 22px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:900;text-transform:uppercase}
+    .blog-nav a{color:var(--ink);text-decoration:none}
+    .blog-wrap{max-width:760px;margin:0 auto;padding:24px 22px 80px}
+    .blog-eyebrow{color:var(--green);font-size:12px;font-weight:950;text-transform:uppercase;margin:18px 0 6px}
+    .blog-wrap h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 14px}
+    .blog-meta{color:var(--muted);font-size:13px;margin-bottom:28px}
+    .blog-wrap h2{font-family:Georgia,serif;font-size:26px;margin:36px 0 12px}
+    .blog-wrap p{color:#2c332f;font-size:16px;margin:0 0 16px}
+    .blog-wrap ul{padding-left:20px;margin:0 0 16px}
+    .blog-wrap li{margin-bottom:8px;color:#2c332f}
+    .disclosure{padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);font-size:13px;margin-bottom:28px}
+    .cta-box{margin:32px 0;padding:24px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center}
+    .cta-box a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;text-decoration:none}
+    .faq h3{font-family:Georgia,serif;font-size:18px;margin:20px 0 6px}
+    .blog-list{list-style:none;padding:0;margin:0}
+    .blog-list li{border:1px solid var(--line);border-radius:8px;padding:18px;margin-bottom:14px;background:#fff}
+    .blog-list a{font-family:Georgia,serif;font-size:20px;color:var(--ink);text-decoration:none}
+    .blog-list p{color:var(--muted);font-size:14px;margin:8px 0 0}
+    .blog-footer{max-width:760px;margin:0 auto;padding:20px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="blog-nav"><a href="/">&larr; Best Wellness Guide</a><a href="/blog">All guides</a></div>
+  <main class="blog-wrap">${bodyHtml}</main>
+  <footer class="blog-footer">Best Wellness Guide. Informational content only, not medical advice. We may earn a commission when readers buy through links on this site.</footer>
+</body>
+</html>`;
+}
+
+function blogPostPage(post) {
+  const href = trackedHref(post.product, "blog");
+  const faqHtml = post.faqs.map((faq) => `<div class="faq"><h3>${faq.q}</h3><p>${faq.a}</p></div>`).join("");
+  const body = `
+    <p class="blog-eyebrow">${post.category}</p>
+    <h1>${post.title}</h1>
+    <p class="blog-meta">Updated ${post.publishDate} &middot; Best Wellness Guide editorial team</p>
+    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
+    ${post.bodyHtml}
+    <div class="cta-box">
+      <p style="margin:0 0 14px;color:var(--muted)">Ready to compare pricing, bundles and the official checkout?</p>
+      <a href="${href}" data-product="${post.product.name}" data-vendor="${post.product.vendor}" rel="nofollow sponsored noopener" target="_blank">${post.product.cta}</a>
+    </div>
+    <h2>FAQ</h2>
+    ${faqHtml}
+  `;
+  return blogLayout({
+    title: post.title,
+    description: post.description,
+    canonical: blogPostUrl(post),
+    bodyHtml: body,
+    jsonLd: blogStructuredData(post),
+    image: post.product.image
+  });
+}
+
+function blogIndexPage() {
+  const items = blogPosts.map((post) => `
+    <li><a href="/blog/${post.slug}">${post.title}</a><p>${post.description}</p></li>
+  `).join("");
+  const body = `
+    <p class="blog-eyebrow">Guides</p>
+    <h1>Wellness buying guides</h1>
+    <p class="blog-meta">Research notes on the offers we feature, written for readers comparing options before checkout.</p>
+    <ul class="blog-list">${items}</ul>
+  `;
+  return blogLayout({
+    title: "Wellness Buying Guides | Best Wellness Guide",
+    description: "Research-driven guides comparing blood sugar, dental, brain, energy, vision and immune wellness offers before you buy.",
+    canonical: `${siteUrl}/blog`,
+    bodyHtml: body,
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": `${siteUrl}/blog#collection`,
+      name: "Best Wellness Guide buying guides",
+      url: `${siteUrl}/blog`
+    }),
+    image: "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82"
+  });
 }
 
 function page(activeProduct = null) {
@@ -372,6 +688,31 @@ export default {
     const url = new URL(request.url);
     const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
+    const blogMatch = url.pathname.match(/^\/blog\/([^/]+)\/?$/);
+    const blogPost = blogMatch ? blogPosts.find((post) => post.slug === blogMatch[1]) : null;
+    if (url.pathname === "/blog" || url.pathname === "/blog/") {
+      return new Response(blogIndexPage(), {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "public, max-age=300",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        }
+      });
+    }
+    if (blogMatch && blogPost) {
+      return new Response(blogPostPage(blogPost), {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "public, max-age=300",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        }
+      });
+    }
+    if (blogMatch && !blogPost) {
+      return Response.redirect(`${siteUrl}/blog`, 301);
+    }
     if (url.pathname === "/robots.txt") {
       return new Response("User-agent: *\nAllow: /\nSitemap: https://www.bestwellnessguide.com/sitemap.xml\n", {
         headers: { "content-type": "text/plain; charset=utf-8" }
@@ -405,7 +746,7 @@ export default {
       });
     }
     if (url.pathname === "/sitemap.xml") {
-      const urls = [`${siteUrl}/`, ...products.map(productUrl)];
+      const urls = [`${siteUrl}/`, ...products.map(productUrl), `${siteUrl}/blog`, ...blogPosts.map(blogPostUrl)];
       const sitemap = urls.map((loc) => `<url><loc>${loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${loc === `${siteUrl}/` ? "1.0" : "0.8"}</priority></url>`).join("");
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemap}</urlset>`, {
         headers: { "content-type": "application/xml; charset=utf-8" }
