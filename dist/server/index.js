@@ -1,4 +1,4 @@
-import { prodentimProduct4kBase64 } from "./prodentim-product-4k.js";
+import { prodentimProductHeroV2Base64 } from "./prodentim-product-hero-v2.js";
 
 const products = [
   {
@@ -7,7 +7,7 @@ const products = [
     category: "Dental Health",
     badge: "Top ClickBank offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/prodentim-product-4k.jpg",
+    image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching teeth, gums, and fresh-breath routines.",
     seoKeywords: ["ProDentim official website", "ProDentim reviews", "ProDentim price", "oral probiotic supplement", "dental health supplement", "gum health support", "fresh breath routine", "where to buy ProDentim"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official checkout handles pricing, bundles, shipping and refund terms"],
@@ -297,7 +297,7 @@ function page(activeProduct = null) {
         </div>
         <aside class="showcase">
           <div class="showcase-media">
-            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-product-4k.jpg" alt="ProDentim bottle advanced oral probiotics product image">
+            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg" alt="ProDentim bottle advanced oral probiotics product image">
           </div>
           <div class="showcase-body">
             <div class="showcase-kicker">Featured today</div>
@@ -375,8 +375,8 @@ export default {
         headers: { "content-type": "text/plain; charset=utf-8" }
       });
     }
-    if (url.pathname === "/assets/prodentim-product-4k.jpg") {
-      const binary = Uint8Array.from(atob(prodentimProduct4kBase64), (char) => char.charCodeAt(0));
+    if (url.pathname === "/assets/prodentim-product-hero-v2.jpg") {
+      const binary = Uint8Array.from(atob(prodentimProductHeroV2Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
           "content-type": "image/jpeg",
