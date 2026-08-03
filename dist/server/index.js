@@ -7,6 +7,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching teeth, gums, and fresh-breath routines.",
+    seoKeywords: ["ProDentim official website", "ProDentim reviews", "ProDentim price", "oral probiotic supplement", "dental health supplement", "gum health support", "fresh breath routine", "where to buy ProDentim"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official checkout handles pricing, bundles, shipping and refund terms"],
     cta: "View ProDentim official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim"
@@ -19,6 +20,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1200&q=80",
     summary: "A brain-health supplement offer for adults comparing memory, focus, and daily cognitive-support routines.",
+    seoKeywords: ["NeuroVera official website", "NeuroVera reviews", "NeuroVera price", "brain health supplement", "memory support supplement", "focus supplement for adults", "cognitive support routine", "where to buy NeuroVera"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets"],
     cta: "View NeuroVera official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=neurovera"
@@ -31,6 +33,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
     summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
+    seoKeywords: ["Joint Genesis official website", "Joint Genesis reviews", "Joint Genesis price", "joint support supplement", "mobility support supplement", "flexibility support", "healthy aging supplement", "where to buy Joint Genesis"],
     bullets: ["Cited by ClickBank among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
     cta: "View Joint Genesis official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=jointgen"
@@ -43,6 +46,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1200&q=80",
     summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
+    seoKeywords: ["Sugar Defender official website", "Sugar Defender reviews", "Sugar Defender price", "blood sugar support supplement", "glucose support formula", "plant based wellness drops", "energy support routine", "where to buy Sugar Defender"],
     bullets: ["Ranked in ClickBank's supplement affiliate list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
     cta: "View Sugar Defender official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=sugardef"
@@ -55,6 +59,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
     summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
+    seoKeywords: ["Audifort official website", "Audifort reviews", "Audifort price", "hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine", "where to buy Audifort"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
     cta: "Check Audifort availability",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=audifort"
@@ -67,6 +72,7 @@ const products = [
     market: "Digital product; available online after purchase terms are confirmed",
     image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1200&q=80",
     summary: "A long-running digital spirituality offer for buyers interested in soulmate art, relationship insight, and personal readings.",
+    seoKeywords: ["Soulmate Sketch official website", "Soulmate Sketch reviews", "Soulmate Sketch price", "soulmate drawing reading", "psychic soulmate sketch", "relationship reading online", "digital soulmate portrait", "where to buy Soulmate Sketch"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Digital delivery removes physical shipping friction"],
     cta: "View Soulmate Sketch official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=tinapsc"
@@ -79,6 +85,7 @@ const products = [
     market: "Digital product; available online after purchase terms are confirmed",
     image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
     summary: "A digital guide offer for homeowners and preparedness buyers researching lower-cost energy ideas and self-reliance projects.",
+    seoKeywords: ["Energy Revolution System official website", "Energy Revolution System reviews", "home energy guide", "alternative energy system", "off grid energy guide", "lower electric bill ideas", "DIY energy plans", "where to buy Energy Revolution System"],
     bullets: ["Featured by ClickBank in July 2026 top offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
     cta: "View Energy Revolution official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=enrev"
@@ -91,6 +98,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=1200&q=80",
     summary: "A wellness offer for readers researching lymphatic drainage support, herbal formulas, and daily detox-style routines.",
+    seoKeywords: ["Lymph Tonic official website", "Lymph Tonic reviews", "Lymph Tonic price", "lymphatic support supplement", "lymph drainage support", "detox support formula", "herbal wellness tonic", "where to buy Lymph Tonic"],
     bullets: ["Confirmed affiliate HopLink", "Clear supplement niche angle", "Official checkout controls delivery, refund and bundle details"],
     cta: "View Lymph Tonic official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=lymphtonic"
@@ -103,6 +111,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
     summary: "A coffee-compatible wellness offer for buyers who want a supplement that fits an existing morning habit.",
+    seoKeywords: ["Java Burn official website", "Java Burn reviews", "Java Burn price", "coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn 2.0", "where to buy Java Burn"],
     bullets: ["Built around a daily coffee routine", "Good fit for capsule-resistant buyers", "Official page confirms current bundles and terms"],
     cta: "View Java Burn official page",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=JAVABURN"
@@ -115,6 +124,7 @@ const products = [
     market: "English-speaking buyers; verify delivery at checkout",
     image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80",
     summary: "A wellness offer for readers researching eye-support routines and gut-health education.",
+    seoKeywords: ["VisiFlora official website", "VisiFlora reviews", "VisiFlora price", "eye health supplement", "gut health support", "vision support supplement", "eye and gut wellness", "where to buy VisiFlora"],
     bullets: ["Less generic than standard eye-vitamin pages", "Good educational SEO angle", "Official checkout confirms label and terms"],
     cta: "See VisiFlora official page",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=VISIFLORA"
@@ -127,6 +137,10 @@ function trackedHref(product, placement = "gallery") {
   return `${product.href}${separator}tid=${tid}`;
 }
 
+function allSeoKeywords() {
+  return [...new Set(products.flatMap((product) => product.seoKeywords))];
+}
+
 function structuredData() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -134,12 +148,14 @@ function structuredData() {
     name: "Best Wellness Guide",
     url: "https://bestwellnessguide.com/",
     description: "An independent wellness product discovery brand for English-speaking buyers.",
+    keywords: allSeoKeywords().join(", "),
     sameAs: [],
     makesOffer: products.map((product) => ({
       "@type": "Offer",
       name: product.name,
       category: product.category,
-      url: trackedHref(product)
+      url: trackedHref(product),
+      keywords: product.seoKeywords.join(", ")
     }))
   });
 }
@@ -150,7 +166,7 @@ function productCard(product) {
   return `
     <article class="gallery-card">
       <div class="product-art">
-        <img src="${product.image}" alt="${product.name} product category image" loading="lazy">
+        <img src="${product.image}" alt="${product.name} ${product.category} official offer research image" loading="lazy">
         <span>${product.badge}</span>
       </div>
       <div class="gallery-body">
@@ -170,8 +186,8 @@ function page() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Best Wellness Guide | International Wellness Product Storefront</title>
-  <meta name="description" content="Best Wellness Guide curates wellness product offers for buyers in English-speaking markets. Compare products and visit official checkout pages.">
+  <title>Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts</title>
+  <meta name="description" content="Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.">
   <link rel="canonical" href="https://bestwellnessguide.com/">
   <meta property="og:title" content="Best Wellness Guide | Premium Wellness Product Gallery">
   <meta property="og:description" content="A curated wellness product discovery brand for buyers in the United States and English-speaking markets.">
