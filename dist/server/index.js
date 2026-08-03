@@ -903,9 +903,14 @@ export default {
       });
     }
     if (url.pathname === "/sitemap.xml") {
-      const urls = [`${siteUrl}/`, ...products.map(productUrl), `${siteUrl}/blog`, ...blogPosts.map(blogPostUrl)];
-      const sitemap = urls.map((loc) => `<url><loc>${loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${loc === `${siteUrl}/` ? "1.0" : "0.8"}</priority></url>`).join("");
-      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemap}</urlset>`, {
+      const entries = [
+        { loc: `${siteUrl}/`, priority: "1.0", image: `${siteUrl}/logo.png` },
+        ...products.map((product) => ({ loc: productUrl(product), priority: "0.8", image: product.image })),
+        { loc: `${siteUrl}/blog`, priority: "0.7", image: null },
+        ...blogPosts.map((post) => ({ loc: blogPostUrl(post), priority: "0.7", image: post.product.image }))
+      ];
+      const sitemap = entries.map((entry) => `<url><loc>${entry.loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${entry.image ? `<image:image><image:loc>${entry.image}</image:loc></image:image>` : ""}</url>`).join("");
+      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`, {
         headers: { "content-type": "application/xml; charset=utf-8" }
       });
     }
