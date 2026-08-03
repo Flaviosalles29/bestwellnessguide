@@ -291,7 +291,6 @@ function page(activeProduct = null) {
       <div class="notice">We may earn a commission when readers buy through links on this site. Your price does not change.</div>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">International wellness storefront</p>
           <h1>A curated shelf of proven wellness offers.</h1>
           <p>Best Wellness Guide brings high-interest ClickBank offers into one clean storefront for English-speaking buyers, with direct access to official checkout pages.</p>
           <a class="button" href="#products">Browse products</a><a class="button secondary" href="#checklist">Buyer checklist</a>
