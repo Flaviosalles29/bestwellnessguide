@@ -517,21 +517,35 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
 </html>`;
 }
 
+function relatedPosts(post, count = 3) {
+  const others = blogPosts.filter((candidate) => candidate.slug !== post.slug);
+  const start = blogPosts.indexOf(post);
+  const ordered = others.slice(start % others.length).concat(others.slice(0, start % others.length));
+  return ordered.slice(0, count);
+}
+
 function blogPostPage(post) {
   const href = trackedHref(post.product, "blog");
   const faqHtml = post.faqs.map((faq) => `<div class="faq"><h3>${faq.q}</h3><p>${faq.a}</p></div>`).join("");
+  const related = relatedPosts(post);
+  const relatedHtml = related.map((other) => `
+    <li><a href="/blog/${other.slug}">${other.title}</a></li>
+  `).join("");
   const body = `
     <p class="blog-eyebrow">${post.category}</p>
     <h1>${post.title}</h1>
     <p class="blog-meta">Updated ${post.publishDate} &middot; Best Wellness Guide editorial team</p>
     <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
     ${post.bodyHtml}
+    <p><a href="${productUrl(post.product)}">See the full ${post.product.name} offer page on Best Wellness Guide &rarr;</a></p>
     <div class="cta-box">
       <p style="margin:0 0 14px;color:var(--muted)">Ready to compare pricing, bundles and the official checkout?</p>
       <a href="${href}" data-product="${post.product.name}" data-vendor="${post.product.vendor}" rel="nofollow sponsored noopener" target="_blank">${post.product.cta}</a>
     </div>
     <h2>FAQ</h2>
     ${faqHtml}
+    <h2>Related guides</h2>
+    <ul class="blog-related">${relatedHtml}</ul>
   `;
   return blogLayout({
     title: post.title,
@@ -629,7 +643,7 @@ function page(activeProduct = null) {
     <section class="hero">
       <nav class="nav">
         <a class="logo" href="/"><span class="mark">BW</span><span>Best Wellness Guide</span></a>
-        <div class="nav-links"><a href="#products">Products</a><a href="#profile">Profile</a><a href="#checklist">Checklist</a></div>
+        <div class="nav-links"><a href="#products">Products</a><a href="/blog">Blog</a><a href="#profile">Profile</a><a href="#checklist">Checklist</a></div>
       </nav>
       <div class="notice">We may earn a commission when readers buy through links on this site. Your price does not change.</div>
       <div class="hero-grid">
