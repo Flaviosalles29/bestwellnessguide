@@ -131,6 +131,16 @@ const products = [
   }
 ];
 
+const siteUrl = "https://www.bestwellnessguide.com";
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function productUrl(product) {
+  return `${siteUrl}/offers/${slugify(product.name)}`;
+}
+
 function trackedHref(product, placement = "gallery") {
   const tid = `bwg${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}${placement === "featured" ? "feat" : ""}`;
   const separator = product.href.includes("?") ? "&" : "?";
@@ -144,19 +154,54 @@ function allSeoKeywords() {
 function structuredData() {
   return JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Best Wellness Guide",
-    url: "https://bestwellnessguide.com/",
-    description: "An independent wellness product discovery brand for English-speaking buyers.",
-    keywords: allSeoKeywords().join(", "),
-    sameAs: [],
-    makesOffer: products.map((product) => ({
-      "@type": "Offer",
-      name: product.name,
-      category: product.category,
-      url: trackedHref(product),
-      keywords: product.seoKeywords.join(", ")
-    }))
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
+        name: "Best Wellness Guide",
+        url: `${siteUrl}/`,
+        description: "An independent wellness product discovery brand for English-speaking buyers.",
+        keywords: allSeoKeywords().join(", "),
+        sameAs: []
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        name: "Best Wellness Guide",
+        url: `${siteUrl}/`,
+        inLanguage: "en-US",
+        publisher: { "@id": `${siteUrl}/#organization` }
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": `${siteUrl}/#collection`,
+        name: "Best Wellness Guide official wellness offer gallery",
+        url: `${siteUrl}/`,
+        inLanguage: "en-US",
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: products.map((product, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            url: productUrl(product),
+            name: product.name
+          }))
+        }
+      },
+      ...products.map((product) => ({
+        "@type": "Offer",
+        "@id": `${productUrl(product)}#offer`,
+        name: product.name,
+        category: product.category,
+        url: trackedHref(product),
+        image: product.image,
+        description: product.summary,
+        keywords: product.seoKeywords.join(", "),
+        seller: { "@id": `${siteUrl}/#organization` },
+        availability: "https://schema.org/InStock"
+      }))
+    ]
   });
 }
 
@@ -180,20 +225,35 @@ function productCard(product) {
   `;
 }
 
-function page() {
+function page(activeProduct = null) {
+  const title = activeProduct
+    ? `${activeProduct.name} Official Offer, Reviews and Checkout | Best Wellness Guide`
+    : "Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts";
+  const description = activeProduct
+    ? `Compare ${activeProduct.name} details, reviews, price research and official checkout access through Best Wellness Guide.`
+    : "Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
+  const canonical = activeProduct ? productUrl(activeProduct) : `${siteUrl}/`;
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts</title>
-  <meta name="description" content="Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.">
-  <link rel="canonical" href="https://bestwellnessguide.com/">
-  <meta property="og:title" content="Best Wellness Guide | Premium Wellness Product Gallery">
-  <meta property="og:description" content="A curated wellness product discovery brand for buyers in the United States and English-speaking markets.">
-  <meta property="og:url" content="https://bestwellnessguide.com/">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#fffdfa">
+  <link rel="canonical" href="${canonical}">
+  <link rel="alternate" hreflang="en-US" href="${canonical}">
+  <link rel="alternate" hreflang="en" href="${canonical}">
+  <link rel="alternate" hreflang="x-default" href="${siteUrl}/">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://hop.clickbank.net">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82">
+  <meta property="og:image" content="${activeProduct ? activeProduct.image : "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82"}">
+  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${structuredData()}</script>
   <style>
     :root{--ink:#121513;--muted:#5b6560;--paper:#f7f8f4;--panel:#fffdfa;--line:#d8ded6;--green:#13745c;--teal:#075e67;--gold:#d49b2c;--coral:#c94f42}
@@ -298,13 +358,17 @@ function page() {
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+    const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
+    const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
     if (url.pathname === "/robots.txt") {
       return new Response("User-agent: *\nAllow: /\nSitemap: https://www.bestwellnessguide.com/sitemap.xml\n", {
         headers: { "content-type": "text/plain; charset=utf-8" }
       });
     }
     if (url.pathname === "/sitemap.xml") {
-      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.bestwellnessguide.com/</loc></url></urlset>`, {
+      const urls = [`${siteUrl}/`, ...products.map(productUrl)];
+      const sitemap = urls.map((loc) => `<url><loc>${loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${loc === `${siteUrl}/` ? "1.0" : "0.8"}</priority></url>`).join("");
+      return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemap}</urlset>`, {
         headers: { "content-type": "application/xml; charset=utf-8" }
       });
     }
@@ -313,10 +377,15 @@ export default {
         headers: { "content-type": "text/html; charset=utf-8" }
       });
     }
-    return new Response(page(), {
+    if (productMatch && !activeProduct) {
+      return Response.redirect(`${siteUrl}/`, 301);
+    }
+    return new Response(page(activeProduct), {
       headers: {
         "content-type": "text/html; charset=utf-8",
-        "cache-control": "public, max-age=300"
+        "cache-control": "public, max-age=300",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
       }
     });
   }
