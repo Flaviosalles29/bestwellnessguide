@@ -683,15 +683,15 @@ function page(activeProduct = null) {
     <section class="profile" id="profile">
       <div class="profile-inner">
         <div>
-          <p class="eyebrow">Brand profile</p>
-          <h2>Best Wellness Guide is a trusted wellness supplement reviews and discovery platform.</h2>
-          <p>We help shoppers across the United States, Canada, the United Kingdom and Australia find, compare and research trusted wellness supplement offers, including blood sugar support, dental probiotics, brain and memory formulas, natural energy and vision health, before continuing securely to each official seller's checkout page.</p>
+          <p class="eyebrow">Why shop with us</p>
+          <h2>Compare trusted wellness supplements, then check out with confidence.</h2>
+          <p>From blood sugar and dental support to brain, energy and vision formulas, we make it simple to compare top wellness offers side by side and head straight to the official checkout when you're ready.</p>
         </div>
         <div class="profile-grid">
-          <div class="profile-card"><strong>Audience</strong><span>Health-conscious, English-speaking shoppers across the US, Canada, UK and Australia searching for trusted wellness supplement reviews and clear buying guidance.</span></div>
-          <div class="profile-card"><strong>Positioning</strong><span>An independent, premium wellness reviews platform connecting readers directly to official seller checkout pages, with no middlemen and no guesswork.</span></div>
-          <div class="profile-card"><strong>Selection</strong><span>Every featured offer is vetted for an active official link, verified marketplace ranking, strong buyer intent, and proven demand in its category.</span></div>
-          <div class="profile-card"><strong>Responsibility</strong><span>We do not manufacture or ship products. Pricing, delivery, billing, and refunds are handled directly by each official seller.</span></div>
+          <div class="profile-card"><strong>Verified Official Links</strong><span>Every offer connects straight to the seller's real checkout page, so you always know exactly where your purchase is going.</span></div>
+          <div class="profile-card"><strong>Independent Comparisons</strong><span>We compare pricing, bundles and ingredients across top wellness brands so you can decide with confidence, not pressure.</span></div>
+          <div class="profile-card"><strong>Secure Checkout, Every Time</strong><span>Payment, shipping and account details are handled entirely by the official seller. We never see or store your information.</span></div>
+          <div class="profile-card"><strong>Know Before You Buy</strong><span>Each guide notes the seller's refund window and bundle pricing, so there are no surprises at checkout.</span></div>
         </div>
       </div>
     </section>
