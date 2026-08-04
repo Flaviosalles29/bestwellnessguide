@@ -1295,7 +1295,7 @@ export default {
         { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", image: null },
         ...products.map((product) => ({ loc: productUrl(product), priority: "0.8", image: product.image })),
         { loc: `${siteUrl}/blog`, priority: "0.9", image: null },
-        ...blogPosts.map((post) => ({ loc: blogPostUrl(post), priority: "0.7", image: post.product.image }))
+        ...blogPosts.map((post) => ({ loc: blogPostUrl(post), priority: "0.7", image: post.product?.image || null }))
       ];
       const sitemap = entries.map((entry) => `<url><loc>${entry.loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${entry.image ? `<image:image><image:loc>${entry.image}</image:loc></image:image>` : ""}</url>`).join("");
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`, {
