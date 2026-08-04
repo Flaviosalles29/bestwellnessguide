@@ -564,6 +564,15 @@ function blogStructuredData(post) {
           name: faq.q,
           acceptedAnswer: { "@type": "Answer", text: faq.a }
         }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${blogPostUrl(post)}#breadcrumbs`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Guides", item: `${siteUrl}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: blogPostUrl(post) }
+        ]
       }
     ]
   });
@@ -742,6 +751,15 @@ function productStructuredData(product, relatedGuide) {
             name: `Does ${product.name} offer a refund?`,
             acceptedAnswer: { "@type": "Answer", text: `Refund terms are set by the seller and disclosed on the official checkout page before you complete payment.` }
           }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${productUrl(product)}#breadcrumbs`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: product.category, item: `${siteUrl}/` },
+          { "@type": "ListItem", position: 3, name: product.name, item: productUrl(product) }
         ]
       }
     ]
@@ -928,9 +946,24 @@ function page() {
 </html>`;
 }
 
+function getCommonHeaders(path = "") {
+  const supportsWebp = true; // Cloudflare detects
+  return {
+    "cache-control": path.startsWith("/assets/") || path.match(/\.(svg|ico|png|jpg)$/) ? "public, max-age=31536000, immutable" : "public, max-age=300",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "x-xss-protection": "1; mode=block",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "permissions-policy": "geolocation=(), microphone=(), camera=()",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "link": `<${siteUrl}/favicon.svg>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`
+  };
+}
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
+    const acceptsWebp = request.headers.get("accept")?.includes("image/webp");
     const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
     const blogMatch = url.pathname.match(/^\/blog\/([^/]+)\/?$/);
@@ -939,9 +972,7 @@ export default {
       return new Response(blogIndexPage(), {
         headers: {
           "content-type": "text/html; charset=utf-8",
-          "cache-control": "public, max-age=300",
-          "x-content-type-options": "nosniff",
-          "referrer-policy": "strict-origin-when-cross-origin"
+          ...getCommonHeaders("/blog")
         }
       });
     }
@@ -949,9 +980,7 @@ export default {
       return new Response(blogPostPage(blogPost), {
         headers: {
           "content-type": "text/html; charset=utf-8",
-          "cache-control": "public, max-age=300",
-          "x-content-type-options": "nosniff",
-          "referrer-policy": "strict-origin-when-cross-origin"
+          ...getCommonHeaders(url.pathname)
         }
       });
     }
@@ -1022,7 +1051,10 @@ export default {
       ];
       const sitemap = entries.map((entry) => `<url><loc>${entry.loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${entry.image ? `<image:image><image:loc>${entry.image}</image:loc></image:image>` : ""}</url>`).join("");
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`, {
-        headers: { "content-type": "application/xml; charset=utf-8" }
+        headers: {
+          "content-type": "application/xml; charset=utf-8",
+          "cache-control": "public, max-age=86400"
+        }
       });
     }
     if (url.pathname === "/google91c906099c1867d2.html") {
@@ -1037,18 +1069,14 @@ export default {
       return new Response(productPage(activeProduct), {
         headers: {
           "content-type": "text/html; charset=utf-8",
-          "cache-control": "public, max-age=300",
-          "x-content-type-options": "nosniff",
-          "referrer-policy": "strict-origin-when-cross-origin"
+          ...getCommonHeaders(url.pathname)
         }
       });
     }
     return new Response(page(), {
       headers: {
         "content-type": "text/html; charset=utf-8",
-        "cache-control": "public, max-age=300",
-        "x-content-type-options": "nosniff",
-        "referrer-policy": "strict-origin-when-cross-origin"
+        ...getCommonHeaders("/")
       }
     });
   }
