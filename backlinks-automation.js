@@ -8,19 +8,13 @@
  * Ou: npm install node-cron && node backlinks-automation.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cron from 'node-cron';
 
-// Verificar se node-cron está instalado
-try {
-  require('node-cron');
-} catch (e) {
-  console.error('❌ node-cron não instalado. Execute:');
-  console.error('   npm install node-cron');
-  process.exit(1);
-}
-
-const cron = require('node-cron');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuração
 const LOG_FILE = path.join(__dirname, 'backlinks-automation.log');
@@ -344,8 +338,6 @@ process.on('SIGINT', () => {
 });
 
 // Start
-if (require.main === module) {
-  startScheduler();
-}
+startScheduler();
 
-module.exports = { startScheduler, updateTracker, log };
+export { startScheduler, updateTracker, log };
