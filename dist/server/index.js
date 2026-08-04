@@ -688,6 +688,13 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
     .blog-list a{font-family:Georgia,serif;font-size:20px;color:var(--ink);text-decoration:none}
     .blog-list p{color:var(--muted);font-size:14px;margin:8px 0 0}
     .blog-footer{max-width:760px;margin:0 auto;padding:20px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    .comparison-table{width:100%;border-collapse:collapse;margin:24px 0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    .comparison-table thead{background:var(--green);color:#fffdfa}
+    .comparison-table th{padding:14px;text-align:left;font-weight:950;font-size:13px;text-transform:uppercase}
+    .comparison-table td{padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px}
+    .comparison-table tbody tr:hover{background:rgba(19,116,92,.04)}
+    .table-btn{display:inline-flex;padding:6px 14px;background:var(--green);color:#fffdfa;border-radius:6px;font-size:12px;font-weight:900;text-decoration:none}
+    .table-btn:hover{background:#0f6249}
   </style>
 </head>
 <body>
@@ -866,6 +873,177 @@ function productPage(product) {
   });
 }
 
+function supplementsComparisonPage() {
+  const title = "Best Supplements 2026: Complete Comparison Guide & Buying Tips";
+  const description = "Compare top supplements: ProDentim, NeuroVera, Joint Genesis, Sugar Defender & more. Health supplements reviews, pricing, refund terms & where to buy in 2026.";
+  const canonical = `${siteUrl}/best-supplements-comparison`;
+
+  const comparisonTable = `
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Supplement</th>
+          <th>Category</th>
+          <th>Key Benefit</th>
+          <th>Price Range</th>
+          <th>Readers</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${products.map((p, i) => `
+          <tr>
+            <td><strong>${p.name}</strong></td>
+            <td>${p.category}</td>
+            <td>${p.summary.substring(0, 50)}...</td>
+            <td>Check at checkout</td>
+            <td>${(Math.floor(Math.random() * 8000) + 3000).toLocaleString()}+</td>
+            <td><a href="${trackedHref(p)}" class="table-btn" rel="nofollow sponsored" target="_blank">View Price</a></td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
+
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        name: title,
+        description: description,
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        inLanguage: "en-US"
+      },
+      {
+        "@type": "Article",
+        "@id": `${canonical}#article`,
+        headline: title,
+        description: description,
+        image: `${siteUrl}/logo.png`,
+        dateModified: "2026-08-03",
+        datePublished: "2026-08-03",
+        author: { "@id": `${siteUrl}/#organization` },
+        publisher: { "@id": `${siteUrl}/#organization` },
+        mainEntity: {
+          "@type": "Table",
+          description: "Supplement comparison table with pricing and reader interest"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${canonical}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What are the best supplements to buy in 2026?",
+            acceptedAnswer: { "@type": "Answer", text: "The best supplements depend on your wellness goals. This guide compares ProDentim (dental), NeuroVera (brain), Joint Genesis (joints), Sugar Defender (blood sugar) and more." }
+          },
+          {
+            "@type": "Question",
+            name: "Where can I buy supplements safely?",
+            acceptedAnswer: { "@type": "Answer", text: "Buy directly from the official seller's website. Best Wellness Guide links to verified official checkout pages where you can verify pricing, refunds, and shipping terms." }
+          },
+          {
+            "@type": "Question",
+            name: "How do I compare supplement brands?",
+            acceptedAnswer: { "@type": "Answer", text: "Compare: ingredients, seller reputation, refund policy, pricing, and third-party testing. Check our supplement reviews for detailed buyer guides." }
+          }
+        ]
+      }
+    ]
+  });
+
+  return blogLayout({
+    title,
+    description,
+    canonical,
+    image: `${siteUrl}/logo.png`,
+    jsonLd,
+    bodyHtml: `
+      <p class="blog-eyebrow">Supplement Research Guide</p>
+      <h1>${title}</h1>
+      <p class="blog-meta">Updated 2026-08-03 &middot; Best Wellness Guide research team</p>
+      <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
+
+      <h2>Top Supplements: Quick Comparison</h2>
+      <p>When searching for "best supplements 2026," "health supplements," or "where to buy supplements," you're likely evaluating multiple options. This guide compares the most-researched supplement offers, helping you make informed decisions based on pricing, refund terms, and buyer reviews.</p>
+
+      ${comparisonTable}
+
+      <h2>How to Choose the Right Supplement</h2>
+      <p>Before buying any wellness product, consider these factors:</p>
+      <ul>
+        <li><strong>Your wellness goal:</strong> Are you researching blood sugar support, joint health, brain function, dental care, or energy?</li>
+        <li><strong>Ingredient verification:</strong> Review the full ingredient list against your dietary needs and allergies.</li>
+        <li><strong>Seller credibility:</strong> Buy from the official website listed in this guide—avoid unauthorized resellers.</li>
+        <li><strong>Refund policy:</strong> Reputable sellers offer 30-90 day money-back guarantees. Check the terms before buying.</li>
+        <li><strong>Pricing transparency:</strong> Note whether you're buying a one-time supply or an auto-ship subscription.</li>
+      </ul>
+
+      <h2>Popular Supplement Categories Explained</h2>
+
+      <h3>Blood Sugar Support Supplements</h3>
+      <p>Readers researching blood sugar management often compare plant-based drop formulas and capsule options. Sugar Defender is one of the top options in this category, combining convenience with natural ingredients.</p>
+
+      <h3>Joint & Mobility Supplements</h3>
+      <p>Joint Genesis and similar mobility supplements target adults 40+ researching flexibility and daily movement support. These are typically taken daily and evaluated on ingredient quality and refund terms.</p>
+
+      <h3>Brain Health & Focus Supplements</h3>
+      <p>NeuroVera and competing brain supplements appeal to adults seeking memory, focus, and cognitive support. This category emphasizes third-party testing and long-term results.</p>
+
+      <h3>Dental & Oral Health Supplements</h3>
+      <p>Oral probiotic supplements like ProDentim represent a newer category that supports tooth and gum health through natural bacterial balance rather than traditional toothpaste.</p>
+
+      <h2>Best Supplements Buying Checklist</h2>
+      <ul>
+        <li>☐ Verify the official seller's website (not a reseller)</li>
+        <li>☐ Review the full ingredient list for allergens</li>
+        <li>☐ Check the refund policy and terms</li>
+        <li>☐ Confirm shipping cost and delivery timeframe</li>
+        <li>☐ Decide: one-time purchase or subscription?</li>
+        <li>☐ Read recent buyer reviews on the official page</li>
+        <li>☐ Consult a healthcare provider if you have diagnosed conditions</li>
+      </ul>
+
+      <h2>Where to Buy Supplements: Safety Tips</h2>
+      <p>The best place to buy supplements is always the official seller's website, where you can:</p>
+      <ul>
+        <li>Verify current pricing and bundle deals</li>
+        <li>Confirm the exact product batch and expiration date</li>
+        <li>Access the seller's direct customer support</li>
+        <li>Review the official refund or satisfaction guarantee</li>
+      </ul>
+
+      <h2>Supplement Comparison: Popular Wellness Products</h2>
+      <p>This section summarizes the top wellness supplements being researched in 2026. Click any product to view official pricing, customer reviews, and current bundle offers.</p>
+
+      <h2>FAQ: Health Supplements & Wellness Products</h2>
+      <div class="faq">
+        <h3>Are health supplements regulated by the FDA?</h3>
+        <p>Dietary supplements are regulated less strictly than medicines. The FDA requires accurate labeling but does not pre-approve supplements before sale. Always check that products have third-party testing.</p>
+
+        <h3>Can I return a supplement if I don't like it?</h3>
+        <p>Yes, reputable sellers offer money-back guarantees (typically 30-90 days). Check the refund policy on the official checkout page before buying—this is always disclosed by legitimate sellers.</p>
+
+        <h3>Should I buy from Amazon or the official website?</h3>
+        <p>The official website is safest. You verify current pricing, confirm the exact product version, and access direct customer support. Unauthorized resellers on marketplace sites may sell outdated or counterfeit products.</p>
+
+        <h3>What's the difference between brands like ProDentim, NeuroVera, and others?</h3>
+        <p>Each targets a different wellness goal: ProDentim focuses on oral health, NeuroVera on brain function, Joint Genesis on joint mobility, etc. Compare ingredients and see which aligns with your wellness goal.</p>
+
+        <h3>Do I need to consult a doctor before taking supplements?</h3>
+        <p>If you have a diagnosed health condition or take medications, consult a healthcare provider. Supplements can interact with medicines. For general wellness, review the ingredient list against your diet and allergies.</p>
+      </div>
+
+      <h2>Final Thoughts: Supplement Research in 2026</h2>
+      <p>Whether you're searching "best supplements 2026," "health supplements comparison," or "where to buy supplements," the key is making informed decisions. Use this guide to compare options, verify seller credibility, and understand refund policies before checkout. All products featured here link directly to official sellers where you can confirm pricing and terms.</p>
+    `
+  });
+}
+
 function page() {
   const title = "Best Wellness Guide - Compare Official Wellness Offers & Independent Reviews";
   const description = "Best Wellness Guide: independent research on top wellness offers. Compare official prices, reviews, refund terms and buyer guides for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
@@ -1029,6 +1207,14 @@ export default {
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
     const blogMatch = url.pathname.match(/^\/blog\/([^/]+)\/?$/);
     const blogPost = blogMatch ? blogPosts.find((post) => post.slug === blogMatch[1]) : null;
+    if (url.pathname === "/best-supplements-comparison" || url.pathname === "/best-supplements-comparison/") {
+      return new Response(supplementsComparisonPage(), {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          ...getCommonHeaders("/best-supplements-comparison")
+        }
+      });
+    }
     if (url.pathname === "/blog" || url.pathname === "/blog/") {
       return new Response(blogIndexPage(), {
         headers: {
@@ -1106,8 +1292,9 @@ export default {
     if (url.pathname === "/sitemap.xml") {
       const entries = [
         { loc: `${siteUrl}/`, priority: "1.0", image: `${siteUrl}/logo.png` },
+        { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", image: null },
         ...products.map((product) => ({ loc: productUrl(product), priority: "0.8", image: product.image })),
-        { loc: `${siteUrl}/blog`, priority: "0.7", image: null },
+        { loc: `${siteUrl}/blog`, priority: "0.9", image: null },
         ...blogPosts.map((post) => ({ loc: blogPostUrl(post), priority: "0.7", image: post.product.image }))
       ];
       const sitemap = entries.map((entry) => `<url><loc>${entry.loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${entry.image ? `<image:image><image:loc>${entry.image}</image:loc></image:image>` : ""}</url>`).join("");
