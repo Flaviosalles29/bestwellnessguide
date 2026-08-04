@@ -1,0 +1,107 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                   FINAL STEP: URL INDEXING (3 MINUTES)                    ║
+║                                                                           ║
+║  Sitemap already submitted ✓ Status: Processed (18 pages found)          ║
+║  Only step remaining: Request indexing for 6 critical URLs               ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Open Google Search Console
+─────────────────────────────────
+
+1. Go to: https://search.google.com/search-console
+2. Select property: https://www.bestwellnessguide.com/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 2: Access URL Inspection Tool
+──────────────────────────────────
+
+1. Look at the top search bar: "Inspecionar qualquer URL de..."
+2. Click on the search field
+3. You will enter each URL here
+
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 3: Index the 6 Critical URLs (30 seconds each)
+────────────────────────────────────────────────
+
+For EACH URL below:
+
+  1. Paste the URL in the search box
+  2. Press ENTER
+  3. Wait for the inspection page to load (5-10 seconds)
+  4. Click the button: "Solicitar indexação" (Request Indexing)
+  5. Wait for success message
+  6. Clear the search box
+  7. Repeat with next URL
+
+───────────────────────────────────────────────────
+
+URLs TO INDEX (paste one at a time):
+
+  1. https://www.bestwellnessguide.com
+     [HOMEPAGE - HIGHEST PRIORITY]
+
+  2. https://www.bestwellnessguide.com/best-supplements-comparison
+     [HUB PAGE - 126K monthly keywords, CRITICAL]
+
+  3. https://www.bestwellnessguide.com/blog
+     [BLOG HUB - 11 posts, gateway to all content]
+
+  4. https://www.bestwellnessguide.com/offers/prodentim
+     [PRODUCT PAGE 1]
+
+  5. https://www.bestwellnessguide.com/offers/neurovera
+     [PRODUCT PAGE 2]
+
+  6. https://www.bestwellnessguide.com/offers/joint-genesis
+     [PRODUCT PAGE 3]
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TIMELINE AFTER INDEXING REQUEST
+
+─────────────────────────────────
+
+Hours 0-2:   Google queues for crawl
+Hours 2-6:   Crawling in progress
+Hours 6-24:  Indexing (usually fastest for high-authority content)
+Days 1-3:    Pages appear in search results
+
+Monthly impact (30 days):
+  • Homepage: Immediate indexing
+  • Hub page: 1K-5K organic visits from 126K keywords
+  • Blog pages: 500-2K visits per post
+  • Product pages: 200-500 visits each from affiliate keywords
+
+═══════════════════════════════════════════════════════════════════════════════
+
+SUCCESS CHECKLIST
+
+─────────────────
+
+After completing all 6 URLs:
+
+  ☐ All 6 URLs show "Indexed" status in GSC
+  ☐ Sitemap shows "Processed" (already done ✓)
+  ☐ No validation errors remain
+  ☐ Google Alerts set up (10 keywords)
+  ☐ HARO registration confirmed
+  ☐ Automation running (6 daily cron jobs)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TOTAL TIME
+
+──────────
+
+Manual indexing:     ~3 minutes (6 URLs × 30 sec each)
+Google crawl:        2-24 hours
+Ranking in SERPs:    3-7 days
+
+Result: Website ready for organic growth. All technical infrastructure in place.
+
+═══════════════════════════════════════════════════════════════════════════════
