@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Google Search Console Automation Script
-Automatiza verificação, sitemap, e indexação de URLs
+Automatiza verificao, sitemap, e indexao de URLs
 Requer: Python 3.8+, Selenium, Chrome/Chromium
 """
 
@@ -16,11 +16,11 @@ try:
     from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver.chrome.service import Service
 except ImportError:
-    print("❌ Selenium não instalado. Execute:")
+    print("[ERROR] Selenium no instalado. Execute:")
     print("   pip install selenium")
     sys.exit(1)
 
-# Configuração
+# Configurao
 DOMAIN = "https://www.bestwellnessguide.com"
 URLS_TO_INDEX = [
     "https://www.bestwellnessguide.com",
@@ -49,51 +49,51 @@ class GSCAutomation:
 
             self.driver = webdriver.Chrome(options=options)
             self.wait = WebDriverWait(self.driver, 15)
-            print("✅ Chrome driver iniciado")
+            print("[OK] Chrome driver iniciado")
         except Exception as e:
-            print(f"❌ Erro ao iniciar Chrome: {e}")
-            print("   Certifique-se de que Chrome está instalado")
+            print(f"[ERROR] Erro ao iniciar Chrome: {e}")
+            print("   Certifique-se de que Chrome est instalado")
             sys.exit(1)
 
     def go_to_gsc(self):
         """Navigate to Google Search Console"""
-        print("\n📍 Abrindo Google Search Console...")
+        print("\n[LOCATION] Abrindo Google Search Console...")
         self.driver.get("https://search.google.com/search-console")
         time.sleep(3)
-        print("✅ Página carregada")
+        print("[OK] Pgina carregada")
 
     def wait_for_login(self):
         """Wait for user to manually login"""
-        print("\n🔑 AÇÃO MANUAL NECESSÁRIA:")
-        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        print("\n[LOGIN] AO MANUAL NECESSRIA:")
+        print("")
         print("1. Uma janela do Chrome foi aberta com Google Search Console")
-        print("2. Você precisa fazer LOGIN manualmente")
+        print("2. Voc precisa fazer LOGIN manualmente")
         print("3. Use seu email: fflaviosalles@gmail.com")
-        print("4. Após fazer login, esta janela vai continuar automaticamente")
-        print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+        print("4. Aps fazer login, esta janela vai continuar automaticamente")
+        print("")
 
-        # Esperar login (máximo 60 segundos de inatividade)
-        print("\n⏳ Aguardando login (máx 5 minutos)...")
+        # Esperar login (mximo 60 segundos de inatividade)
+        print("\n[WAIT] Aguardando login (mx 5 minutos)...")
 
         for i in range(60):
             try:
-                # Verifica se está logado procurando por elementos do dashboard
+                # Verifica se est logado procurando por elementos do dashboard
                 self.driver.find_element(By.TAG_NAME, "body")
                 time.sleep(5)
 
-                # Se chegou aqui e a URL mudou, provavelmente está logado
+                # Se chegou aqui e a URL mudou, provavelmente est logado
                 if "search-console" in self.driver.current_url and i > 2:
-                    print("✅ Login detectado!")
+                    print("[OK] Login detectado!")
                     return True
             except:
                 pass
 
-        print("⚠️  Timeout - por favor, faça login manualmente e execute novamente")
+        print("[WARNING]  Timeout - por favor, faa login manualmente e execute novamente")
         return False
 
     def add_property(self):
         """Add property to GSC"""
-        print("\n📋 ADICIONANDO PROPRIEDADE...")
+        print("\n ADICIONANDO PROPRIEDADE...")
 
         try:
             # Click "Add property"
@@ -120,17 +120,17 @@ class GSCAutomation:
             continue_btn = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Continue') or contains(text(), 'Continuar')]")
             continue_btn.click()
 
-            print("✅ Propriedade adicionada")
+            print("[OK] Propriedade adicionada")
             time.sleep(3)
             return True
         except Exception as e:
-            print(f"⚠️  Erro ao adicionar propriedade: {e}")
-            print("   Continuando para próxima etapa...")
+            print(f"[WARNING]  Erro ao adicionar propriedade: {e}")
+            print("   Continuando para prxima etapa...")
             return True
 
     def verify_property(self):
         """Verify property with meta tag"""
-        print("\n✅ VERIFICANDO PROPRIEDADE...")
+        print("\n[OK] VERIFICANDO PROPRIEDADE...")
 
         try:
             # Google deve auto-detectar meta tag
@@ -140,15 +140,15 @@ class GSCAutomation:
             verify_btn.click()
 
             time.sleep(5)
-            print("✅ Propriedade verificada!")
+            print("[OK] Propriedade verificada!")
             return True
         except Exception as e:
-            print(f"⚠️  Verificação manual pode ser necessária: {e}")
+            print(f"[WARNING]  Verificao manual pode ser necessria: {e}")
             return True
 
     def submit_sitemap(self):
         """Submit sitemap"""
-        print("\n🗺️  SUBMETENDO SITEMAP...")
+        print("\n  SUBMETENDO SITEMAP...")
 
         try:
             # Navigate to Sitemaps page
@@ -168,17 +168,17 @@ class GSCAutomation:
             submit_btn.click()
 
             time.sleep(3)
-            print("✅ Sitemap submetido!")
+            print("[OK] Sitemap submetido!")
             return True
         except Exception as e:
-            print(f"⚠️  Erro ao submeter sitemap: {e}")
-            print("   Você pode fazer isso manualmente em:")
+            print(f"[WARNING]  Erro ao submeter sitemap: {e}")
+            print("   Voc pode fazer isso manualmente em:")
             print("   https://search.google.com/search-console/sitemaps")
             return True
 
     def request_indexation(self):
         """Request indexation for URLs"""
-        print("\n🔗 SOLICITANDO INDEXAÇÃO DE 6 URLs...")
+        print("\n[LINKS] SOLICITANDO INDEXAO DE 6 URLs...")
 
         try:
             # Navigate to URL Inspection
@@ -205,32 +205,29 @@ class GSCAutomation:
                     request_btn.click()
 
                     time.sleep(2)
-                    print(f"  ✅ URL {i}/6 indexada")
+                    print(f"  [OK] URL {i}/6 indexada")
 
                 except Exception as e:
-                    print(f"  ⚠️  URL {i} - Erro: {e}")
-                    print("     Você pode fazer isso manualmente")
+                    print(f"  [WARNING]  URL {i} - Erro: {e}")
+                    print("     Voc pode fazer isso manualmente")
 
-            print("\n✅ Indexação de URLs completa!")
+            print("\n[OK] Indexao de URLs completa!")
             return True
         except Exception as e:
-            print(f"❌ Erro geral: {e}")
+            print(f"[ERROR] Erro geral: {e}")
             return True
 
     def run(self):
         """Run full automation"""
-        print("╔════════════════════════════════════════════════════════╗")
-        print("║   🚀 GOOGLE SEARCH CONSOLE AUTOMATION               ║")
-        print("║                                                        ║")
-        print("║   Site: " + DOMAIN)
-        print("║   Ações: Verificação + Sitemap + Indexação             ║")
-        print("╚════════════════════════════════════════════════════════╝")
+        print("\n=== GOOGLE SEARCH CONSOLE AUTOMATION ===\n")
+        print("Site: " + DOMAIN)
+        print("Actions: Verification + Sitemap + Indexation\n")
 
         self.setup_driver()
         self.go_to_gsc()
 
         if not self.wait_for_login():
-            print("\n❌ Timeout de login")
+            print("\n[ERROR] Timeout de login")
             self.driver.quit()
             return
 
@@ -250,15 +247,15 @@ class GSCAutomation:
         self.request_indexation()
 
         print("\n" + "="*56)
-        print("✅ AUTOMAÇÃO COMPLETA!")
+        print("AUTOMATION COMPLETE!")
         print("="*56)
-        print("\nVerifique em Google Search Console:")
-        print("• Coverage: URLs sendo indexadas")
-        print("• Performance: Impressões começando a aparecer")
-        print("\n⏳ Próximos passos:")
-        print("1. Aguarde 24-48 horas para Google rastrear")
-        print("2. Monitor daily em Search Console")
-        print("3. Backlinks automation já está rodando!")
+        print("\nCheck Google Search Console:")
+        print("- Coverage: URLs being indexed")
+        print("- Performance: Impressions appearing")
+        print("\nNext steps:")
+        print("1. Wait 24-48 hours for Google to crawl")
+        print("2. Monitor daily in Search Console")
+        print("3. Backlinks automation already running!")
         print("\n")
 
         self.driver.quit()
@@ -269,10 +266,10 @@ if __name__ == "__main__":
     try:
         automation.run()
     except KeyboardInterrupt:
-        print("\n\n❌ Interrompido pelo usuário")
+        print("\n\n[ERROR] Interrompido pelo usurio")
         if automation.driver:
             automation.driver.quit()
     except Exception as e:
-        print(f"\n❌ Erro: {e}")
+        print(f"\n[ERROR] Erro: {e}")
         if automation.driver:
             automation.driver.quit()
