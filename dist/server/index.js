@@ -188,7 +188,7 @@ function structuredData() {
           height: 512
         },
         image: `${siteUrl}/logo.png`,
-        description: "An independent wellness product discovery brand for English-speaking buyers.",
+        description: "Best Wellness Guide is an independent resource comparing official wellness offers, reviews, pricing and buyer information for English-speaking consumers.",
         keywords: allSeoKeywords().join(", "),
         sameAs: []
       },
@@ -254,6 +254,61 @@ function productCard(product) {
 }
 
 const blogPosts = [
+  {
+    slug: "about-best-wellness-guide",
+    category: "About",
+    title: "What is Best Wellness Guide? Our Mission, Research, and Buyer Commitment",
+    description: "About Best Wellness Guide: an independent wellness research platform comparing official wellness offers, pricing, reviews, and checkout information for informed buyers.",
+    keywords: ["best wellness guide", "wellness guide", "independent wellness research", "supplement research", "wellness product comparison", "official wellness offers"],
+    publishDate: "2026-08-03",
+    product: null,
+    bodyHtml: `
+      <p><strong>Best Wellness Guide</strong> is an independent research platform that helps English-speaking buyers compare official wellness offers, understand pricing structures, and make informed decisions before checkout.</p>
+
+      <h2>Our Mission</h2>
+      <p>We believe that buyers deserve clear, independent information about wellness products before making a purchase. Best Wellness Guide exists to bridge the gap between product marketing and buyer reality by researching top wellness offers, documenting what they claim, and helping readers understand what to check before buying.</p>
+
+      <h2>How Best Wellness Guide Works</h2>
+      <p>When you visit Best Wellness Guide, you'll find:</p>
+      <ul>
+        <li><strong>Direct links to official checkout pages</strong> — No redirects, no markups. You go straight to the seller's real checkout.</li>
+        <li><strong>Independent buyer guides for each offer</strong> — Research on what each product claims, who it's positioned for, and what to verify before purchasing.</li>
+        <li><strong>Ingredient and refund information</strong> — Documentation on what buyers should check, including ingredient lists, refund windows, and bundle pricing.</li>
+        <li><strong>Transparent commission disclosure</strong> — We may earn a commission when readers buy through our links. Your price never changes.</li>
+      </ul>
+
+      <h2>What Best Wellness Guide is NOT</h2>
+      <p>We are not a medical resource. Best Wellness Guide does not provide medical advice, diagnoses, or treatment recommendations. If you have a diagnosed health condition, consult a healthcare provider before starting any supplement routine.</p>
+
+      <h2>Who Uses Best Wellness Guide?</h2>
+      <p>Our readers are typically wellness-conscious buyers who want to:</p>
+      <ul>
+        <li>Compare official wellness offers side by side</li>
+        <li>Understand pricing, bundles, and refund policies</li>
+        <li>See what real ingredients and formulas are in products</li>
+        <li>Access official checkout pages directly</li>
+        <li>Research before committing to a purchase</li>
+      </ul>
+
+      <h2>Our Research Standards</h2>
+      <p>Every product featured on Best Wellness Guide has been validated as:</p>
+      <ul>
+        <li>Currently available for purchase with verified checkout links</li>
+        <li>Offering clear ingredient lists and usage instructions</li>
+        <li>Providing documented refund policies and terms</li>
+        <li>Positioned toward English-speaking markets</li>
+      </ul>
+
+      <h2>Browse Our Wellness Guides</h2>
+      <p>Start with one of our buyer guides to compare pricing, ingredients, and official checkout details for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Soulmate Sketch, Java Burn, and more.</p>
+    `,
+    faqs: [
+      { q: "Is Best Wellness Guide a medical resource?", a: "No. Best Wellness Guide provides informational content only and is not a substitute for medical advice. Always consult a healthcare provider about wellness products if you have a diagnosed health condition." },
+      { q: "Why does Best Wellness Guide earn commissions?", a: "We earn affiliate commissions when readers purchase through our links, but your price is never affected. This model allows us to research and maintain our guides at no cost to readers." },
+      { q: "Are these products supplements or medicines?", a: "Products featured on Best Wellness Guide are marketed as dietary supplements or wellness products. They are not FDA-approved medicines and should not be treated as substitutes for medical care." },
+      { q: "Can I trust the links on Best Wellness Guide?", a: "Yes. Every link goes directly to the official seller's checkout page. We never redirect or insert affiliate codes into the checkout flow—you see exactly what the seller is offering." }
+    ]
+  },
   {
     slug: "best-blood-sugar-supplement-sugar-defender-review",
     category: "Blood Sugar Support",
@@ -806,8 +861,8 @@ function productPage(product) {
 }
 
 function page() {
-  const title = "Best Wellness Guide | Official Wellness Offers, Reviews, Prices and Checkouts";
-  const description = "Compare official wellness offers, reviews, prices and checkout pages for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
+  const title = "Best Wellness Guide - Compare Official Wellness Offers & Independent Reviews";
+  const description = "Best Wellness Guide: independent research on top wellness offers. Compare official prices, reviews, refund terms and buyer guides for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
   const canonical = `${siteUrl}/`;
   return `<!doctype html>
 <html lang="en">
@@ -866,8 +921,8 @@ function page() {
       <div class="notice">We may earn a commission when readers buy through links on this site. Your price does not change.</div>
       <div class="hero-grid">
         <div>
-          <h1>A curated shelf of proven wellness offers.</h1>
-          <p>Best Wellness Guide brings high-interest ClickBank offers into one clean storefront for English-speaking buyers, with direct access to official checkout pages.</p>
+          <h1>Best Wellness Guide: Compare Official Wellness Offers & Pricing</h1>
+          <p>Best Wellness Guide is your independent resource for comparing proven wellness products, pricing, and official checkout information. We research top ClickBank wellness offers so you can decide with confidence.</p>
           <a class="button" href="#products">Browse products</a><a class="button secondary" href="#checklist">Buyer checklist</a>
         </div>
         <aside class="showcase">
