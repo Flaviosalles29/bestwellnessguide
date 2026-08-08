@@ -1242,6 +1242,26 @@ export default {
   },
   async fetch(request) {
     const url = new URL(request.url);
+    if (url.hostname === "bestwellnessguide.com") {
+      url.hostname = "www.bestwellnessguide.com";
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname === "/comparação-dos-melhores-suplementos" || url.pathname === "/comparacao-dos-melhores-suplementos") {
+      return Response.redirect(`${siteUrl}/best-supplements-comparison`, 301);
+    }
+    const translatedOfferMatch = url.pathname.match(/^\/ofertas\/([^/]+)\/?$/);
+    if (translatedOfferMatch) {
+      return Response.redirect(`${siteUrl}/offers/${translatedOfferMatch[1]}`, 301);
+    }
+    if (url.pathname === "/graphql") {
+      return new Response("Not found", {
+        status: 404,
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
+          ...getCommonHeaders(url.pathname)
+        }
+      });
+    }
     const acceptsWebp = request.headers.get("accept")?.includes("image/webp");
     const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
@@ -1410,7 +1430,7 @@ export default {
     if (url.pathname === "/sitemap.xml") {
       // Date of the last site deploy. A stale lastmod tells crawlers nothing
       // changed, which would undo the point of the IndexNow pings.
-      const siteLastModified = "2026-08-07";
+      const siteLastModified = "2026-08-08";
       const entries = [
         { loc: `${siteUrl}/`, priority: "1.0", lastmod: siteLastModified, image: `${siteUrl}/logo.png`, imageTitle: "Best Wellness Guide logo", imageCaption: "Best Wellness Guide, independent wellness product comparisons." },
         { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", lastmod: siteLastModified, image: null },
@@ -1460,6 +1480,15 @@ export default {
       return new Response(productPage(activeProduct), {
         headers: {
           "content-type": "text/html; charset=utf-8",
+          ...getCommonHeaders(url.pathname)
+        }
+      });
+    }
+    if (url.pathname !== "/") {
+      return new Response("Not found", {
+        status: 404,
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
           ...getCommonHeaders(url.pathname)
         }
       });
