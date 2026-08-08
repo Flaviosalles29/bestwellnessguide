@@ -154,6 +154,7 @@ const products = [
 ];
 
 const siteUrl = "https://www.bestwellnessguide.com";
+const contentLastModified = "2026-08-08";
 // IndexNow key. Public by design: it is served at /<key>.txt to prove we own
 // the domain, which is what lets Bing accept our instant-indexing pings.
 const indexNowKey = "e8031ff2fb29252e6c8d5b0cceb5bc7a";
@@ -351,9 +352,9 @@ const blogPosts = [
   {
     slug: "prodentim-review-best-probiotics-for-teeth",
     category: "Dental Health",
-    title: "ProDentim Review: Best Probiotics for Teeth and Gums",
-    description: "An overview of ProDentim for readers comparing oral probiotic supplements, gum health support, and natural teeth care routines.",
-    keywords: ["probiotics for teeth", "best probiotics for teeth", "teeth probiotics", "gum health supplement", "oral probiotics", "natural teeth whitening"],
+    title: "ProDentim Reviews 2026: Best Oral Probiotics for Teeth and Gums",
+    description: "ProDentim reviews 2026 buyer guide: compare oral probiotics, gum health support, ingredients, refund terms, and official checkout details.",
+    keywords: ["prodentim reviews 2026", "prodentim review", "prodentim", "probiotics for teeth", "best probiotics for teeth", "teeth probiotics", "gum health supplement", "oral probiotics", "natural teeth whitening"],
     publishDate: "2026-08-03",
     product: products.find((product) => product.vendor === "prodentim"),
     bodyHtml: `
@@ -379,9 +380,9 @@ const blogPosts = [
   {
     slug: "neurovera-brain-supplement-review",
     category: "Brain Wellness",
-    title: "Brain Supplements That Actually Get Researched: NeuroVera Overview",
-    description: "A practical look at NeuroVera for readers comparing brain, memory, and focus supplements before buying.",
-    keywords: ["brain supplement", "memory supplement", "nootropic supplement", "best brain health supplement", "cognitive function supplement", "memory enhancement"],
+    title: "NeuroVera Reviews 2026: Brain, Memory and Focus Supplement Guide",
+    description: "NeuroVera reviews 2026 buyer guide: compare brain health, memory support, focus supplement claims, refund terms, and checkout details.",
+    keywords: ["neurovera reviews", "neuro vera reviews", "neurovera review", "brain supplement", "memory supplement", "nootropic supplement", "best brain health supplement", "cognitive function supplement", "memory enhancement"],
     publishDate: "2026-08-03",
     product: products.find((product) => product.vendor === "neurovera"),
     bodyHtml: `
@@ -517,9 +518,9 @@ const blogPosts = [
   {
     slug: "audifort-hearing-support-supplement-review",
     category: "Hearing Support",
-    title: "Audifort Review: Natural Hearing Support Supplement Guide",
-    description: "What to know about Audifort for readers researching natural hearing support and ear health supplement routines.",
-    keywords: ["hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine", "Audifort reviews"],
+    title: "Audifort Review 2026: Hearing Support Supplement Buyer Guide",
+    description: "Audifort review 2026 buyer guide: compare hearing support supplement claims, ingredients, refund terms, and official checkout details.",
+    keywords: ["audifort review", "audifort reviews", "audifort", "hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine"],
     publishDate: "2026-08-03",
     product: products.find((product) => product.vendor === "audifort"),
     bodyHtml: `
@@ -572,9 +573,9 @@ const blogPosts = [
   {
     slug: "java-burn-coffee-supplement-review",
     category: "Coffee Routine",
-    title: "Java Burn Review: Coffee-Compatible Metabolism Supplement Guide",
-    description: "A buyer's guide to Java Burn 2.0 for readers researching coffee-based morning metabolism and weight-management supplement routines.",
-    keywords: ["coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn reviews", "Java Burn 2.0"],
+    title: "Java Burn Review 2026: Coffee Metabolism Supplement Buyer Guide",
+    description: "Java Burn review 2026 buyer guide: compare coffee-compatible metabolism supplement claims, ingredients, bundles, and checkout terms.",
+    keywords: ["java burn", "java burn review", "java burn reviews", "coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn 2.0"],
     publishDate: "2026-08-03",
     product: products.find((product) => product.vendor === "JAVABURN"),
     bodyHtml: `
@@ -614,7 +615,7 @@ function blogStructuredData(post) {
         description: post.description,
         image: post.product?.image || `${siteUrl}/logo.png`,
         datePublished: post.publishDate,
-        dateModified: post.publishDate,
+        dateModified: contentLastModified,
         inLanguage: "en-US",
         author: { "@type": "Organization", name: "Best Wellness Guide" },
         publisher: { "@type": "Organization", name: "Best Wellness Guide", "@id": `${siteUrl}/#organization` },
@@ -1430,7 +1431,7 @@ export default {
     if (url.pathname === "/sitemap.xml") {
       // Date of the last site deploy. A stale lastmod tells crawlers nothing
       // changed, which would undo the point of the IndexNow pings.
-      const siteLastModified = "2026-08-08";
+      const siteLastModified = contentLastModified;
       const entries = [
         { loc: `${siteUrl}/`, priority: "1.0", lastmod: siteLastModified, image: `${siteUrl}/logo.png`, imageTitle: "Best Wellness Guide logo", imageCaption: "Best Wellness Guide, independent wellness product comparisons." },
         { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", lastmod: siteLastModified, image: null },
@@ -1446,8 +1447,7 @@ export default {
         ...blogPosts.map((post) => ({
           loc: blogPostUrl(post),
           priority: "0.7",
-          // Articles keep their own publish date; only the shell changed today.
-          lastmod: post.publishDate || siteLastModified,
+          lastmod: siteLastModified,
           image: post.product?.image || null,
           imageTitle: post.product ? `${post.product.name} ${post.product.category} supplement` : null,
           imageCaption: post.product ? `${post.product.name} product image accompanying the Best Wellness Guide review.` : null
