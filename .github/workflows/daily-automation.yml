@@ -1,112 +1,35 @@
-name: Daily Automation - Content & Backlinks
+# DISABLED - this workflow should be deleted.
+#
+# It reported work it never did. The "Google Alerts", "HARO" and "Reddit" steps
+# were bare `echo` calls, and the "Email pitches" step printed "3 email pitches
+# sent to blogs" while sending none: article-generator.js contains no mail or
+# network call of any kind. The tracker step then added 3 to a pitch counter for
+# those non-existent pitches, and the daily email reported the inflated total
+# back as fact.
+#
+# article-generator.js is also unsafe to run unattended. Its list of blogs that
+# "responded positively" is hardcoded sample data, the articles it writes embed
+# an invented price/refund table labelled "verified from official checkout
+# pages", and the Unsplash URLs it prints are not a real endpoint. It currently
+# crashes anyway (`category is not defined` in the faq template).
+#
+# The schedule trigger is removed so this cannot fire. Delete the file with:
+#   git rm .github/workflows/daily-automation.yml
+#
+# Nothing of value is lost: IndexNow propagation runs from the Cloudflare cron
+# trigger in wrangler.toml and does not depend on GitHub Actions.
+
+name: Daily Automation (disabled)
 
 on:
-  schedule:
-    # 09:00 UTC (06:00 BRT)
-    - cron: '0 9 * * *'
   workflow_dispatch:
 
 jobs:
-  daily-tasks:
+  disabled:
     runs-on: ubuntu-latest
-    name: Daily Backlinks & Article Generation
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Google Alerts check
-        run: echo "Google Alerts monitored"
-
-      - name: HARO morning check
-        run: echo "HARO inbox checked"
-
-      # `run` is a shell script, so the weekday test has to be shell too.
-      # The previous version pasted raw JavaScript here and always failed.
-      - name: Reddit posts (Tue/Thu)
+      - name: Explain why this workflow does nothing
         run: |
-          day=$(date -u +%u)
-          if [ "$day" = "2" ] || [ "$day" = "4" ]; then
-            echo "Reddit posts scheduled"
-          else
-            echo "Not Tuesday/Thursday - skipping"
-          fi
-
-      - name: Email pitches (Mon-Fri)
-        run: |
-          day=$(date -u +%u)
-          if [ "$day" -le 5 ]; then
-            echo "3 email pitches sent to blogs"
-          else
-            echo "Weekend - skipping"
-          fi
-
-      - name: Generate articles
-        run: node article-generator.js || echo "No pending articles"
-
-      - name: HARO evening check
-        run: echo "HARO evening queries checked"
-
-      - name: Update tracker
-        run: |
-          node -e "
-            const fs = require('fs');
-            const tracker = JSON.parse(fs.readFileSync('backlinks-tracker.json', 'utf8'));
-            tracker.lastUpdate = new Date().toISOString();
-            tracker.totalPitchesSent = (tracker.totalPitchesSent || 0) + 3;
-            fs.writeFileSync('backlinks-tracker.json', JSON.stringify(tracker, null, 2));
-            console.log('Tracker updated');
-          "
-
-      - name: Commit generated articles
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "Automation Bot"
-          git add ready-to-send/ backlinks-tracker.json
-          git diff --quiet && git diff --staged --quiet || \
-            (git commit -m "chore: daily automation - generated articles & updated tracker" && git push)
-
-      # Values are computed into step outputs first: the mail action receives
-      # `body` as a plain input, so $(...) inside it is never shell-expanded.
-      - name: Collect report values
-        id: report
-        if: always()
-        run: |
-          echo "today=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
-          echo "blogs=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.length || 0)")" >> "$GITHUB_OUTPUT"
-          echo "pitches=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).totalPitchesSent || 0)")" >> "$GITHUB_OUTPUT"
-
-      - name: Send daily report email
-        uses: dawidd6/action-send-mail@v3
-        if: always()
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USER }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Daily Automation Report - ${{ steps.report.outputs.today }}"
-          to: fflaviosalles@gmail.com
-          from: automation@bestwellnessguide.com
-          body: |
-            DAILY AUTOMATION REPORT
-
-            Completed today:
-            - Google Alerts monitored
-            - HARO inbox checked (morning + evening)
-            - Email pitches sent
-            - Article generator ran
-            - Tracker updated
-
-            Metrics:
-            - Blogs tracked: ${{ steps.report.outputs.blogs }}
-            - Total pitches sent: ${{ steps.report.outputs.pitches }}
-
-            Run ID: ${{ github.run_id }}
+          echo "Disabled: this workflow reported activity it never performed."
+          echo "See the comment at the top of the file. Delete it."
+          exit 1

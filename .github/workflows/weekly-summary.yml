@@ -1,48 +1,24 @@
-name: Weekly Summary Report
+# DISABLED - this workflow should be deleted.
+#
+# It emailed a weekly report built from counters that the daily automation
+# inflated with pitches it never sent, and from directories (ready-to-send/,
+# published/) that do not exist. With the daily workflow disabled there is
+# nothing left for it to summarise.
+#
+# The schedule trigger is removed so this cannot fire. Delete the file with:
+#   git rm .github/workflows/weekly-summary.yml
 
-# Split out of daily-automation.yml, where it was a second YAML document in the
-# same file and therefore never ran - GitHub Actions reads only the first.
+name: Weekly Summary (disabled)
+
 on:
-  schedule:
-    # Sunday 19:00 UTC (16:00 BRT)
-    - cron: '0 19 * * 0'
   workflow_dispatch:
 
 jobs:
-  weekly-summary:
+  disabled:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Collect weekly stats
-        id: stats
+      - name: Explain why this workflow does nothing
         run: |
-          echo "week=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
-          echo "ready=$(find ready-to-send -name '*.md' -type f 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
-          echo "published=$(find published -name '*.md' -type f 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
-          echo "backlinks=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.filter(b => b.status === 'published')?.length || 0)")" >> "$GITHUB_OUTPUT"
-
-      - name: Send weekly summary email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USER }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Weekly Backlinks Report - week of ${{ steps.stats.outputs.week }}"
-          to: fflaviosalles@gmail.com
-          from: automation@bestwellnessguide.com
-          body: |
-            WEEKLY AUTOMATION REPORT
-
-            Articles ready for review: ${{ steps.stats.outputs.ready }}
-            Articles published: ${{ steps.stats.outputs.published }}
-            Backlinks confirmed: ${{ steps.stats.outputs.backlinks }}
-
-            Run ID: ${{ github.run_id }}
+          echo "Disabled: this reported counters that were never backed by real activity."
+          echo "See the comment at the top of the file. Delete it."
+          exit 1
