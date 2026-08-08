@@ -1,1 +1,5 @@
 *.tar.gz
+
+# Local wrangler / miniflare state, regenerated on every dev run.
+.wrangler/
+node_modules/.mf/

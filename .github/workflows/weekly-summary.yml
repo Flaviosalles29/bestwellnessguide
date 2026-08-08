@@ -1,0 +1,48 @@
+name: Weekly Summary Report
+
+# Split out of daily-automation.yml, where it was a second YAML document in the
+# same file and therefore never ran - GitHub Actions reads only the first.
+on:
+  schedule:
+    # Sunday 19:00 UTC (16:00 BRT)
+    - cron: '0 19 * * 0'
+  workflow_dispatch:
+
+jobs:
+  weekly-summary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Collect weekly stats
+        id: stats
+        run: |
+          echo "week=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "ready=$(find ready-to-send -name '*.md' -type f 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
+          echo "published=$(find published -name '*.md' -type f 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
+          echo "backlinks=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.filter(b => b.status === 'published')?.length || 0)")" >> "$GITHUB_OUTPUT"
+
+      - name: Send weekly summary email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Weekly Backlinks Report - week of ${{ steps.stats.outputs.week }}"
+          to: fflaviosalles@gmail.com
+          from: automation@bestwellnessguide.com
+          body: |
+            WEEKLY AUTOMATION REPORT
+
+            Articles ready for review: ${{ steps.stats.outputs.ready }}
+            Articles published: ${{ steps.stats.outputs.published }}
+            Backlinks confirmed: ${{ steps.stats.outputs.backlinks }}
+
+            Run ID: ${{ github.run_id }}

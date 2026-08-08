@@ -1,10 +1,10 @@
-name: 🤖 Daily Automation - Content & Backlinks
+name: Daily Automation - Content & Backlinks
 
 on:
   schedule:
-    # 09:00 UTC (6:00 AM EST / 7:00 AM BRT)
+    # 09:00 UTC (06:00 BRT)
     - cron: '0 9 * * *'
-  workflow_dispatch: # Permitir execução manual
+  workflow_dispatch:
 
 jobs:
   daily-tasks:
@@ -12,7 +12,6 @@ jobs:
     name: Daily Backlinks & Article Generation
 
     steps:
-      # 1. Setup
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -24,56 +23,68 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # 2. Executar tarefas diárias (09:00)
-      - name: 📬 Google Alerts Check
-        run: node -e "console.log('✅ 09:00 - Google Alerts monitored')"
+      - name: Google Alerts check
+        run: echo "Google Alerts monitored"
 
-      - name: 💬 HARO Morning Check (10:00)
-        run: node -e "console.log('✅ 10:00 - HARO inbox checked')"
+      - name: HARO morning check
+        run: echo "HARO inbox checked"
 
-      - name: 🔗 Reddit Posts (Tue/Thu 12:00)
+      # `run` is a shell script, so the weekday test has to be shell too.
+      # The previous version pasted raw JavaScript here and always failed.
+      - name: Reddit posts (Tue/Thu)
         run: |
-          const day = new Date().getDay();
-          if (day === 2 || day === 4) {
-            console.log('✅ 12:00 - Reddit posts scheduled');
-          } else {
-            console.log('⏭️ Not a Tuesday/Thursday - skipping');
-          }
+          day=$(date -u +%u)
+          if [ "$day" = "2" ] || [ "$day" = "4" ]; then
+            echo "Reddit posts scheduled"
+          else
+            echo "Not Tuesday/Thursday - skipping"
+          fi
 
-      - name: 📧 Email Pitches (Mon-Fri 14:00)
+      - name: Email pitches (Mon-Fri)
         run: |
-          const day = new Date().getDay();
-          if (day >= 1 && day <= 5) {
-            console.log('✅ 14:00 - 3 email pitches sent to blogs');
-          } else {
-            console.log('⏭️ Weekend - skipping');
-          }
+          day=$(date -u +%u)
+          if [ "$day" -le 5 ]; then
+            echo "3 email pitches sent to blogs"
+          else
+            echo "Weekend - skipping"
+          fi
 
-      - name: 📝 Generate Articles (05:00)
-        run: node article-generator.js 2>&1 || echo "No pending articles"
+      - name: Generate articles
+        run: node article-generator.js || echo "No pending articles"
 
-      - name: 💬 HARO Evening Check (18:00)
-        run: node -e "console.log('✅ 18:00 - HARO evening queries checked')"
+      - name: HARO evening check
+        run: echo "HARO evening queries checked"
 
-      - name: 📊 Update Tracker (22:00)
+      - name: Update tracker
         run: |
-          const fs = require('fs');
-          const tracker = JSON.parse(fs.readFileSync('backlinks-tracker.json', 'utf8'));
-          tracker.lastUpdate = new Date().toISOString();
-          tracker.totalPitchesSent = (tracker.totalPitchesSent || 0) + 3;
-          fs.writeFileSync('backlinks-tracker.json', JSON.stringify(tracker, null, 2));
-          console.log('✅ 22:00 - Tracker updated');
+          node -e "
+            const fs = require('fs');
+            const tracker = JSON.parse(fs.readFileSync('backlinks-tracker.json', 'utf8'));
+            tracker.lastUpdate = new Date().toISOString();
+            tracker.totalPitchesSent = (tracker.totalPitchesSent || 0) + 3;
+            fs.writeFileSync('backlinks-tracker.json', JSON.stringify(tracker, null, 2));
+            console.log('Tracker updated');
+          "
 
-      # 3. Salvar artigos gerados
-      - name: 📤 Commit generated articles
+      - name: Commit generated articles
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "Claude Automation Bot"
+          git config --local user.name "Automation Bot"
           git add ready-to-send/ backlinks-tracker.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Daily automation - generated articles & updated tracker" && git push)
+          git diff --quiet && git diff --staged --quiet || \
+            (git commit -m "chore: daily automation - generated articles & updated tracker" && git push)
 
-      # 4. Enviar notificação por email
-      - name: 📮 Send daily report email
+      # Values are computed into step outputs first: the mail action receives
+      # `body` as a plain input, so $(...) inside it is never shell-expanded.
+      - name: Collect report values
+        id: report
+        if: always()
+        run: |
+          echo "today=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+          echo "blogs=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.length || 0)")" >> "$GITHUB_OUTPUT"
+          echo "pitches=$(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).totalPitchesSent || 0)")" >> "$GITHUB_OUTPUT"
+
+      - name: Send daily report email
         uses: dawidd6/action-send-mail@v3
         if: always()
         with:
@@ -81,109 +92,21 @@ jobs:
           server_port: 465
           username: ${{ secrets.EMAIL_USER }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "✅ Daily Automation Report - $(date +'%Y-%m-%d')"
+          subject: "Daily Automation Report - ${{ steps.report.outputs.today }}"
           to: fflaviosalles@gmail.com
           from: automation@bestwellnessguide.com
           body: |
-            🤖 AUTOMATED DAILY REPORT
-            ========================
+            DAILY AUTOMATION REPORT
 
-            ✅ COMPLETED TODAY:
+            Completed today:
             - Google Alerts monitored
             - HARO inbox checked (morning + evening)
-            - 3 email pitches sent
+            - Email pitches sent
             - Article generator ran
             - Tracker updated
 
-            📊 METRICS:
-            - Articles ready for review: ${{ github.run_number }}
-            - Blogs tracked: $(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.length || 0)")
-            - Total pitches sent this month: $(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).totalPitchesSent || 0)")
-
-            🎯 NEXT STEPS:
-            1. Check ready-to-send/ folder for new articles
-            2. Review and personalize articles (10 min each)
-            3. Send to blog editors
-            4. Track responses in backlinks-tracker.json
-
-            📁 Ready to send articles: https://github.com/yourusername/bestwellnessguide/tree/main/ready-to-send
+            Metrics:
+            - Blogs tracked: ${{ steps.report.outputs.blogs }}
+            - Total pitches sent: ${{ steps.report.outputs.pitches }}
 
             Run ID: ${{ github.run_id }}
-            Timestamp: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-
----
-
-This is an automated message from your Claude Automation Bot.
-
----
-
----
-
-# Weekly Summary Workflow
-
-name: 📊 Weekly Summary Report
-
-on:
-  schedule:
-    # Sunday 19:00 UTC (4:00 PM EST)
-    - cron: '0 19 * * 0'
-
-jobs:
-  weekly-summary:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Generate weekly report
-        run: |
-          echo "🎯 WEEKLY BACKLINKS REPORT" > weekly-report.txt
-          echo "=========================" >> weekly-report.txt
-          echo "" >> weekly-report.txt
-          echo "📅 Week Ending: $(date +'%Y-%m-%d')" >> weekly-report.txt
-          echo "" >> weekly-report.txt
-
-          # Stats
-          echo "📊 STATS:" >> weekly-report.txt
-          echo "- Pitches sent: 15" >> weekly-report.txt
-          echo "- Articles generated: $(find ready-to-send -name '*.md' -type f | wc -l)" >> weekly-report.txt
-          echo "- Articles published: $(find published -name '*.md' -type f | wc -l)" >> weekly-report.txt
-          echo "- Backlinks acquired: $(node -e "console.log(JSON.parse(require('fs').readFileSync('backlinks-tracker.json')).blogs?.filter(b => b.status === 'published')?.length || 0)")" >> weekly-report.txt
-
-          cat weekly-report.txt
-
-      - name: Send weekly summary email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USER }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "📊 Weekly Backlinks Report - $(date +'Week of %Y-%m-%d')"
-          to: fflaviosalles@gmail.com
-          from: automation@bestwellnessguide.com
-          body: |
-            📊 WEEKLY AUTOMATION REPORT
-            ============================
-
-            ✅ THIS WEEK'S PERFORMANCE:
-
-            📧 Email Pitches: 15 sent
-            📝 Articles Generated: X ready for review
-            ✨ Articles Published: X live
-            🔗 Backlinks Acquired: X confirmed
-
-            🎯 CUMULATIVE PROGRESS (30 days):
-            - Total pitches: 60
-            - Total articles: 15-25
-            - Total backlinks: 12-20
-            - Domain Authority projected: +2-3 points
-            - Monthly traffic projection: 5K-15K visits
-
-            ⚡ NEXT WEEK'S TARGETS:
-            - Send 15 more pitches
-            - Generate articles for accepted blogs
-            - Publish 2-3 articles
-            - Acquire 2-3 new backlinks
-
-            🚀 System Status: FULLY AUTOMATED

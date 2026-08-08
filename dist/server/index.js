@@ -2,6 +2,8 @@ import { prodentimProductHeroV2Base64 } from "./prodentim-product-hero-v2.js";
 import { audifortGalleryV1Base64 } from "./audifort-gallery-v1.js";
 import { soulmateSketchGalleryV1Base64 } from "./soulmate-sketch-gallery-v1.js";
 import { faviconIcoBase64, appleTouchIconBase64, logoPngBase64 } from "./favicon-assets.js";
+import { submitToIndexNow, extractSitemapUrls } from "./indexnow.js";
+import { img1559757175Base64, img151861101211Base64, img150557639927Base64, img150939136636Base64, img151206977299Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
 
 const faviconSvg = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -25,7 +27,7 @@ const products = [
     category: "Dental Health",
     badge: "Top ClickBank offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg",
+    image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching teeth, gums, and fresh-breath routines.",
     seoKeywords: ["ProDentim official website", "ProDentim reviews", "ProDentim price", "oral probiotic supplement", "dental health supplement", "gum health support", "fresh breath routine", "where to buy ProDentim"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official checkout handles pricing, bundles, shipping and refund terms"],
@@ -38,7 +40,7 @@ const products = [
     category: "Brain Wellness",
     badge: "Top ClickBank offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-1559757175.jpg",
     summary: "A brain-health supplement offer for adults comparing memory, focus, and daily cognitive-support routines.",
     seoKeywords: ["NeuroVera official website", "NeuroVera reviews", "NeuroVera price", "brain health supplement", "memory support supplement", "focus supplement for adults", "cognitive support routine", "where to buy NeuroVera"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets"],
@@ -51,7 +53,7 @@ const products = [
     category: "Joint Support",
     badge: "Ranked ClickBank offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-151861101211.jpg",
     summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
     seoKeywords: ["Joint Genesis official website", "Joint Genesis reviews", "Joint Genesis price", "joint support supplement", "mobility support supplement", "flexibility support", "healthy aging supplement", "where to buy Joint Genesis"],
     bullets: ["Cited by ClickBank among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
@@ -64,7 +66,7 @@ const products = [
     category: "Blood Sugar Support",
     badge: "Ranked ClickBank offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-150557639927.jpg",
     summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
     seoKeywords: ["Sugar Defender official website", "Sugar Defender reviews", "Sugar Defender price", "blood sugar support supplement", "glucose support formula", "plant based wellness drops", "energy support routine", "where to buy Sugar Defender"],
     bullets: ["Ranked in ClickBank's supplement affiliate list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
@@ -103,7 +105,7 @@ const products = [
     category: "Alternative Energy",
     badge: "Validated offer",
     market: "Digital product; available online after purchase terms are confirmed",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-150939136636.jpg",
     summary: "A digital guide offer for homeowners and preparedness buyers researching lower-cost energy ideas and self-reliance projects.",
     seoKeywords: ["Energy Revolution System official website", "Energy Revolution System reviews", "home energy guide", "alternative energy system", "off grid energy guide", "lower electric bill ideas", "DIY energy plans", "where to buy Energy Revolution System"],
     bullets: ["Featured by ClickBank in July 2026 top offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
@@ -116,7 +118,7 @@ const products = [
     category: "Lymphatic Support",
     badge: "Validated HopLink",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-151206977299.jpg",
     summary: "A wellness offer for readers researching lymphatic drainage support, herbal formulas, and daily detox-style routines.",
     seoKeywords: ["Lymph Tonic official website", "Lymph Tonic reviews", "Lymph Tonic price", "lymphatic support supplement", "lymph drainage support", "detox support formula", "herbal wellness tonic", "where to buy Lymph Tonic"],
     bullets: ["Confirmed affiliate HopLink", "Clear supplement niche angle", "Official checkout controls delivery, refund and bundle details"],
@@ -129,7 +131,7 @@ const products = [
     category: "Coffee Routine",
     badge: "Validated HopLink",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-149547447228.jpg",
     summary: "A coffee-compatible wellness offer for buyers who want a supplement that fits an existing morning habit.",
     seoKeywords: ["Java Burn official website", "Java Burn reviews", "Java Burn price", "coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn 2.0", "where to buy Java Burn"],
     bullets: ["Built around a daily coffee routine", "Good fit for capsule-resistant buyers", "Official page confirms current bundles and terms"],
@@ -142,7 +144,7 @@ const products = [
     category: "Eye + Gut Wellness",
     badge: "Confirmed HopLink",
     market: "English-speaking buyers; verify delivery at checkout",
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80",
+    image: "https://www.bestwellnessguide.com/assets/wellness-149883716792.jpg",
     summary: "A wellness offer for readers researching eye-support routines and gut-health education.",
     seoKeywords: ["VisiFlora official website", "VisiFlora reviews", "VisiFlora price", "eye health supplement", "gut health support", "vision support supplement", "eye and gut wellness", "where to buy VisiFlora"],
     bullets: ["Less generic than standard eye-vitamin pages", "Good educational SEO angle", "Official checkout confirms label and terms"],
@@ -152,6 +154,9 @@ const products = [
 ];
 
 const siteUrl = "https://www.bestwellnessguide.com";
+// IndexNow key. Public by design: it is served at /<key>.txt to prove we own
+// the domain, which is what lets Bing accept our instant-indexing pings.
+const indexNowKey = "e8031ff2fb29252e6c8d5b0cceb5bc7a";
 
 function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -608,7 +613,7 @@ function blogStructuredData(post) {
         "@id": `${blogPostUrl(post)}#article`,
         headline: post.title,
         description: post.description,
-        image: post.product.image,
+        image: post.product?.image || `${siteUrl}/logo.png`,
         datePublished: post.publishDate,
         dateModified: post.publishDate,
         inLanguage: "en-US",
@@ -645,6 +650,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -656,7 +662,9 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="${image}">
+  <meta property="og:image:alt" content="${title}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${image}">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -680,6 +688,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
     .blog-wrap ul{padding-left:20px;margin:0 0 16px}
     .blog-wrap li{margin-bottom:8px;color:#2c332f}
     .disclosure{padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--muted);font-size:13px;margin-bottom:28px}
+    .product-figure{margin:0 0 28px}.product-figure img{width:100%;height:auto;max-height:420px;object-fit:contain;border:1px solid var(--line);border-radius:8px;background:#fff}.product-figure figcaption{margin-top:8px;color:var(--muted);font-size:13px}
     .cta-box{margin:32px 0;padding:24px;border:1px solid var(--line);border-radius:10px;background:#fff;text-align:center}
     .cta-box a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;text-decoration:none}
     .faq h3{font-family:Georgia,serif;font-size:18px;margin:20px 0 6px}
@@ -721,25 +730,35 @@ function relatedPosts(post, count = 3) {
   return ordered.slice(0, count);
 }
 
-function blogPostPage(post) {
-  const href = trackedHref(post.product, "blog");
+/** Offer link plus affiliate CTA shown on guides that review a product. */
+function productOfferHtml(product) {
+  const href = trackedHref(product, "blog");
   const tid = new URL(href).searchParams.get("tid");
+  return `
+    <p><a href="${productUrl(product)}">See the full ${product.name} offer page on Best Wellness Guide &rarr;</a></p>
+    <div class="cta-box">
+      <p style="margin:0 0 14px;color:var(--muted)">Ready to compare pricing, bundles and the official checkout?</p>
+      <a href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
+    </div>
+  `;
+}
+
+function blogPostPage(post) {
   const faqHtml = post.faqs.map((faq) => `<div class="faq"><h3>${faq.q}</h3><p>${faq.a}</p></div>`).join("");
   const related = relatedPosts(post);
   const relatedHtml = related.map((other) => `
     <li><a href="/blog/${other.slug}">${other.title}</a></li>
   `).join("");
+  // Editorial posts such as the About page carry no product, so every
+  // product-derived block is built only when one is attached.
+  const offerHtml = post.product ? productOfferHtml(post.product) : "";
   const body = `
     <p class="blog-eyebrow">${post.category}</p>
     <h1>${post.title}</h1>
     <p class="blog-meta">Updated ${post.publishDate} &middot; Best Wellness Guide editorial team</p>
     <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
     ${post.bodyHtml}
-    <p><a href="${productUrl(post.product)}">See the full ${post.product.name} offer page on Best Wellness Guide &rarr;</a></p>
-    <div class="cta-box">
-      <p style="margin:0 0 14px;color:var(--muted)">Ready to compare pricing, bundles and the official checkout?</p>
-      <a href="${href}" data-product="${post.product.name}" data-vendor="${post.product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">${post.product.cta}</a>
-    </div>
+    ${offerHtml}
     <h2>FAQ</h2>
     ${faqHtml}
     <h2>Related guides</h2>
@@ -751,7 +770,7 @@ function blogPostPage(post) {
     canonical: blogPostUrl(post),
     bodyHtml: body,
     jsonLd: blogStructuredData(post),
-    image: post.product.image
+    image: post.product?.image || `${siteUrl}/logo.png`
   });
 }
 
@@ -777,7 +796,7 @@ function blogIndexPage() {
       name: "Best Wellness Guide buying guides",
       url: `${siteUrl}/blog`
     }),
-    image: "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82"
+    image: "https://www.bestwellnessguide.com/assets/wellness-152625626235.jpg"
   });
 }
 
@@ -786,19 +805,13 @@ function productStructuredData(product, relatedGuide) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Product",
-        "@id": `${productUrl(product)}#product`,
+        "@type": "WebPage",
+        "@id": `${productUrl(product)}#webpage`,
         name: product.name,
-        category: product.category,
+        about: product.category,
         image: product.image,
         description: product.summary,
-        url: productUrl(product),
-        offers: {
-          "@type": "Offer",
-          url: trackedHref(product, "offer"),
-          availability: "https://schema.org/InStock",
-          seller: { "@type": "Organization", name: "Best Wellness Guide" }
-        }
+        url: productUrl(product)
       },
       {
         "@type": "FAQPage",
@@ -837,7 +850,7 @@ function productStructuredData(product, relatedGuide) {
 function productPage(product) {
   const href = trackedHref(product, "offer");
   const tid = new URL(href).searchParams.get("tid");
-  const relatedGuide = blogPosts.find((post) => post.product.vendor === product.vendor);
+  const relatedGuide = blogPosts.find((post) => post.product?.vendor === product.vendor);
   const otherProducts = products.filter((candidate) => candidate.vendor !== product.vendor).slice(0, 3);
   const bulletsHtml = product.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
   const otherHtml = otherProducts.map((other) => `<li><a href="${productUrl(other)}">${other.name} &mdash; ${other.category}</a></li>`).join("");
@@ -849,6 +862,10 @@ function productPage(product) {
     <h1>${product.name} Official Website: Reviews, Price &amp; Where to Buy</h1>
     <p class="blog-meta">${product.badge} &middot; Best Wellness Guide editorial team</p>
     <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links on this page. Informational content only, not medical advice.</div>
+    <figure class="product-figure">
+      <img src="${product.image}" width="1200" height="800" loading="eager" decoding="async" alt="${product.name} ${product.category} supplement product image reviewed by Best Wellness Guide">
+      <figcaption>${product.name} &mdash; ${product.category}. Image published by Best Wellness Guide.</figcaption>
+    </figure>
     <p>${product.summary}</p>
     <ul>${bulletsHtml}</ul>
     ${guideHtml}
@@ -1053,6 +1070,7 @@ function page() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -1062,14 +1080,20 @@ function page() {
   <link rel="alternate" hreflang="en-US" href="${canonical}">
   <link rel="alternate" hreflang="en" href="${canonical}">
   <link rel="alternate" hreflang="x-default" href="${siteUrl}/">
-  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preconnect" href="https://hop.clickbank.net">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1200&q=82">
+  <meta property="og:image" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
+  <meta property="og:image:secure_url" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1254">
+  <meta property="og:image:height" content="1254">
+  <meta property="og:image:alt" content="ProDentim advanced oral probiotics supplement bottle with mint leaves and strawberries">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
+  <meta name="twitter:image:alt" content="ProDentim advanced oral probiotics supplement bottle with mint leaves and strawberries">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -1081,14 +1105,14 @@ function page() {
   <style>
     :root{--ink:#121513;--muted:#5b6560;--paper:#f7f8f4;--panel:#fffdfa;--line:#d8ded6;--green:#13745c;--teal:#075e67;--gold:#d49b2c;--coral:#c94f42}
     *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,Helvetica,sans-serif} a{text-decoration:none;color:inherit}
-    .hero{min-height:92vh;padding:24px 24px 0;background:#fffdfa;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,253,250,.98) 0%,rgba(255,253,250,.86) 45%,rgba(255,253,250,.22) 100%),url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1900&q=82") center/cover}.hero>*{position:relative}
+    .hero{min-height:92vh;padding:24px 24px 0;background:#fffdfa;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,253,250,.98) 0%,rgba(255,253,250,.86) 45%,rgba(255,253,250,.22) 100%),url("https://www.bestwellnessguide.com/assets/wellness-152625626235.jpg") center/cover}.hero>*{position:relative}
     .nav,.hero-grid,.section,.capture,.footer{max-width:1220px;margin:0 auto}.nav{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:8px 0 38px}.logo{display:flex;align-items:center;gap:12px;font-weight:950;color:var(--ink);font-size:22px}.mark{display:grid;place-items:center;width:42px;height:42px;border-radius:7px;background:var(--ink);color:#fffdfa;font-family:Georgia,serif}.nav-links{display:flex;gap:18px;font-size:13px;font-weight:900;text-transform:uppercase}.nav-links a{padding-bottom:6px;border-bottom:2px solid transparent}.nav-links a:hover{border-color:var(--gold)}
     .notice{max-width:1220px;margin:0 auto 36px;padding:11px 14px;border:1px solid rgba(19,116,92,.24);border-radius:8px;background:rgba(255,255,255,.78);color:#48534e;font-size:13px;backdrop-filter:blur(12px)}
     .hero-grid{display:grid;grid-template-columns:minmax(0,1fr)430px;gap:44px;align-items:end;padding:36px 0 76px}.eyebrow{display:inline-flex;gap:8px;align-items:center;margin:0 0 16px;color:var(--teal);font-size:12px;font-weight:950;text-transform:uppercase}.eyebrow:before{content:"";width:36px;height:2px;background:var(--gold)}h1{max-width:820px;margin:0;font-family:Georgia,serif;font-size:clamp(44px,7vw,92px);line-height:.94}.hero p{max-width:680px;color:#3d4743;font-size:20px;line-height:1.62}
     .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;background:var(--green);color:#fff;font-weight:950;box-shadow:0 14px 28px rgba(19,116,92,.24)}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:10px;box-shadow:none}.button:hover{transform:translateY(-1px)}
-    .showcase{border:1px solid rgba(18,21,19,.12);border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 24px 70px rgba(18,21,19,.12);overflow:hidden}.showcase img{width:100%;height:250px;object-fit:cover}.showcase-media{position:relative;height:308px;display:grid;place-items:end center;overflow:hidden;background:url("https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg") center center/cover no-repeat}.showcase-media:before{content:"";position:absolute;inset:-4%;background:url("https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg") center center/cover no-repeat;transform:scale(1.08);filter:blur(16px) saturate(.96);opacity:.72}.showcase-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 34%,rgba(72,106,79,.18) 100%)}.showcase img.featured-product-image{position:relative;z-index:1;width:100%;height:308px;object-fit:contain;background:transparent;padding:0;transform:translateY(8px) scale(1.02);transform-origin:center bottom;filter:drop-shadow(0 18px 28px rgba(56,88,62,.18))}.showcase-body{padding:24px}.showcase-kicker{color:var(--coral);font-weight:950;font-size:12px;text-transform:uppercase}.showcase h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:34px;line-height:1}.showcase p{font-size:15px;line-height:1.55;color:var(--muted)}
+    .showcase{border:1px solid rgba(18,21,19,.12);border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 24px 70px rgba(18,21,19,.12);overflow:hidden}.showcase img{width:100%;height:250px;object-fit:cover}.showcase-media{position:relative;height:308px;display:grid;place-items:end center;overflow:hidden;background:linear-gradient(180deg,#205d2b 0%,#286b32 22%,#327c35 45%,#3d8b42 65%,#8bc069 84%,#79b36b 100%)}.showcase-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 34%,rgba(72,106,79,.18) 100%)}.showcase img.featured-product-image{position:relative;z-index:1;width:100%;height:308px;object-fit:contain;background:transparent;padding:0;transform:translateY(8px) scale(1.02);transform-origin:center bottom;filter:drop-shadow(0 18px 28px rgba(56,88,62,.18))}.showcase-body{padding:24px}.showcase-kicker{color:var(--coral);font-weight:950;font-size:12px;text-transform:uppercase}.showcase h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:34px;line-height:1}.showcase p{font-size:15px;line-height:1.55;color:var(--muted)}
     .section,.capture{padding:76px 22px}.section-head{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:34px;align-items:end;margin-bottom:30px}.section-head h2,.capture h2{margin:0 0 12px;font-family:Georgia,serif;font-size:clamp(36px,5vw,64px);line-height:1}.section-head p,.capture p{color:var(--muted);line-height:1.65}.score-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}.score-strip div{padding:18px;border-right:1px solid var(--line)}.score-strip div:last-child{border-right:0}.score-strip strong{display:block;font-family:Georgia,serif;font-size:34px}.score-strip span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#86ad92}.product-prodentim .product-art img{object-fit:contain;background:#86ad92;padding:16px}.product-audifort .product-art{display:grid;place-items:center;background:linear-gradient(180deg,#f7f7f4 0%,#f0efe9 100%)}.product-audifort .product-art img{object-fit:contain;object-position:center;background:transparent;padding:22px 18px}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after{height:10%;background:linear-gradient(0deg,rgba(18,21,19,.08),rgba(18,21,19,0))}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.social-proof-badge{position:absolute;top:12px;right:12px;z-index:2;padding:8px 12px;border-radius:6px;background:rgba(19,116,92,.92);color:#fffdfa;font-size:11px;font-weight:900;box-shadow:0 8px 20px rgba(19,116,92,.28)}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#2f7437}.product-prodentim .product-art img{object-fit:contain;background:#2f7437;padding:16px}.product-audifort .product-art{display:grid;place-items:center;background:linear-gradient(180deg,#f7f7f4 0%,#f0efe9 100%)}.product-audifort .product-art img{object-fit:contain;object-position:center;background:transparent;padding:22px 18px}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after{height:10%;background:linear-gradient(0deg,rgba(18,21,19,.08),rgba(18,21,19,0))}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.social-proof-badge{position:absolute;top:12px;right:12px;z-index:2;padding:8px 12px;border-radius:6px;background:rgba(19,116,92,.92);color:#fffdfa;font-size:11px;font-weight:900;box-shadow:0 8px 20px rgba(19,116,92,.28)}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}
     .profile{padding:76px 22px;background:#121513;color:#fffdfa}.profile-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr)1fr;gap:36px;align-items:start}.profile h2{margin:0 0 16px;font-family:Georgia,serif;font-size:clamp(36px,5vw,62px);line-height:1}.profile p{color:#d9dfda;line-height:1.7}.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.profile-card{border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:18px;background:rgba(255,255,255,.05)}.profile-card strong{display:block;margin-bottom:8px;color:#f3c266}.profile-card span{color:#d9dfda;line-height:1.5;font-size:14px}
     .capture{display:grid;grid-template-columns:minmax(0,1fr)420px;gap:34px;border-top:1px solid var(--line);background:#fff}.checklist-items{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}.checklist-items li{position:relative;padding-left:26px;color:var(--muted);line-height:1.5}.checklist-items li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:4px;background:var(--green)}.capture-card{border:1px solid var(--line);border-radius:8px;background:#fffdfa;padding:24px}.capture-card strong{display:block;margin-bottom:14px;font-family:Georgia,serif;font-size:18px}.capture-guides{list-style:none;padding:0;margin:0 0 18px}.capture-guides li{margin-bottom:10px}.capture-guides a{color:var(--ink);font-size:14px;line-height:1.4;display:block}.capture-guides a:hover{color:var(--green)}.capture-card .button{border:0;width:100%}.footer{display:flex;justify-content:space-between;gap:18px;padding:30px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
     @media(max-width:980px){.hero-grid,.section-head,.capture,.profile-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 1}}
@@ -1102,16 +1126,15 @@ function page() {
         <a class="logo" href="/"><span class="mark">BW</span><span>Best Wellness Guide</span></a>
         <div class="nav-links"><a href="#products">Products</a><a href="/blog">Blog</a><a href="#profile">Profile</a><a href="#checklist">Checklist</a></div>
       </nav>
-      <div class="notice">We may earn a commission when readers buy through links on this site. Your price does not change.</div>
       <div class="hero-grid">
         <div>
           <h1>Best Wellness Guide: Compare Official Wellness Offers & Pricing</h1>
-          <p>Best Wellness Guide is your independent resource for comparing proven wellness products, pricing, and official checkout information. We research top ClickBank wellness offers so you can decide with confidence.</p>
+          <p>Best Wellness Guide is your independent resource for comparing proven wellness products, pricing, and official checkout information. We research top wellness offers so you can decide with confidence.</p>
           <a class="button" href="#products">Browse products</a><a class="button secondary" href="#checklist">Buyer checklist</a>
         </div>
         <aside class="showcase">
           <div class="showcase-media">
-            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v2.jpg" alt="ProDentim bottle advanced oral probiotics product image">
+            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg" alt="ProDentim bottle advanced oral probiotics product image">
           </div>
           <div class="showcase-body">
             <div class="showcase-kicker">Featured today</div>
@@ -1200,6 +1223,26 @@ function getCommonHeaders(path = "") {
 }
 
 export default {
+  // Cron-driven IndexNow ping. Reads our own sitemap and asks Bing/Yahoo to
+  // recrawl, so published changes propagate without waiting on the crawler.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(
+      (async () => {
+        const response = await fetch(`${siteUrl}/sitemap.xml`);
+        if (!response.ok) {
+          console.log(`IndexNow: sitemap indisponivel (HTTP ${response.status})`);
+          return;
+        }
+        const urls = extractSitemapUrls(await response.text());
+        const result = await submitToIndexNow({
+          host: new URL(siteUrl).host,
+          key: indexNowKey,
+          urls
+        });
+        console.log(`IndexNow: ${JSON.stringify({ ...result, total: urls.length })}`);
+      })()
+    );
+  },
   async fetch(request) {
     const url = new URL(request.url);
     const acceptsWebp = request.headers.get("accept")?.includes("image/webp");
@@ -1239,7 +1282,85 @@ export default {
         headers: { "content-type": "text/plain; charset=utf-8" }
       });
     }
-    if (url.pathname === "/assets/prodentim-product-hero-v2.jpg") {
+    // IndexNow ownership proof: the key file must echo the key as plain text.
+    if (url.pathname === `/${indexNowKey}.txt`) {
+      return new Response(indexNowKey, {
+        headers: { "content-type": "text/plain; charset=utf-8" }
+      });
+    }
+    if (url.pathname === "/assets/wellness-1559757175.jpg") {
+      const binary = Uint8Array.from(atob(img1559757175Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-151861101211.jpg") {
+      const binary = Uint8Array.from(atob(img151861101211Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-150557639927.jpg") {
+      const binary = Uint8Array.from(atob(img150557639927Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-150939136636.jpg") {
+      const binary = Uint8Array.from(atob(img150939136636Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-151206977299.jpg") {
+      const binary = Uint8Array.from(atob(img151206977299Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-149547447228.jpg") {
+      const binary = Uint8Array.from(atob(img149547447228Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-149883716792.jpg") {
+      const binary = Uint8Array.from(atob(img149883716792Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/wellness-152625626235.jpg") {
+      const binary = Uint8Array.from(atob(img152625626235Base64), (char) => char.charCodeAt(0));
+      return new Response(binary, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/prodentim-product-hero-v3.jpg") {
       const binary = Uint8Array.from(atob(prodentimProductHeroV2Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -1290,14 +1411,39 @@ export default {
       });
     }
     if (url.pathname === "/sitemap.xml") {
+      // Date of the last site deploy. A stale lastmod tells crawlers nothing
+      // changed, which would undo the point of the IndexNow pings.
+      const siteLastModified = "2026-08-07";
       const entries = [
-        { loc: `${siteUrl}/`, priority: "1.0", image: `${siteUrl}/logo.png` },
-        { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", image: null },
-        ...products.map((product) => ({ loc: productUrl(product), priority: "0.8", image: product.image })),
-        { loc: `${siteUrl}/blog`, priority: "0.9", image: null },
-        ...blogPosts.map((post) => ({ loc: blogPostUrl(post), priority: "0.7", image: post.product?.image || null }))
+        { loc: `${siteUrl}/`, priority: "1.0", lastmod: siteLastModified, image: `${siteUrl}/logo.png`, imageTitle: "Best Wellness Guide logo", imageCaption: "Best Wellness Guide, independent wellness product comparisons." },
+        { loc: `${siteUrl}/best-supplements-comparison`, priority: "0.95", lastmod: siteLastModified, image: null },
+        ...products.map((product) => ({
+          loc: productUrl(product),
+          priority: "0.8",
+          lastmod: siteLastModified,
+          image: product.image,
+          imageTitle: `${product.name} ${product.category} supplement`,
+          imageCaption: `${product.name} product image, ${product.category.toLowerCase()} offer reviewed by Best Wellness Guide.`
+        })),
+        { loc: `${siteUrl}/blog`, priority: "0.9", lastmod: siteLastModified, image: null },
+        ...blogPosts.map((post) => ({
+          loc: blogPostUrl(post),
+          priority: "0.7",
+          // Articles keep their own publish date; only the shell changed today.
+          lastmod: post.publishDate || siteLastModified,
+          image: post.product?.image || null,
+          imageTitle: post.product ? `${post.product.name} ${post.product.category} supplement` : null,
+          imageCaption: post.product ? `${post.product.name} product image accompanying the Best Wellness Guide review.` : null
+        }))
       ];
-      const sitemap = entries.map((entry) => `<url><loc>${entry.loc}</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${entry.image ? `<image:image><image:loc>${entry.image}</image:loc></image:image>` : ""}</url>`).join("");
+      const escapeXml = (str) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      const imageXml = (entry) => {
+        if (!entry.image) return "";
+        const title = entry.imageTitle ? `<image:title>${escapeXml(entry.imageTitle)}</image:title>` : "";
+        const caption = entry.imageCaption ? `<image:caption>${escapeXml(entry.imageCaption)}</image:caption>` : "";
+        return `<image:image><image:loc>${escapeXml(entry.image)}</image:loc>${title}${caption}</image:image>`;
+      };
+      const sitemap = entries.map((entry) => `<url><loc>${escapeXml(entry.loc)}</loc><lastmod>${entry.lastmod}</lastmod><changefreq>weekly</changefreq><priority>${entry.priority}</priority>${imageXml(entry)}</url>`).join("");
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`, {
         headers: {
           "content-type": "application/xml; charset=utf-8",
