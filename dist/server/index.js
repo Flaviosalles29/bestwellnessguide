@@ -1147,11 +1147,11 @@ function page() {
         <div>
           <p class="eyebrow">Product showcase</p>
           <h2>Premium gallery of active offers.</h2>
-          <p>Compare wellness offers side-by-side: each product shows real reader interest, verified official links, and key buyer info. Click any product to see current pricing, refund terms, and bundles directly from the seller.</p>
+          <p>Compare wellness offers side-by-side: each product shows verified official links and key buyer info. Click any product to see current pricing, refund terms, and bundles directly from the seller.</p>
         </div>
         <div class="score-strip">
           <div><strong>10</strong><span>offers live</span></div>
-          <div><strong>7</strong><span>ranked picks</span></div>
+          <div><strong>6</strong><span>ranked picks</span></div>
           <div><strong>100%</strong><span>links checked</span></div>
         </div>
       </div>
