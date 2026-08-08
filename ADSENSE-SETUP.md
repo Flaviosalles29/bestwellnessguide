@@ -121,11 +121,11 @@ Após aprovação (24-48h), você terá:
 
 ## ESTIMATIVA DE RECEITA (quando ativo)
 
-Com 18+ páginas indexadas + backlinks + 5K-15K visitas/mês:
+Use actual analytics data before estimating revenue. If the site later reaches meaningful monthly traffic:
 
 - **CPM (custo por mil): $2-8** (wellness topic)
 - **CTR (taxa de clique): 0.5-2%**
-- **Visitantes/mês: 5,000-15,000**
+- **Visitantes/mês:** use the current value from analytics
 
 **Estimativa mensal:**
 - Cenário conservador: 5K visitas × $3 CPM × 1% CTR = **$150/mês**

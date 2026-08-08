@@ -252,8 +252,8 @@ function productCard(product) {
         <h3><a class="card-title-link" href="${productUrl(product)}">${product.name}</a></h3>
         <p>${product.summary}</p>
         <div class="trust-indicators">
-          <span class="indicator">✓ Official verified link</span>
-          <span class="indicator">✓ Refund confirmed</span>
+          <span class="indicator">✓ Official seller link</span>
+          <span class="indicator">✓ Refund terms shown by seller</span>
         </div>
         <a class="buy-button primary" href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">Check Official Pricing</a>
         <a class="card-review-link" href="${productUrl(product)}">Read our full ${product.name} analysis &rarr;</a>
@@ -303,7 +303,7 @@ const blogPosts = [
       <h2>Our Research Standards</h2>
       <p>Every product featured on Best Wellness Guide has been validated as:</p>
       <ul>
-        <li>Currently available for purchase with verified checkout links</li>
+        <li>Linked to seller checkout pages for buyers to confirm current availability</li>
         <li>Offering clear ingredient lists and usage instructions</li>
         <li>Providing documented refund policies and terms</li>
         <li>Positioned toward English-speaking markets</li>
@@ -958,7 +958,7 @@ function supplementsComparisonPage() {
           {
             "@type": "Question",
             name: "Where can I buy supplements safely?",
-            acceptedAnswer: { "@type": "Answer", text: "Buy directly from the official seller's website. Best Wellness Guide links to verified official checkout pages where you can verify pricing, refunds, and shipping terms." }
+            acceptedAnswer: { "@type": "Answer", text: "Buy directly from the official seller's website. Best Wellness Guide links to seller checkout pages where you can confirm pricing, refunds, and shipping terms before purchase." }
           },
           {
             "@type": "Question",
@@ -1126,7 +1126,7 @@ function page() {
       <div class="hero-grid">
         <div>
           <h1>Best Wellness Guide: Compare Official Wellness Offers & Pricing</h1>
-          <p>Best Wellness Guide is your independent resource for comparing proven wellness products, pricing, and official checkout information. We research top wellness offers so you can decide with confidence.</p>
+          <p>Best Wellness Guide is your independent resource for comparing wellness product offers, pricing signals, and official checkout information. We organize buyer research so you can decide with confidence.</p>
           <a class="button" href="#products">Browse products</a><a class="button secondary" href="#checklist">Buyer checklist</a>
         </div>
         <aside class="showcase">
@@ -1147,7 +1147,7 @@ function page() {
         <div>
           <p class="eyebrow">Product showcase</p>
           <h2>Premium gallery of active offers.</h2>
-          <p>Compare wellness offers side-by-side: each product shows verified official links and key buyer info. Click any product to see current pricing, refund terms, and bundles directly from the seller.</p>
+          <p>Compare wellness offers side-by-side: each product shows official seller links and key buyer info. Click any product to confirm current pricing, refund terms, and bundles directly from the seller.</p>
         </div>
         <div class="score-strip">
           <div><strong>10</strong><span>offers live</span></div>

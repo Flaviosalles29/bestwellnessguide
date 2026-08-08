@@ -134,14 +134,14 @@ Track these keywords:
 - ⏳ Backlinks from guest posts start flowing
 
 ### Month 2-3
-- ⏳ /best-supplements-comparison reaches top 10
-- ⏳ Monthly organic: 5K-15K visits
-- ⏳ Top 3 for "best wellness guide" + branded
+- ⏳ Monitor whether /best-supplements-comparison begins earning impressions
+- ⏳ Review actual monthly organic traffic in Search Console and analytics
+- ⏳ Check branded rankings for "best wellness guide"
 
 ### Month 3-6
-- ⏳ High-volume keywords climb to top 5
-- ⏳ Monthly organic: 30K-80K visits
-- ⏳ Domain Authority: +3-5 points
+- ⏳ Identify which high-intent keywords are gaining impressions
+- ⏳ Expand pages only from queries that show real search demand
+- ⏳ Track backlinks with a third-party tool if available
 - ⏳ Featured snippets: 3-5 answers
 
 ---
