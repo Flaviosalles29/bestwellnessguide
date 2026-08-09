@@ -1058,6 +1058,7 @@ function productPage(product) {
   const href = trackedHref(product, "offer");
   const tid = new URL(href).searchParams.get("tid");
   const relatedGuide = blogPosts.find((post) => post.product?.vendor === product.vendor);
+  const nicheGuide = nicheGuideUrl(product);
   const otherProducts = products.filter((candidate) => candidate.vendor !== product.vendor).slice(0, 3);
   const bulletsHtml = product.bullets.map((bullet) => `<li>${bullet}</li>`).join("");
   const otherHtml = otherProducts.map((other) => `<li><a href="${productUrl(other)}">${other.name} &mdash; ${other.category}</a></li>`).join("");
@@ -1076,6 +1077,7 @@ function productPage(product) {
     <p>${product.summary}</p>
     <ul>${bulletsHtml}</ul>
     ${guideHtml}
+    <p><a href="${nicheGuide}">Compare the full ${product.category.toLowerCase()} niche guide &rarr;</a></p>
     <div class="cta-box">
       <p style="margin:0 0 14px;color:var(--muted)">${product.market}</p>
       <a href="${href}" data-product="${product.name}" data-vendor="${product.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">${product.cta}</a>
@@ -1093,6 +1095,178 @@ function productPage(product) {
     canonical: productUrl(product),
     bodyHtml: body,
     jsonLd: productStructuredData(product),
+    image: product.image
+  });
+}
+
+function nicheGuideSlug(product) {
+  const suffix = product.market.startsWith("Physical product") ? "supplement" : "offer";
+  return `best-${slugify(product.category)}-${suffix}`;
+}
+
+function nicheGuideUrl(product) {
+  return `${siteUrl}/${nicheGuideSlug(product)}`;
+}
+
+function nicheAudienceProfile(product) {
+  const profiles = {
+    prodentim: {
+      audience: "Adults comparing oral probiotics, gum support, fresh breath routines and dental-hygiene add-ons.",
+      painPoint: "They usually want something that complements brushing, flossing and dentist visits without pretending to replace dental care.",
+      trustCheck: "Ingredient transparency, probiotic positioning, refund terms and official checkout clarity matter more than hype."
+    },
+    neurovera: {
+      audience: "Adults researching memory, focus and brain-health routines in English-speaking markets.",
+      painPoint: "They want cognitive support language without unrealistic nootropic claims or medical promises.",
+      trustCheck: "Buyers compare ingredient lists, serving windows, refund terms and whether claims stay inside wellness support."
+    },
+    jointgen: {
+      audience: "The 40+ mobility audience comparing joint comfort, flexibility and healthy-aging support.",
+      painPoint: "They need a daily routine guide, not a replacement for physical therapy or medical care.",
+      trustCheck: "The page must clarify supplement limits, refund terms, official seller access and realistic expectations."
+    },
+    sugardef: {
+      audience: "Buyers comparing blood-sugar support drops, glucose routine add-ons and plant-based wellness formulas.",
+      painPoint: "This is a sensitive health niche, so the content must avoid diabetes treatment claims.",
+      trustCheck: "The strongest trust signals are medical disclaimers, ingredient review, checkout terms and refund clarity."
+    },
+    audifort: {
+      audience: "US and English-speaking buyers researching hearing support supplements, ear-health routines and official checkout safety.",
+      painPoint: "They often see many pages claiming to be official, so they need help separating review pages from seller checkout pages.",
+      trustCheck: "Safety language, audiologist disclaimers, official seller verification and refund details matter."
+    },
+    tinapsc: {
+      audience: "Spirituality and relationship-curious buyers looking for soulmate drawings, psychic readings and digital delivery.",
+      painPoint: "They need clear expectations that this is entertainment/self-reflection, not a factual prediction service.",
+      trustCheck: "Delivery format, turnaround time, refund terms and seller transparency drive confidence."
+    },
+    enrev: {
+      audience: "Homeowners and preparedness-minded readers researching lower energy bills, DIY energy ideas and digital guides.",
+      painPoint: "They need clarity that this is an information product, not a physical energy device.",
+      trustCheck: "Digital access, refund terms, practical limits and safety disclaimers are the ranking differentiators."
+    },
+    lymphtonic: {
+      audience: "Wellness buyers researching lymphatic drainage support, herbal routines and detox-style supplement searches.",
+      painPoint: "They need support-language clarity without medical detox or disease-treatment claims.",
+      trustCheck: "Ingredient review, allergy/medication caution, refund terms and seller checkout clarity matter most."
+    },
+    JAVABURN: {
+      audience: "Coffee drinkers comparing metabolism-support routines that fit an existing morning habit.",
+      painPoint: "They want convenience and weight-management support without exaggerated fat-loss promises.",
+      trustCheck: "Ingredient panel, caffeine context, bundle pricing and refund terms are the main decision points."
+    },
+    VISIFLORA: {
+      audience: "Screen-heavy adults researching eye support, vision wellness and gut-health connections.",
+      painPoint: "They need a supplement guide that does not replace eye exams or medical evaluation.",
+      trustCheck: "Eye-care disclaimers, ingredient transparency, bundle pricing and official checkout details help build trust."
+    }
+  };
+  return profiles[product.vendor] || {
+    audience: `English-speaking buyers comparing ${product.category.toLowerCase()} offers before checkout.`,
+    painPoint: "They need a practical buyer guide with realistic claims and clear next steps.",
+    trustCheck: "Official checkout clarity, refund terms and product positioning are the strongest trust signals."
+  };
+}
+
+function nicheGuideStructuredData(product) {
+  const profile = nicheAudienceProfile(product);
+  const canonical = nicheGuideUrl(product);
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${canonical}#article`,
+        headline: `Best ${product.category} ${product.market.startsWith("Physical product") ? "Supplement" : "Offer"} 2026: ${product.name} Buyer Guide`,
+        description: `Audience-focused ${product.category} guide comparing ${product.name}, buyer intent, safety checks, refund terms and official checkout details.`,
+        image: product.image,
+        datePublished: contentLastModified,
+        dateModified: contentLastModified,
+        inLanguage: "en-US",
+        author: { "@type": "Organization", name: "Best Wellness Guide" },
+        publisher: { "@type": "Organization", name: "Best Wellness Guide", "@id": `${siteUrl}/#organization` },
+        mainEntityOfPage: canonical,
+        keywords: product.seoKeywords.join(", ")
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${canonical}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `Who is the ${product.category} audience for ${product.name}?`,
+            acceptedAnswer: { "@type": "Answer", text: profile.audience }
+          },
+          {
+            "@type": "Question",
+            name: `What should buyers check before choosing ${product.name}?`,
+            acceptedAnswer: { "@type": "Answer", text: profile.trustCheck }
+          },
+          {
+            "@type": "Question",
+            name: `Where should buyers confirm current ${product.name} pricing?`,
+            acceptedAnswer: { "@type": "Answer", text: "Pricing, bundles, delivery region and refund terms should be confirmed on the official seller checkout linked from Best Wellness Guide." }
+          }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${canonical}#cluster`,
+        name: `${product.category} research cluster`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: product.name, url: productUrl(product) },
+          { "@type": "ListItem", position: 2, name: `${product.name} buying guide`, url: `${siteUrl}/blog/${blogPosts.find((post) => post.product?.vendor === product.vendor)?.slug || ""}` },
+          { "@type": "ListItem", position: 3, name: "Best supplements comparison", url: `${siteUrl}/best-supplements-comparison` }
+        ]
+      }
+    ]
+  });
+}
+
+function nicheGuidePage(product) {
+  const profile = nicheAudienceProfile(product);
+  const relatedGuide = blogPosts.find((post) => post.product?.vendor === product.vendor);
+  const intentList = product.seoKeywords.map((keyword) => `<li>${keyword}</li>`).join("");
+  const guideLink = relatedGuide ? `<li><a href="/blog/${relatedGuide.slug}">${product.name} detailed review and buyer guide</a></li>` : "";
+  const titleSuffix = product.market.startsWith("Physical product") ? "Supplement" : "Offer";
+  const body = `
+    <p class="blog-eyebrow">${product.category}</p>
+    <h1>Best ${product.category} ${titleSuffix} 2026: ${product.name} Buyer Guide</h1>
+    <p class="blog-meta">Updated ${contentLastModified} &middot; Best Wellness Guide ranking research</p>
+    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
+    <p>${profile.audience}</p>
+    <p>${profile.painPoint}</p>
+    <h2>Search intent we target</h2>
+    <p>To compete in this niche, the page needs to satisfy both informational and buyer-intent searches. The strongest queries usually mix product name, review, official website, price, safety, refund and category terms.</p>
+    <ul>${intentList}</ul>
+    <h2>Why ${product.name} is the featured match</h2>
+    <p>${product.summary}</p>
+    <ul>${product.bullets.map((bullet) => `<li>${bullet}</li>`).join("")}</ul>
+    <h2>Trust checks before checkout</h2>
+    <p>${profile.trustCheck}</p>
+    <ul>
+      <li>Confirm the final seller, checkout URL, refund policy and billing terms before payment</li>
+      <li>Check delivery country, currency and import restrictions if buying outside the United States</li>
+      <li>Review product claims carefully and avoid pages promising guaranteed medical outcomes</li>
+    </ul>
+    <h2>Best internal research path</h2>
+    <ul>
+      <li><a href="${productUrl(product)}">${product.name} official offer page on Best Wellness Guide</a></li>
+      ${guideLink}
+      <li><a href="/best-supplements-comparison">Best supplements comparison hub</a></li>
+      <li><a href="/blog/supplement-reviews-2026-english-speaking-buyers">Supplement reviews for English-speaking buyers</a></li>
+    </ul>
+    <h2>FAQ</h2>
+    <div class="faq"><h3>Who is this ${product.category} guide for?</h3><p>${profile.audience}</p></div>
+    <div class="faq"><h3>What makes a page trustworthy in this niche?</h3><p>${profile.trustCheck}</p></div>
+    <div class="faq"><h3>Where should current pricing be confirmed?</h3><p>Pricing, bundles, delivery region and refund terms should be confirmed on the official seller checkout linked from Best Wellness Guide.</p></div>
+  `;
+  return blogLayout({
+    title: `Best ${product.category} ${titleSuffix} 2026: ${product.name} Guide`,
+    description: `Audience-focused ${product.category} guide comparing ${product.name}, search intent, safety checks, refund terms and official checkout details.`,
+    canonical: nicheGuideUrl(product),
+    bodyHtml: body,
+    jsonLd: nicheGuideStructuredData(product),
     image: product.image
   });
 }
@@ -1473,7 +1647,6 @@ export default {
     const hearingSupportPaths = new Set([
       "/hearing-support-supplement",
       "/hearing-support-supplements",
-      "/best-hearing-support-supplement",
       "/ear-health-supplement",
       "/natural-hearing-support",
       "/tinnitus-supplement"
@@ -1484,6 +1657,7 @@ export default {
     const acceptsWebp = request.headers.get("accept")?.includes("image/webp");
     const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
+    const activeNicheProduct = products.find((product) => url.pathname.replace(/\/$/, "") === `/${nicheGuideSlug(product)}`);
     const blogMatch = url.pathname.match(/^\/blog\/([^/]+)\/?$/);
     const blogPost = blogMatch ? blogPosts.find((post) => post.slug === blogMatch[1]) : null;
     const canonicalBlogSlug = blogMatch ? blogAliases.get(blogMatch[1]) : null;
@@ -1495,6 +1669,14 @@ export default {
         headers: {
           "content-type": "text/html; charset=utf-8",
           ...getCommonHeaders("/best-supplements-comparison")
+        }
+      });
+    }
+    if (activeNicheProduct) {
+      return new Response(nicheGuidePage(activeNicheProduct), {
+        headers: {
+          "content-type": "text/html; charset=utf-8",
+          ...getCommonHeaders(url.pathname)
         }
       });
     }
@@ -1664,6 +1846,14 @@ export default {
           image: product.image,
           imageTitle: `${product.name} ${product.category} supplement`,
           imageCaption: `${product.name} product image, ${product.category.toLowerCase()} offer reviewed by Best Wellness Guide.`
+        })),
+        ...products.map((product) => ({
+          loc: nicheGuideUrl(product),
+          priority: "0.85",
+          lastmod: siteLastModified,
+          image: product.image,
+          imageTitle: `${product.name} ${product.category} buyer guide`,
+          imageCaption: `${product.name} product image accompanying the ${product.category.toLowerCase()} niche guide.`
         })),
         { loc: `${siteUrl}/blog`, priority: "0.9", lastmod: siteLastModified, image: null },
         ...blogPosts.map((post) => ({
