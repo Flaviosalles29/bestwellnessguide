@@ -170,6 +170,9 @@ function productImageTitle(product) {
   if (product.vendor === "jointgen") {
     return "Biodynamix Joint Genesis doctor formulated joint support supplement";
   }
+  if (product.vendor === "tinapsc") {
+    return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading";
+  }
   return `${product.name} ${product.category} supplement`;
 }
 
@@ -182,6 +185,15 @@ function productImageCaption(product, context = "offer") {
       return "Biodynamix Joint Genesis doctor formulated joint support supplement image accompanying the Best Wellness Guide review.";
     }
     return "Biodynamix Joint Genesis doctor formulated joint support supplement image reviewed by Best Wellness Guide.";
+  }
+  if (product.vendor === "tinapsc") {
+    if (context === "guide") {
+      return "Soulmate Sketch personalized psychic soulmate drawing image accompanying the Best Wellness Guide digital spirituality buyer guide.";
+    }
+    if (context === "review") {
+      return "Soulmate Sketch personalized psychic soulmate drawing image accompanying the Best Wellness Guide review.";
+    }
+    return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading image reviewed by Best Wellness Guide.";
   }
   if (context === "guide") {
     return `${product.name} product image accompanying the ${product.category.toLowerCase()} niche guide.`;
@@ -198,6 +210,12 @@ function productImageAlt(product, context = "card") {
       return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle with doctor image reviewed by Best Wellness Guide";
     }
     return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle image";
+  }
+  if (product.vendor === "tinapsc") {
+    if (context === "offer") {
+      return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading product image reviewed by Best Wellness Guide";
+    }
+    return "Soulmate Sketch personalized psychic soulmate drawing product image";
   }
   if (context === "offer") {
     return `${product.name} ${product.category} supplement product image reviewed by Best Wellness Guide`;
@@ -2145,7 +2163,11 @@ export default {
           priority: "0.85",
           lastmod: siteLastModified,
           image: product.image,
-          imageTitle: product.vendor === "jointgen" ? "Biodynamix Joint Genesis joint support buyer guide" : `${product.name} ${product.category} buyer guide`,
+          imageTitle: product.vendor === "jointgen"
+            ? "Biodynamix Joint Genesis joint support buyer guide"
+            : product.vendor === "tinapsc"
+              ? "Soulmate Sketch psychic soulmate drawing buyer guide"
+              : `${product.name} ${product.category} buyer guide`,
           imageCaption: productImageCaption(product, "guide")
         })),
         { loc: `${siteUrl}/blog`, priority: "0.9", lastmod: siteLastModified, image: null },
