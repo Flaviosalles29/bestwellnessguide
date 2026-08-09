@@ -994,13 +994,15 @@ function blogStructuredData(post) {
 
 function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) {
   return `<!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
+  <meta http-equiv="content-language" content="en-US">
+  <meta name="language" content="English">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#fffdfa">
   ${faviconHeadLinks}
@@ -1009,6 +1011,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
   <meta property="og:image" content="${image}">
   <meta property="og:image:alt" content="${title}">
   <meta name="twitter:card" content="summary_large_image">
@@ -1726,13 +1729,15 @@ function page() {
   const description = "Best Wellness Guide: independent research on top wellness offers. Compare official prices, reviews, refund terms and buyer guides for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
   const canonical = `${siteUrl}/`;
   return `<!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
+  <meta http-equiv="content-language" content="en-US">
+  <meta name="language" content="English">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="theme-color" content="#fffdfa">
   ${faviconHeadLinks}
@@ -1745,6 +1750,7 @@ function page() {
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
   <meta property="og:image:secure_url" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -1872,6 +1878,7 @@ function getCommonHeaders(path = "") {
   const supportsWebp = true; // Cloudflare detects
   return {
     "cache-control": path.startsWith("/assets/") || path.match(/\.(svg|ico|png|jpg)$/) ? "public, max-age=31536000, immutable" : "public, max-age=300",
+    "content-language": "en-US",
     "x-content-type-options": "nosniff",
     "x-frame-options": "SAMEORIGIN",
     "x-xss-protection": "1; mode=block",
@@ -1890,7 +1897,7 @@ export default {
       (async () => {
         const response = await fetch(`${siteUrl}/sitemap.xml`);
         if (!response.ok) {
-          console.log(`IndexNow: sitemap indisponivel (HTTP ${response.status})`);
+          console.log(`IndexNow: sitemap unavailable (HTTP ${response.status})`);
           return;
         }
         const urls = extractSitemapUrls(await response.text());
@@ -2260,6 +2267,7 @@ export default {
       return new Response(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${sitemap}</urlset>`, {
         headers: {
           "content-type": "application/xml; charset=utf-8",
+          "content-language": "en-US",
           "cache-control": "public, max-age=86400"
         }
       });
