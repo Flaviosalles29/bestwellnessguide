@@ -372,11 +372,7 @@ const blogPosts = [
         <li><strong>Direct links to official checkout pages</strong> — No redirects, no markups. You go straight to the seller's real checkout.</li>
         <li><strong>Independent buyer guides for each offer</strong> — Research on what each product claims, who it's positioned for, and what to verify before purchasing.</li>
         <li><strong>Ingredient and refund information</strong> — Documentation on what buyers should check, including ingredient lists, refund windows, and bundle pricing.</li>
-        <li><strong>Transparent commission disclosure</strong> — We may earn a commission when readers buy through our links. Your price never changes.</li>
       </ul>
-
-      <h2>What Best Wellness Guide is NOT</h2>
-      <p>We are not a medical resource. Best Wellness Guide does not provide medical advice, diagnoses, or treatment recommendations. If you have a diagnosed health condition, consult a healthcare provider before starting any supplement routine.</p>
 
       <h2>Who Uses Best Wellness Guide?</h2>
       <p>Our readers are typically wellness-conscious buyers who want to:</p>
@@ -401,8 +397,6 @@ const blogPosts = [
       <p>Start with one of our buyer guides to compare pricing, ingredients, and official checkout details for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Soulmate Sketch, Java Burn, and more.</p>
     `,
     faqs: [
-      { q: "Is Best Wellness Guide a medical resource?", a: "No. Best Wellness Guide provides informational content only and is not a substitute for medical advice. Always consult a healthcare provider about wellness products if you have a diagnosed health condition." },
-      { q: "Why does Best Wellness Guide earn commissions?", a: "We earn affiliate commissions when readers purchase through our links, but your price is never affected. This model allows us to research and maintain our guides at no cost to readers." },
       { q: "Are these products supplements or medicines?", a: "Products featured on Best Wellness Guide are marketed as dietary supplements or wellness products. They are not FDA-approved medicines and should not be treated as substitutes for medical care." },
       { q: "Can I trust the links on Best Wellness Guide?", a: "Yes. Every link goes directly to the official seller's checkout page. We never redirect or insert affiliate codes into the checkout flow—you see exactly what the seller is offering." }
     ]
@@ -534,7 +528,7 @@ const blogPosts = [
     publishDate: "2026-08-09",
     product: products.find((product) => product.vendor === "audifort"),
     bodyHtml: `
-      <p>A hearing support supplement search usually means the buyer is comparing several things at once: ear-health routines, ingredient claims, refund terms, and whether a product page is safe to trust. Best Wellness Guide treats this as a research topic for adults, not as medical advice.</p>
+      <p>A hearing support supplement search usually means the buyer is comparing several things at once: ear-health routines, ingredient claims, refund terms, and whether a product page is safe to trust. Best Wellness Guide treats this as a research topic for adults comparing official seller information before checkout.</p>
       <p>Bing currently shows United States demand for this phrase, so this guide is written first for English-speaking US buyers who want a clear checklist before visiting an official checkout page.</p>
       <h2>What a hearing support supplement can and cannot do</h2>
       <p>Supplements in this category are marketed for general hearing wellness, antioxidant support, circulation support, or daily ear-health routines. They should not be presented as cures for tinnitus, hearing loss, infection, ear pain, or any diagnosed condition.</p>
@@ -1063,7 +1057,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
 <body>
   <div class="blog-nav"><a href="/">&larr; Best Wellness Guide</a><a href="/blog">All guides</a></div>
   <main class="blog-wrap">${bodyHtml}</main>
-  <footer class="blog-footer">Best Wellness Guide. Informational content only, not medical advice. We may earn a commission when readers buy through links on this site.</footer>
+  <footer class="blog-footer">Best Wellness Guide</footer>
   <script>
     document.querySelectorAll("[data-tid]").forEach((link) => {
       link.addEventListener("click", () => {
@@ -1123,8 +1117,6 @@ function blogPostPage(post) {
   const body = `
     <p class="blog-eyebrow">${post.category}</p>
     <h1>${post.title}</h1>
-    <p class="blog-meta">Updated ${post.publishDate} &middot; Best Wellness Guide editorial team</p>
-    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
     ${post.bodyHtml}
     ${searchDemandLinksHtml(post)}
     ${offerHtml}
@@ -1362,8 +1354,6 @@ function productPage(product) {
   const body = `
     <p class="blog-eyebrow">${product.category}</p>
     <h1>${product.name} Official Website: Reviews, Price &amp; Where to Buy</h1>
-    <p class="blog-meta">${product.badge} &middot; Best Wellness Guide editorial team</p>
-    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links on this page. Informational content only, not medical advice.</div>
     <figure class="product-figure">
       <img src="${productContentImage(product)}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}">
       <figcaption>${productImageCaption(product)}</figcaption>
@@ -1527,8 +1517,6 @@ function nicheGuidePage(product) {
   const body = `
     <p class="blog-eyebrow">${product.category}</p>
     <h1>Best ${product.category} ${titleSuffix} 2026: ${product.name} Buyer Guide</h1>
-    <p class="blog-meta">Updated ${contentLastModified} &middot; Best Wellness Guide ranking research</p>
-    <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
     <p>${profile.audience}</p>
     <p>${profile.painPoint}</p>
     <h2>Search intent we target</h2>
@@ -1656,8 +1644,6 @@ function supplementsComparisonPage() {
     bodyHtml: `
       <p class="blog-eyebrow">Supplement Research Guide</p>
       <h1>${title}</h1>
-      <p class="blog-meta">Updated 2026-08-03 &middot; Best Wellness Guide research team</p>
-      <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links in this guide. Informational content only, not medical advice.</div>
 
       <h2>Top Supplements: Quick Comparison</h2>
       <p>When searching for "best supplements 2026," "health supplements," or "where to buy supplements," you're likely evaluating multiple options. This guide compares the most-researched supplement offers, helping you make informed decisions based on pricing, refund terms, and buyer reviews.</p>
@@ -1868,7 +1854,7 @@ function page() {
       </div>
     </section>
   </main>
-  <footer class="footer"><span>Best Wellness Guide</span><span>Informational content only. Not medical advice.</span></footer>
+  <footer class="footer"><span>Best Wellness Guide</span></footer>
   <script>
     document.querySelectorAll("[data-tid]").forEach((link) => {
       link.addEventListener("click", () => {
@@ -1922,13 +1908,6 @@ export default {
     if (url.hostname === "bestwellnessguide.com") {
       url.hostname = "www.bestwellnessguide.com";
       return Response.redirect(url.toString(), 301);
-    }
-    if (url.pathname === "/comparação-dos-melhores-suplementos" || url.pathname === "/comparacao-dos-melhores-suplementos") {
-      return Response.redirect(`${siteUrl}/best-supplements-comparison`, 301);
-    }
-    const translatedOfferMatch = url.pathname.match(/^\/ofertas\/([^/]+)\/?$/);
-    if (translatedOfferMatch) {
-      return Response.redirect(`${siteUrl}/offers/${translatedOfferMatch[1]}`, 301);
     }
     if (url.pathname === "/graphql") {
       return new Response("Not found", {
