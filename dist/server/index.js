@@ -5,20 +5,8 @@ import { faviconIcoBase64, appleTouchIconBase64, logoPngBase64 } from "./favicon
 import { submitToIndexNow, extractSitemapUrls } from "./indexnow.js";
 import { img1559757175Base64, img151861101211Base64, img150557639927Base64, img150939136636Base64, img151206977299Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
 
-const faviconSvg = `<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#171b18"/>
-      <stop offset="1" stop-color="#0e100f"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="0" width="512" height="512" rx="104" fill="url(#bg)"/>
-  <rect x="18" y="18" width="476" height="476" rx="90" fill="none" stroke="#2a322c" stroke-width="4"/>
-  <text x="256" y="312" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="230" fill="#fffdfa" text-anchor="middle" letter-spacing="-4">BW</text>
-  <rect x="146" y="378" width="220" height="14" rx="7" fill="#d49b2c"/>
-</svg>`;
-
-const faviconHeadLinks = `<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
+const faviconVersion = "original-20260809";
+const faviconHeadLinks = `<link rel="icon" type="image/x-icon" href="/favicon.ico?v=${faviconVersion}"><link rel="shortcut icon" href="/favicon.ico?v=${faviconVersion}"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=${faviconVersion}">`;
 
 const products = [
   {
@@ -1597,7 +1585,7 @@ function getCommonHeaders(path = "") {
     "referrer-policy": "strict-origin-when-cross-origin",
     "permissions-policy": "geolocation=(), microphone=(), camera=()",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-    "link": `<${siteUrl}/favicon.svg>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`
+    "link": `<${siteUrl}/favicon.ico?v=${faviconVersion}>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`
   };
 }
 
@@ -1810,9 +1798,7 @@ export default {
       });
     }
     if (url.pathname === "/favicon.svg") {
-      return new Response(faviconSvg, {
-        headers: { "content-type": "image/svg+xml; charset=utf-8", "cache-control": "public, max-age=31536000, immutable" }
-      });
+      return Response.redirect(`${siteUrl}/favicon.ico?v=${faviconVersion}`, 302);
     }
     if (url.pathname === "/favicon.ico") {
       const binary = Uint8Array.from(atob(faviconIcoBase64), (char) => char.charCodeAt(0));
