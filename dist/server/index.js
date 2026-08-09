@@ -41,7 +41,7 @@ const products = [
     category: "Joint Support",
     badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-151861101211.jpg",
+    image: "https://www.bestwellnessguide.com/assets/joint-genesis-official-v1.webp",
     summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
     seoKeywords: ["Joint Genesis official website", "Joint Genesis reviews", "Joint Genesis price", "joint support supplement", "mobility support supplement", "flexibility support", "healthy aging supplement", "where to buy Joint Genesis"],
     bullets: ["Cited among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
@@ -1955,6 +1955,32 @@ export default {
         headers: {
           "content-type": "image/jpeg",
           "cache-control": "public, max-age=31536000, immutable"
+        }
+      });
+    }
+    if (url.pathname === "/assets/joint-genesis-official-v1.webp") {
+      const upstream = "https://jointgenesissupp.com/assets/images/joint-genesis-biodynamix.webp";
+      try {
+        const response = await fetch(upstream, {
+          headers: {
+            "user-agent": "BestWellnessGuideBot/1.0"
+          }
+        });
+        if (response.ok) {
+          return new Response(response.body, {
+            headers: {
+              "content-type": response.headers.get("content-type") || "image/webp",
+              "cache-control": "public, max-age=31536000, immutable"
+            }
+          });
+        }
+      } catch (_) {
+      }
+      const fallback = Uint8Array.from(atob(img151861101211Base64), (char) => char.charCodeAt(0));
+      return new Response(fallback, {
+        headers: {
+          "content-type": "image/jpeg",
+          "cache-control": "public, max-age=300"
         }
       });
     }
