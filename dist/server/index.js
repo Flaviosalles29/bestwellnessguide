@@ -166,6 +166,45 @@ function allSeoKeywords() {
   return [...new Set(products.flatMap((product) => product.seoKeywords))];
 }
 
+function productImageTitle(product) {
+  if (product.vendor === "jointgen") {
+    return "Biodynamix Joint Genesis doctor formulated joint support supplement";
+  }
+  return `${product.name} ${product.category} supplement`;
+}
+
+function productImageCaption(product, context = "offer") {
+  if (product.vendor === "jointgen") {
+    if (context === "guide") {
+      return "Biodynamix Joint Genesis product image accompanying the Best Wellness Guide joint support buyer guide.";
+    }
+    if (context === "review") {
+      return "Biodynamix Joint Genesis doctor formulated joint support supplement image accompanying the Best Wellness Guide review.";
+    }
+    return "Biodynamix Joint Genesis doctor formulated joint support supplement image reviewed by Best Wellness Guide.";
+  }
+  if (context === "guide") {
+    return `${product.name} product image accompanying the ${product.category.toLowerCase()} niche guide.`;
+  }
+  if (context === "review") {
+    return `${product.name} product image accompanying the Best Wellness Guide review.`;
+  }
+  return `${product.name} product image, ${product.category.toLowerCase()} offer reviewed by Best Wellness Guide.`;
+}
+
+function productImageAlt(product, context = "card") {
+  if (product.vendor === "jointgen") {
+    if (context === "offer") {
+      return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle with doctor image reviewed by Best Wellness Guide";
+    }
+    return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle image";
+  }
+  if (context === "offer") {
+    return `${product.name} ${product.category} supplement product image reviewed by Best Wellness Guide`;
+  }
+  return `${product.name} ${product.category} official offer research image`;
+}
+
 function structuredData() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -233,7 +272,7 @@ function productCard(product) {
   return `
     <article class="gallery-card product-${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}">
       <div class="product-art">
-        <img src="${product.image}" alt="${product.name} ${product.category} official offer research image" loading="lazy">
+        <img src="${product.image}" alt="${productImageAlt(product)}" loading="lazy">
         <span>${product.badge}</span>
       </div>
       <div class="gallery-body">
@@ -1223,8 +1262,8 @@ function productPage(product) {
     <p class="blog-meta">${product.badge} &middot; Best Wellness Guide editorial team</p>
     <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links on this page. Informational content only, not medical advice.</div>
     <figure class="product-figure">
-      <img src="${product.image}" width="1200" height="800" loading="eager" decoding="async" alt="${product.name} ${product.category} supplement product image reviewed by Best Wellness Guide">
-      <figcaption>${product.name} &mdash; ${product.category}. Image published by Best Wellness Guide.</figcaption>
+      <img src="${product.image}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}">
+      <figcaption>${productImageCaption(product)}</figcaption>
     </figure>
     <p>${product.summary}</p>
     <ul>${bulletsHtml}</ul>
@@ -2098,16 +2137,16 @@ export default {
           priority: "0.8",
           lastmod: siteLastModified,
           image: product.image,
-          imageTitle: `${product.name} ${product.category} supplement`,
-          imageCaption: `${product.name} product image, ${product.category.toLowerCase()} offer reviewed by Best Wellness Guide.`
+          imageTitle: productImageTitle(product),
+          imageCaption: productImageCaption(product)
         })),
         ...products.map((product) => ({
           loc: nicheGuideUrl(product),
           priority: "0.85",
           lastmod: siteLastModified,
           image: product.image,
-          imageTitle: `${product.name} ${product.category} buyer guide`,
-          imageCaption: `${product.name} product image accompanying the ${product.category.toLowerCase()} niche guide.`
+          imageTitle: product.vendor === "jointgen" ? "Biodynamix Joint Genesis joint support buyer guide" : `${product.name} ${product.category} buyer guide`,
+          imageCaption: productImageCaption(product, "guide")
         })),
         { loc: `${siteUrl}/blog`, priority: "0.9", lastmod: siteLastModified, image: null },
         ...blogPosts.map((post) => ({
@@ -2115,8 +2154,8 @@ export default {
           priority: "0.7",
           lastmod: siteLastModified,
           image: post.product?.image || null,
-          imageTitle: post.product ? `${post.product.name} ${post.product.category} supplement` : null,
-          imageCaption: post.product ? `${post.product.name} product image accompanying the Best Wellness Guide review.` : null
+          imageTitle: post.product ? productImageTitle(post.product) : null,
+          imageCaption: post.product ? productImageCaption(post.product, "review") : null
         }))
       ];
       const escapeXml = (str) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
