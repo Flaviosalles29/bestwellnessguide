@@ -1,9 +1,10 @@
 import { prodentimProductHeroV2Base64 } from "./prodentim-product-hero-v2.js";
 import { audifortGalleryV1Base64 } from "./audifort-gallery-v1.js";
 import { soulmateSketchGalleryV1Base64 } from "./soulmate-sketch-gallery-v1.js";
+import { sugarDefenderHero4kV1Base64 } from "./sugar-defender-hero-4k-v1.js";
 import { faviconIcoBase64, appleTouchIconBase64, logoPngBase64 } from "./favicon-assets.js";
 import { submitToIndexNow, extractSitemapUrls } from "./indexnow.js";
-import { img1559757175Base64, img151861101211Base64, img150557639927Base64, img150939136636Base64, img151206977299Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
+import { img1559757175Base64, img151861101211Base64, img150939136636Base64, img151206977299Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
 
 const faviconVersion = "original-20260809";
 const faviconHeadLinks = `<link rel="icon" type="image/x-icon" href="/favicon.ico?v=${faviconVersion}"><link rel="shortcut icon" href="/favicon.ico?v=${faviconVersion}"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=${faviconVersion}">`;
@@ -54,7 +55,7 @@ const products = [
     category: "Blood Sugar Support",
     badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-150557639927.jpg",
+    image: "https://www.bestwellnessguide.com/assets/sugar-defender-official-hero-4k-v1.webp",
     summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
     seoKeywords: ["Sugar Defender official website", "Sugar Defender reviews", "Sugar Defender price", "blood sugar support supplement", "glucose support formula", "plant based wellness drops", "energy support routine", "where to buy Sugar Defender"],
     bullets: ["Ranked in a supplement affiliate marketplace list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
@@ -68,6 +69,7 @@ const products = [
     badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/audifort-gallery-v1.png",
+    offerImage: "https://www.bestwellnessguide.com/assets/audifort-official-hero-4k-v1.webp",
     summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
     seoKeywords: ["Audifort official website", "Audifort reviews", "Audifort price", "hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine", "where to buy Audifort"],
     bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
@@ -162,6 +164,10 @@ function trackedHref(product, placement = "gallery") {
   return `${product.href}${separator}tid=${tid}`;
 }
 
+function productContentImage(product) {
+  return product.offerImage || product.image;
+}
+
 function allSeoKeywords() {
   return [...new Set(products.flatMap((product) => product.seoKeywords))];
 }
@@ -169,6 +175,12 @@ function allSeoKeywords() {
 function productImageTitle(product) {
   if (product.vendor === "jointgen") {
     return "Biodynamix Joint Genesis doctor formulated joint support supplement";
+  }
+  if (product.vendor === "audifort") {
+    return "Audifort healthy hearing supplement official product bottle";
+  }
+  if (product.vendor === "sugardef") {
+    return "Sugar Defender blood sugar support formula official product bottles";
   }
   if (product.vendor === "tinapsc") {
     return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading";
@@ -185,6 +197,24 @@ function productImageCaption(product, context = "offer") {
       return "Biodynamix Joint Genesis doctor formulated joint support supplement image accompanying the Best Wellness Guide review.";
     }
     return "Biodynamix Joint Genesis doctor formulated joint support supplement image reviewed by Best Wellness Guide.";
+  }
+  if (product.vendor === "audifort") {
+    if (context === "guide") {
+      return "Audifort official product image accompanying the Best Wellness Guide hearing support buyer guide.";
+    }
+    if (context === "review") {
+      return "Audifort healthy hearing supplement official bottle image accompanying the Best Wellness Guide review.";
+    }
+    return "Audifort healthy hearing supplement official bottle image displayed on the Best Wellness Guide offer page.";
+  }
+  if (product.vendor === "sugardef") {
+    if (context === "guide") {
+      return "Sugar Defender official product image accompanying the Best Wellness Guide blood sugar support buyer guide.";
+    }
+    if (context === "review") {
+      return "Sugar Defender blood sugar support formula official bottle image accompanying the Best Wellness Guide review.";
+    }
+    return "Sugar Defender blood sugar support formula official bottle image displayed on the Best Wellness Guide offer page.";
   }
   if (product.vendor === "tinapsc") {
     if (context === "guide") {
@@ -210,6 +240,18 @@ function productImageAlt(product, context = "card") {
       return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle with doctor image reviewed by Best Wellness Guide";
     }
     return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle image";
+  }
+  if (product.vendor === "audifort") {
+    if (context === "offer") {
+      return "Audifort healthy hearing supplement official bottle image on Best Wellness Guide";
+    }
+    return "Audifort healthy hearing supplement official bottle product image";
+  }
+  if (product.vendor === "sugardef") {
+    if (context === "offer") {
+      return "Sugar Defender blood sugar support formula official bottle image on Best Wellness Guide";
+    }
+    return "Sugar Defender blood sugar support formula official bottle product image";
   }
   if (product.vendor === "tinapsc") {
     if (context === "offer") {
@@ -274,7 +316,7 @@ function structuredData() {
               name: product.name,
               url: productUrl(product),
               about: product.category,
-              image: product.image,
+              image: productContentImage(product),
               description: product.summary
             }
           }))
@@ -925,7 +967,7 @@ function blogStructuredData(post) {
         "@id": `${blogPostUrl(post)}#article`,
         headline: post.title,
         description: post.description,
-        image: post.product?.image || `${siteUrl}/logo.png`,
+        image: post.product ? productContentImage(post.product) : `${siteUrl}/logo.png`,
         datePublished: post.publishDate,
         dateModified: contentLastModified,
         inLanguage: "en-US",
@@ -1097,7 +1139,7 @@ function blogPostPage(post) {
     canonical: blogPostUrl(post),
     bodyHtml: body,
     jsonLd: blogStructuredData(post),
-    image: post.product?.image || `${siteUrl}/logo.png`
+    image: post.product ? productContentImage(post.product) : `${siteUrl}/logo.png`
   });
 }
 
@@ -1187,7 +1229,7 @@ function productStructuredData(product, relatedGuide) {
         "@id": `${productUrl(product)}#webpage`,
         name: product.name,
         about: product.category,
-        image: product.image,
+        image: productContentImage(product),
         description: product.summary,
         url: productUrl(product)
       },
@@ -1210,6 +1252,49 @@ function productStructuredData(product, relatedGuide) {
 }
 
 function productAuthoritySection(product) {
+  if (product.vendor === "sugardef") {
+    return `
+      <h2>Sugar Defender product image and buyer-intent research</h2>
+      <p>This page keeps the Sugar Defender product image, product name, blood sugar support context and seller checkout link together so search engines can associate the bottle image with the Sugar Defender offer listed on Best Wellness Guide.</p>
+      <h2>Sugar Defender official website and checkout research</h2>
+      <p>Buyers usually search for the Sugar Defender official website, reviews, ingredients, price, support formula details and safe checkout access. This page is structured around that same purchase intent before sending visitors to the linked seller checkout.</p>
+      <h2>Sugar Defender trust checklist</h2>
+      <ul>
+        <li>Confirm current ingredients and label details on the checkout page before ordering</li>
+        <li>Review shipping region, bundle pricing and refund language on the seller page</li>
+        <li>Use the product page image, review page and niche guide together when comparing Sugar Defender research</li>
+        <li>Avoid pages promising guaranteed diabetes treatment or medical outcomes</li>
+      </ul>
+      <h2>Related Sugar Defender research</h2>
+      <ul class="blog-related">
+        <li><a href="/blog/blood-sugar-support-supplement-sugar-defender-guide">Sugar Defender guide: support formula, price and checkout research</a></li>
+        <li><a href="/best-blood-sugar-support-supplement">Best blood sugar support supplement guide</a></li>
+        <li><a href="/offers/sugar-defender">Sugar Defender official offer page</a></li>
+      </ul>
+    `;
+  }
+  if (product.vendor === "audifort") {
+    return `
+      <h2>Audifort product image and buyer-intent research</h2>
+      <p>This page keeps the Audifort product image, product name, hearing-support context and seller checkout link together so search engines can associate the bottle image with the Audifort offer listed on Best Wellness Guide.</p>
+      <h2>Audifort official website and checkout research</h2>
+      <p>Buyers usually search for the Audifort official website, reviews, ingredients, price, hearing support details and safe checkout access. This page is structured around that same purchase intent before sending visitors to the linked seller checkout.</p>
+      <h2>Audifort trust checklist</h2>
+      <ul>
+        <li>Confirm current ingredients and label details on the checkout page before ordering</li>
+        <li>Review shipping region, bundle pricing and refund language on the seller page</li>
+        <li>Use the product page image, review page and hearing-support guide together when comparing Audifort research</li>
+        <li>Avoid pages promising guaranteed hearing restoration or medical treatment outcomes</li>
+      </ul>
+      <h2>Related Audifort research</h2>
+      <ul class="blog-related">
+        <li><a href="/blog/audifort-hearing-support-supplement-review">Audifort review 2026: hearing support, price and checkout research</a></li>
+        <li><a href="/blog/hearing-support-supplements-audifort-guide">Hearing support supplements guide</a></li>
+        <li><a href="/best-hearing-support-supplement">Best hearing support supplement guide</a></li>
+        <li><a href="/offers/audifort">Audifort official offer page</a></li>
+      </ul>
+    `;
+  }
   if (product.vendor === "neurovera") {
     return `
       <h2>NeuroVera buyer-intent research</h2>
@@ -1280,7 +1365,7 @@ function productPage(product) {
     <p class="blog-meta">${product.badge} &middot; Best Wellness Guide editorial team</p>
     <div class="disclosure">Best Wellness Guide may earn a commission from qualifying purchases through links on this page. Informational content only, not medical advice.</div>
     <figure class="product-figure">
-      <img src="${product.image}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}">
+      <img src="${productContentImage(product)}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}">
       <figcaption>${productImageCaption(product)}</figcaption>
     </figure>
     <p>${product.summary}</p>
@@ -1305,7 +1390,7 @@ function productPage(product) {
     canonical: productUrl(product),
     bodyHtml: body,
     jsonLd: productStructuredData(product),
-    image: product.image
+    image: productContentImage(product)
   });
 }
 
@@ -1389,7 +1474,7 @@ function nicheGuideStructuredData(product) {
         "@id": `${canonical}#article`,
         headline: `Best ${product.category} ${product.market.startsWith("Physical product") ? "Supplement" : "Offer"} 2026: ${product.name} Buyer Guide`,
         description: `Audience-focused ${product.category} guide comparing ${product.name}, buyer intent, safety checks, refund terms and official checkout details.`,
-        image: product.image,
+        image: productContentImage(product),
         datePublished: contentLastModified,
         dateModified: contentLastModified,
         inLanguage: "en-US",
@@ -1477,7 +1562,7 @@ function nicheGuidePage(product) {
     canonical: nicheGuideUrl(product),
     bodyHtml: body,
     jsonLd: nicheGuideStructuredData(product),
-    image: product.image
+    image: productContentImage(product)
   });
 }
 
@@ -1701,7 +1786,7 @@ function page() {
     .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;background:var(--green);color:#fff;font-weight:950;box-shadow:0 14px 28px rgba(19,116,92,.24)}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:10px;box-shadow:none}.button:hover{transform:translateY(-1px)}
     .showcase{border:1px solid rgba(18,21,19,.12);border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 24px 70px rgba(18,21,19,.12);overflow:hidden}.showcase img{width:100%;height:250px;object-fit:cover}.showcase-media{position:relative;height:308px;display:grid;place-items:end center;overflow:hidden;background:linear-gradient(180deg,#205d2b 0%,#286b32 22%,#327c35 45%,#3d8b42 65%,#8bc069 84%,#79b36b 100%)}.showcase-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 34%,rgba(72,106,79,.18) 100%)}.showcase img.featured-product-image{position:relative;z-index:1;width:100%;height:308px;object-fit:contain;background:transparent;padding:0;transform:translateY(8px) scale(1.02);transform-origin:center bottom;filter:drop-shadow(0 18px 28px rgba(56,88,62,.18))}.showcase-body{padding:24px}.showcase-kicker{color:var(--coral);font-weight:950;font-size:12px;text-transform:uppercase}.showcase h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:34px;line-height:1}.showcase p{font-size:15px;line-height:1.55;color:var(--muted)}
     .section,.capture{padding:76px 22px}.section-head{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:34px;align-items:end;margin-bottom:30px}.section-head h2,.capture h2{margin:0 0 12px;font-family:Georgia,serif;font-size:clamp(36px,5vw,64px);line-height:1}.section-head p,.capture p{color:var(--muted);line-height:1.65}.score-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}.score-strip div{padding:18px;border-right:1px solid var(--line)}.score-strip div:last-child{border-right:0}.score-strip strong{display:block;font-family:Georgia,serif;font-size:34px}.score-strip span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#2f7437}.product-prodentim .product-art img{object-fit:contain;background:#2f7437;padding:16px}.product-audifort .product-art{display:grid;place-items:center;background:#fff}.product-audifort .product-art img{object-fit:contain;object-position:center;background:#fff;padding:16px 14px;transform:scale(1.05)}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after{display:none}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}.card-title-link{color:inherit;text-decoration:none}.card-title-link:hover{text-decoration:underline}.card-review-link{display:block;margin-top:10px;color:var(--green);font-size:13px;font-weight:900;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#2f7437}.product-prodentim .product-art img{object-fit:contain;background:#2f7437;padding:16px}.product-audifort .product-art,.product-sugardef .product-art{display:grid;place-items:center;background:#fff}.product-audifort .product-art img{object-fit:contain;object-position:center;background:#fff;padding:16px 14px;transform:scale(1.05)}.product-sugardef .product-art img{object-fit:contain;object-position:center;background:#fff;padding:10px 8px;transform:scale(1.08)}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after,.product-sugardef .product-art:after{display:none}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}.card-title-link{color:inherit;text-decoration:none}.card-title-link:hover{text-decoration:underline}.card-review-link{display:block;margin-top:10px;color:var(--green);font-size:13px;font-weight:900;text-align:center}
     .profile{padding:76px 22px;background:#121513;color:#fffdfa}.profile-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr)1fr;gap:36px;align-items:start}.profile h2{margin:0 0 16px;font-family:Georgia,serif;font-size:clamp(36px,5vw,62px);line-height:1}.profile p{color:#d9dfda;line-height:1.7}.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.profile-card{border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:18px;background:rgba(255,255,255,.05)}.profile-card strong{display:block;margin-bottom:8px;color:#f3c266}.profile-card span{color:#d9dfda;line-height:1.5;font-size:14px}
     .capture{display:grid;grid-template-columns:minmax(0,1fr)420px;gap:34px;border-top:1px solid var(--line);background:#fff}.checklist-items{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}.checklist-items li{position:relative;padding-left:26px;color:var(--muted);line-height:1.5}.checklist-items li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:4px;background:var(--green)}.capture-card{border:1px solid var(--line);border-radius:8px;background:#fffdfa;padding:24px}.capture-card strong{display:block;margin-bottom:14px;font-family:Georgia,serif;font-size:18px}.capture-guides{list-style:none;padding:0;margin:0 0 18px}.capture-guides li{margin-bottom:10px}.capture-guides a{color:var(--ink);font-size:14px;line-height:1.4;display:block}.capture-guides a:hover{color:var(--green)}.capture-card .button{border:0;width:100%}.footer{display:flex;justify-content:space-between;gap:18px;padding:30px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
     @media(max-width:980px){.hero-grid,.section-head,.capture,.profile-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 1}}
@@ -2042,10 +2127,13 @@ export default {
       });
     }
     if (url.pathname === "/assets/wellness-150557639927.jpg") {
-      const binary = Uint8Array.from(atob(img150557639927Base64), (char) => char.charCodeAt(0));
+      return Response.redirect(`${siteUrl}/assets/sugar-defender-official-hero-4k-v1.webp`, 301);
+    }
+    if (url.pathname === "/assets/sugar-defender-official-hero-4k-v1.webp") {
+      const binary = Uint8Array.from(atob(sugarDefenderHero4kV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
-          "content-type": "image/jpeg",
+          "content-type": "image/webp",
           "cache-control": "public, max-age=31536000, immutable"
         }
       });
@@ -2113,11 +2201,11 @@ export default {
         }
       });
     }
-    if (url.pathname === "/assets/audifort-gallery-v1.png") {
+    if (url.pathname === "/assets/audifort-gallery-v1.png" || url.pathname === "/assets/audifort-official-hero-4k-v1.webp") {
       const binary = Uint8Array.from(atob(audifortGalleryV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
-          "content-type": "image/png",
+          "content-type": "image/webp",
           "cache-control": "public, max-age=31536000, immutable"
         }
       });
@@ -2154,7 +2242,7 @@ export default {
           loc: productUrl(product),
           priority: "0.8",
           lastmod: siteLastModified,
-          image: product.image,
+          image: productContentImage(product),
           imageTitle: productImageTitle(product),
           imageCaption: productImageCaption(product)
         })),
@@ -2162,12 +2250,14 @@ export default {
           loc: nicheGuideUrl(product),
           priority: "0.85",
           lastmod: siteLastModified,
-          image: product.image,
+          image: productContentImage(product),
           imageTitle: product.vendor === "jointgen"
             ? "Biodynamix Joint Genesis joint support buyer guide"
-            : product.vendor === "tinapsc"
-              ? "Soulmate Sketch psychic soulmate drawing buyer guide"
-              : `${product.name} ${product.category} buyer guide`,
+            : product.vendor === "audifort"
+              ? "Audifort hearing support supplement buyer guide"
+              : product.vendor === "tinapsc"
+                ? "Soulmate Sketch psychic soulmate drawing buyer guide"
+                : `${product.name} ${product.category} buyer guide`,
           imageCaption: productImageCaption(product, "guide")
         })),
         { loc: `${siteUrl}/blog`, priority: "0.9", lastmod: siteLastModified, image: null },
@@ -2175,7 +2265,7 @@ export default {
           loc: blogPostUrl(post),
           priority: "0.7",
           lastmod: siteLastModified,
-          image: post.product?.image || null,
+          image: post.product ? productContentImage(post.product) : null,
           imageTitle: post.product ? productImageTitle(post.product) : null,
           imageCaption: post.product ? productImageCaption(post.product, "review") : null
         }))
