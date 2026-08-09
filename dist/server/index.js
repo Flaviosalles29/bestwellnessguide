@@ -2,9 +2,10 @@ import { prodentimProductHeroV2Base64 } from "./prodentim-product-hero-v2.js";
 import { audifortGalleryV1Base64 } from "./audifort-gallery-v1.js";
 import { soulmateSketchGalleryV1Base64 } from "./soulmate-sketch-gallery-v1.js";
 import { sugarDefenderHero4kV1Base64 } from "./sugar-defender-hero-4k-v1.js";
+import { lymphTonicHero4kV1Base64 } from "./lymph-tonic-hero-4k-v1.js";
 import { faviconIcoBase64, appleTouchIconBase64, logoPngBase64 } from "./favicon-assets.js";
 import { submitToIndexNow, extractSitemapUrls } from "./indexnow.js";
-import { img1559757175Base64, img151861101211Base64, img150939136636Base64, img151206977299Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
+import { img1559757175Base64, img151861101211Base64, img150939136636Base64, img149547447228Base64, img149883716792Base64, img152625626235Base64 } from "./wellness-photos.js";
 
 const faviconVersion = "original-20260809";
 const faviconHeadLinks = `<link rel="icon" type="image/x-icon" href="/favicon.ico?v=${faviconVersion}"><link rel="shortcut icon" href="/favicon.ico?v=${faviconVersion}"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=${faviconVersion}">`;
@@ -16,7 +17,7 @@ const products = [
     category: "Dental Health",
     badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg",
+    image: "https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching ProDentim reviews, official website access, price, ingredients, gums, teeth and fresh-breath routines.",
     seoKeywords: ["ProDentim official website", "ProDentim reviews 2026", "ProDentim review", "ProDentim real reviews", "ProDentim customer reviews", "ProDentim negative reviews", "ProDentim before and after", "ProDentim price", "ProDentim ingredients", "ProDentim complaints", "ProDentim side effects", "ProDentim scam", "ProDentim legit", "ProDentim refund policy", "ProDentim bonuses", "ProDentim how to use", "ProDentim Amazon", "ProDentim Walmart", "ProDentim where to buy", "oral probiotic supplement", "dental probiotic supplement", "probiotics for teeth", "best probiotics for teeth", "dental health supplement", "gum health support", "fresh breath routine"],
     bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink to seller checkout", "Official checkout handles current pricing, bundles, bonuses, shipping and refund terms", "Best for buyers comparing oral probiotics before choosing a dental-health add-on"],
@@ -29,7 +30,7 @@ const products = [
     category: "Brain Wellness",
     badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-1559757175.jpg",
+    image: "https://www.bestwellnessguide.com/assets/neurovera-brain-health-memory-focus-supplement-official-bottle-v1.jpg",
     summary: "A brain-health supplement offer for adults comparing memory, focus, and daily cognitive-support routines.",
     seoKeywords: ["NeuroVera official website", "NeuroVera reviews 2026", "NeuroVera review", "Neuro Vera reviews", "NeuroVera complaints", "NeuroVera ingredients", "NeuroVera side effects", "NeuroVera scam", "NeuroVera legit", "NeuroVera price", "NeuroVera refund policy", "NeuroVera how to use", "NeuroVera Amazon", "NeuroVera Walmart", "brain health supplement", "memory support supplement", "focus supplement for adults", "mental clarity supplement", "cognitive support routine", "nootropic supplement", "where to buy NeuroVera"],
     bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets", "Official checkout handles current pricing, bundles, shipping and refund terms"],
@@ -42,7 +43,7 @@ const products = [
     category: "Joint Support",
     badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/joint-genesis-official-v1.webp",
+    image: "https://www.bestwellnessguide.com/assets/joint-genesis-joint-support-mobility-supplement-official-bottle-v2.webp",
     summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
     seoKeywords: ["Joint Genesis official website", "Joint Genesis reviews", "Joint Genesis price", "joint support supplement", "mobility support supplement", "flexibility support", "healthy aging supplement", "where to buy Joint Genesis"],
     bullets: ["Cited among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
@@ -55,7 +56,7 @@ const products = [
     category: "Blood Sugar Support",
     badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/sugar-defender-official-hero-4k-v1.webp",
+    image: "https://www.bestwellnessguide.com/assets/sugar-defender-blood-sugar-support-formula-official-bottles-4k-v2.webp",
     summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
     seoKeywords: ["Sugar Defender official website", "Sugar Defender reviews", "Sugar Defender price", "blood sugar support supplement", "glucose support formula", "plant based wellness drops", "energy support routine", "where to buy Sugar Defender"],
     bullets: ["Ranked in a supplement affiliate marketplace list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
@@ -68,8 +69,8 @@ const products = [
     category: "Hearing Support",
     badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/audifort-gallery-v1.png",
-    offerImage: "https://www.bestwellnessguide.com/assets/audifort-official-hero-4k-v1.webp",
+    image: "https://www.bestwellnessguide.com/assets/audifort-hearing-support-supplement-official-bottle-4k-v2.webp",
+    offerImage: "https://www.bestwellnessguide.com/assets/audifort-hearing-support-supplement-official-bottle-4k-v2.webp",
     summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
     seoKeywords: ["Audifort official website", "Audifort reviews", "Audifort price", "hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine", "where to buy Audifort"],
     bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
@@ -82,7 +83,7 @@ const products = [
     category: "Spiritual Reading",
     badge: "Top marketplace offer",
     market: "Digital product; available online after purchase terms are confirmed",
-    image: "https://www.bestwellnessguide.com/assets/soulmate-sketch-gallery-v1.png",
+    image: "https://www.bestwellnessguide.com/assets/soulmate-sketch-psychic-soulmate-drawing-reading-official-image-v2.png",
     summary: "A long-running digital spirituality offer for buyers interested in soulmate art, relationship insight, and personal readings.",
     seoKeywords: ["Soulmate Sketch official website", "Soulmate Sketch reviews", "Soulmate Sketch price", "soulmate drawing reading", "psychic soulmate sketch", "relationship reading online", "digital soulmate portrait", "where to buy Soulmate Sketch"],
     bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Digital delivery removes physical shipping friction"],
@@ -95,7 +96,7 @@ const products = [
     category: "Alternative Energy",
     badge: "Validated offer",
     market: "Digital product; available online after purchase terms are confirmed",
-    image: "https://www.bestwellnessguide.com/assets/wellness-150939136636.jpg",
+    image: "https://www.bestwellnessguide.com/assets/energy-revolution-system-home-energy-guide-official-image-v1.jpg",
     summary: "A digital guide offer for homeowners and preparedness buyers researching lower-cost energy ideas and self-reliance projects.",
     seoKeywords: ["Energy Revolution System official website", "Energy Revolution System reviews", "home energy guide", "alternative energy system", "off grid energy guide", "lower electric bill ideas", "DIY energy plans", "where to buy Energy Revolution System"],
     bullets: ["Featured among July 2026 top marketplace offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
@@ -108,10 +109,10 @@ const products = [
     category: "Lymphatic Support",
     badge: "Validated HopLink",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-151206977299.jpg",
-    summary: "A wellness offer for readers researching lymphatic drainage support, herbal formulas, and daily detox-style routines.",
-    seoKeywords: ["Lymph Tonic official website", "Lymph Tonic reviews", "Lymph Tonic price", "lymphatic support supplement", "lymph drainage support", "detox support formula", "herbal wellness tonic", "where to buy Lymph Tonic"],
-    bullets: ["Confirmed affiliate HopLink", "Clear supplement niche angle", "Official checkout controls delivery, refund and bundle details"],
+    image: "https://www.bestwellnessguide.com/assets/lymph-tonic-official-bottle-lymphatic-drainage-support-4k-v3.webp",
+    summary: "Support your body's natural lymphatic function with an alcohol-free herbal supplement designed for healthy lymphatic drainage, circulation, and fluid-balance routines.",
+    seoKeywords: ["Lymph Tonic official website", "Lymph Tonic reviews", "Lymph Tonic price", "Lymph Tonic supplement", "Lymph Tonic official bottle", "Support your body's natural lymphatic function", "lymphatic support supplement", "lymphatic drainage support", "lymph drainage support", "fluid balance support", "alcohol-free herbal supplement", "Boswellia Curcumin supplement", "herbal wellness tonic", "where to buy Lymph Tonic"],
+    bullets: ["May help support healthy fluid balance", "Contains Boswellia, Curcumin, and other botanicals", "Alcohol-free liquid formula for easy absorption", "Natural herbal extracts with no artificial additives"],
     cta: "View Lymph Tonic official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=lymphtonic"
   },
@@ -121,7 +122,7 @@ const products = [
     category: "Coffee Routine",
     badge: "Validated HopLink",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-149547447228.jpg",
+    image: "https://www.bestwellnessguide.com/assets/java-burn-coffee-metabolism-routine-supplement-official-image-v1.jpg",
     summary: "A coffee-compatible wellness offer for buyers who want a supplement that fits an existing morning habit.",
     seoKeywords: ["Java Burn official website", "Java Burn reviews", "Java Burn price", "coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn 2.0", "where to buy Java Burn"],
     bullets: ["Built around a daily coffee routine", "Good fit for capsule-resistant buyers", "Official page confirms current bundles and terms"],
@@ -134,7 +135,7 @@ const products = [
     category: "Eye + Gut Wellness",
     badge: "Confirmed HopLink",
     market: "English-speaking buyers; verify delivery at checkout",
-    image: "https://www.bestwellnessguide.com/assets/wellness-149883716792.jpg",
+    image: "https://www.bestwellnessguide.com/assets/visiflora-eye-gut-wellness-supplement-official-image-v1.jpg",
     summary: "A wellness offer for readers researching eye-support routines and gut-health education.",
     seoKeywords: ["VisiFlora official website", "VisiFlora reviews", "VisiFlora price", "eye health supplement", "gut health support", "vision support supplement", "eye and gut wellness", "where to buy VisiFlora"],
     bullets: ["Less generic than standard eye-vitamin pages", "Good educational SEO angle", "Official checkout confirms label and terms"],
@@ -173,6 +174,12 @@ function allSeoKeywords() {
 }
 
 function productImageTitle(product) {
+  if (product.vendor === "prodentim") {
+    return "ProDentim oral probiotic dental health supplement official bottle";
+  }
+  if (product.vendor === "neurovera") {
+    return "NeuroVera brain health memory and focus supplement official bottle";
+  }
   if (product.vendor === "jointgen") {
     return "Biodynamix Joint Genesis doctor formulated joint support supplement";
   }
@@ -182,13 +189,43 @@ function productImageTitle(product) {
   if (product.vendor === "sugardef") {
     return "Sugar Defender blood sugar support formula official product bottles";
   }
+  if (product.vendor === "lymphtonic") {
+    return "Lymph Tonic advanced lymphatic drainage support official product bottle";
+  }
   if (product.vendor === "tinapsc") {
     return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading";
   }
-  return `${product.name} ${product.category} supplement`;
+  if (product.vendor === "enrev") {
+    return "Energy Revolution System home energy guide official image";
+  }
+  if (product.vendor === "JAVABURN") {
+    return "Java Burn 2.0 coffee metabolism routine supplement official image";
+  }
+  if (product.vendor === "VISIFLORA") {
+    return "VisiFlora eye and gut wellness supplement official image";
+  }
+  return `${product.name} ${product.category} official offer image`;
 }
 
 function productImageCaption(product, context = "offer") {
+  if (product.vendor === "prodentim") {
+    if (context === "guide") {
+      return "ProDentim oral probiotic supplement image accompanying the Best Wellness Guide dental health buyer guide.";
+    }
+    if (context === "review") {
+      return "ProDentim oral probiotic dental health supplement official bottle image accompanying the Best Wellness Guide review.";
+    }
+    return "ProDentim oral probiotic dental health supplement official bottle image displayed on the Best Wellness Guide offer page.";
+  }
+  if (product.vendor === "neurovera") {
+    if (context === "guide") {
+      return "NeuroVera official product image accompanying the Best Wellness Guide brain health buyer guide.";
+    }
+    if (context === "review") {
+      return "NeuroVera brain health memory and focus supplement official bottle image accompanying the Best Wellness Guide review.";
+    }
+    return "NeuroVera brain health memory and focus supplement official bottle image displayed on the Best Wellness Guide offer page.";
+  }
   if (product.vendor === "jointgen") {
     if (context === "guide") {
       return "Biodynamix Joint Genesis product image accompanying the Best Wellness Guide joint support buyer guide.";
@@ -216,6 +253,15 @@ function productImageCaption(product, context = "offer") {
     }
     return "Sugar Defender blood sugar support formula official bottle image displayed on the Best Wellness Guide offer page.";
   }
+  if (product.vendor === "lymphtonic") {
+    if (context === "guide") {
+      return "Lymph Tonic official product image accompanying the Best Wellness Guide lymphatic support buyer guide.";
+    }
+    if (context === "review") {
+      return "Lymph Tonic advanced lymphatic drainage support official bottle image accompanying the Best Wellness Guide review.";
+    }
+    return "Lymph Tonic advanced lymphatic drainage support official bottle image displayed on the Best Wellness Guide offer page.";
+  }
   if (product.vendor === "tinapsc") {
     if (context === "guide") {
       return "Soulmate Sketch personalized psychic soulmate drawing image accompanying the Best Wellness Guide digital spirituality buyer guide.";
@@ -224,6 +270,33 @@ function productImageCaption(product, context = "offer") {
       return "Soulmate Sketch personalized psychic soulmate drawing image accompanying the Best Wellness Guide review.";
     }
     return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading image reviewed by Best Wellness Guide.";
+  }
+  if (product.vendor === "enrev") {
+    if (context === "guide") {
+      return "Energy Revolution System official image accompanying the Best Wellness Guide alternative energy buyer guide.";
+    }
+    if (context === "review") {
+      return "Energy Revolution System home energy guide official image accompanying the Best Wellness Guide review.";
+    }
+    return "Energy Revolution System home energy guide official image displayed on the Best Wellness Guide offer page.";
+  }
+  if (product.vendor === "JAVABURN") {
+    if (context === "guide") {
+      return "Java Burn 2.0 official image accompanying the Best Wellness Guide coffee routine buyer guide.";
+    }
+    if (context === "review") {
+      return "Java Burn 2.0 coffee metabolism routine supplement official image accompanying the Best Wellness Guide review.";
+    }
+    return "Java Burn 2.0 coffee metabolism routine supplement official image displayed on the Best Wellness Guide offer page.";
+  }
+  if (product.vendor === "VISIFLORA") {
+    if (context === "guide") {
+      return "VisiFlora official image accompanying the Best Wellness Guide eye and gut wellness buyer guide.";
+    }
+    if (context === "review") {
+      return "VisiFlora eye and gut wellness supplement official image accompanying the Best Wellness Guide review.";
+    }
+    return "VisiFlora eye and gut wellness supplement official image displayed on the Best Wellness Guide offer page.";
   }
   if (context === "guide") {
     return `${product.name} product image accompanying the ${product.category.toLowerCase()} niche guide.`;
@@ -235,6 +308,18 @@ function productImageCaption(product, context = "offer") {
 }
 
 function productImageAlt(product, context = "card") {
+  if (product.vendor === "prodentim") {
+    if (context === "offer") {
+      return "ProDentim oral probiotic dental health supplement official bottle image on Best Wellness Guide";
+    }
+    return "ProDentim oral probiotic dental health supplement official bottle product image";
+  }
+  if (product.vendor === "neurovera") {
+    if (context === "offer") {
+      return "NeuroVera brain health memory and focus supplement official bottle image on Best Wellness Guide";
+    }
+    return "NeuroVera brain health memory and focus supplement official bottle product image";
+  }
   if (product.vendor === "jointgen") {
     if (context === "offer") {
       return "Biodynamix Joint Genesis doctor formulated joint support supplement bottle with doctor image reviewed by Best Wellness Guide";
@@ -253,11 +338,35 @@ function productImageAlt(product, context = "card") {
     }
     return "Sugar Defender blood sugar support formula official bottle product image";
   }
+  if (product.vendor === "lymphtonic") {
+    if (context === "offer") {
+      return "Lymph Tonic advanced lymphatic drainage support official bottle image on Best Wellness Guide";
+    }
+    return "Lymph Tonic advanced lymphatic drainage support official bottle product image";
+  }
   if (product.vendor === "tinapsc") {
     if (context === "offer") {
       return "Soulmate Sketch personalized psychic soulmate drawing and relationship reading product image reviewed by Best Wellness Guide";
     }
     return "Soulmate Sketch personalized psychic soulmate drawing product image";
+  }
+  if (product.vendor === "enrev") {
+    if (context === "offer") {
+      return "Energy Revolution System home energy guide official image on Best Wellness Guide";
+    }
+    return "Energy Revolution System home energy guide official offer image";
+  }
+  if (product.vendor === "JAVABURN") {
+    if (context === "offer") {
+      return "Java Burn 2.0 coffee metabolism routine supplement official image on Best Wellness Guide";
+    }
+    return "Java Burn 2.0 coffee metabolism routine supplement official offer image";
+  }
+  if (product.vendor === "VISIFLORA") {
+    if (context === "offer") {
+      return "VisiFlora eye and gut wellness supplement official image on Best Wellness Guide";
+    }
+    return "VisiFlora eye and gut wellness supplement official offer image";
   }
   if (context === "offer") {
     return `${product.name} ${product.category} supplement product image reviewed by Best Wellness Guide`;
@@ -332,7 +441,7 @@ function productCard(product) {
   return `
     <article class="gallery-card product-${product.vendor.toLowerCase().replace(/[^a-z0-9]/g, "")}">
       <div class="product-art">
-        <img src="${product.image}" alt="${productImageAlt(product)}" loading="lazy">
+        <img src="${product.image}" alt="${productImageAlt(product)}" title="${productImageTitle(product)}" loading="lazy">
         <span>${product.badge}</span>
       </div>
       <div class="gallery-body">
@@ -992,7 +1101,8 @@ function blogStructuredData(post) {
   });
 }
 
-function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) {
+function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image, keywords = "" }) {
+  const keywordsMeta = keywords ? `<meta name="keywords" content="${keywords}">` : "";
   return `<!doctype html>
 <html lang="en-US">
 <head>
@@ -1001,6 +1111,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image }) 
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
+  ${keywordsMeta}
   <meta http-equiv="content-language" content="en-US">
   <meta name="language" content="English">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -1134,7 +1245,8 @@ function blogPostPage(post) {
     canonical: blogPostUrl(post),
     bodyHtml: body,
     jsonLd: blogStructuredData(post),
-    image: post.product ? productContentImage(post.product) : `${siteUrl}/logo.png`
+    image: post.product ? productContentImage(post.product) : `${siteUrl}/logo.png`,
+    keywords: post.keywords.join(", ")
   });
 }
 
@@ -1160,7 +1272,8 @@ function blogIndexPage() {
       name: "Best Wellness Guide buying guides",
       url: `${siteUrl}/blog`
     }),
-    image: "https://www.bestwellnessguide.com/assets/wellness-152625626235.jpg"
+    image: "https://www.bestwellnessguide.com/assets/wellness-152625626235.jpg",
+    keywords: allSeoKeywords().join(", ")
   });
 }
 
@@ -1226,7 +1339,25 @@ function productStructuredData(product, relatedGuide) {
         about: product.category,
         image: productContentImage(product),
         description: product.summary,
+        keywords: product.seoKeywords.join(", "),
         url: productUrl(product)
+      },
+      {
+        "@type": "ImageObject",
+        "@id": `${productContentImage(product)}#image`,
+        url: productContentImage(product),
+        contentUrl: productContentImage(product),
+        name: productImageTitle(product),
+        caption: productImageCaption(product),
+        description: productImageAlt(product, "offer"),
+        keywords: product.seoKeywords.join(", "),
+        representativeOfPage: true,
+        inLanguage: "en-US",
+        about: {
+          "@type": "Thing",
+          name: product.name,
+          description: product.summary
+        }
       },
       {
         "@type": "FAQPage",
@@ -1358,7 +1489,7 @@ function productPage(product) {
     <p class="blog-eyebrow">${product.category}</p>
     <h1>${product.name} Official Website: Reviews, Price &amp; Where to Buy</h1>
     <figure class="product-figure">
-      <img src="${productContentImage(product)}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}">
+      <img src="${productContentImage(product)}" width="1200" height="800" loading="eager" decoding="async" alt="${productImageAlt(product, "offer")}" title="${productImageTitle(product)}">
       <figcaption>${productImageCaption(product)}</figcaption>
     </figure>
     <p>${product.summary}</p>
@@ -1383,7 +1514,8 @@ function productPage(product) {
     canonical: productUrl(product),
     bodyHtml: body,
     jsonLd: productStructuredData(product),
-    image: productContentImage(product)
+    image: productContentImage(product),
+    keywords: product.seoKeywords.join(", ")
   });
 }
 
@@ -1553,7 +1685,8 @@ function nicheGuidePage(product) {
     canonical: nicheGuideUrl(product),
     bodyHtml: body,
     jsonLd: nicheGuideStructuredData(product),
-    image: productContentImage(product)
+    image: productContentImage(product),
+    keywords: product.seoKeywords.join(", ")
   });
 }
 
@@ -1751,14 +1884,14 @@ function page() {
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
-  <meta property="og:image:secure_url" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
+  <meta property="og:image" content="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg">
+  <meta property="og:image:secure_url" content="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1254">
   <meta property="og:image:height" content="1254">
   <meta property="og:image:alt" content="ProDentim advanced oral probiotics supplement bottle with mint leaves and strawberries">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg">
+  <meta name="twitter:image" content="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg">
   <meta name="twitter:image:alt" content="ProDentim advanced oral probiotics supplement bottle with mint leaves and strawberries">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
   <script>
@@ -1778,7 +1911,7 @@ function page() {
     .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:8px;background:var(--green);color:#fff;font-weight:950;box-shadow:0 14px 28px rgba(19,116,92,.24)}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);margin-left:10px;box-shadow:none}.button:hover{transform:translateY(-1px)}
     .showcase{border:1px solid rgba(18,21,19,.12);border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 24px 70px rgba(18,21,19,.12);overflow:hidden}.showcase img{width:100%;height:250px;object-fit:cover}.showcase-media{position:relative;height:308px;display:grid;place-items:end center;overflow:hidden;background:linear-gradient(180deg,#205d2b 0%,#286b32 22%,#327c35 45%,#3d8b42 65%,#8bc069 84%,#79b36b 100%)}.showcase-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,0) 34%,rgba(72,106,79,.18) 100%)}.showcase img.featured-product-image{position:relative;z-index:1;width:100%;height:308px;object-fit:contain;background:transparent;padding:0;transform:translateY(8px) scale(1.02);transform-origin:center bottom;filter:drop-shadow(0 18px 28px rgba(56,88,62,.18))}.showcase-body{padding:24px}.showcase-kicker{color:var(--coral);font-weight:950;font-size:12px;text-transform:uppercase}.showcase h2{margin:8px 0 10px;font-family:Georgia,serif;font-size:34px;line-height:1}.showcase p{font-size:15px;line-height:1.55;color:var(--muted)}
     .section,.capture{padding:76px 22px}.section-head{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:34px;align-items:end;margin-bottom:30px}.section-head h2,.capture h2{margin:0 0 12px;font-family:Georgia,serif;font-size:clamp(36px,5vw,64px);line-height:1}.section-head p,.capture p{color:var(--muted);line-height:1.65}.score-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}.score-strip div{padding:18px;border-right:1px solid var(--line)}.score-strip div:last-child{border-right:0}.score-strip strong{display:block;font-family:Georgia,serif;font-size:34px}.score-strip span{color:var(--muted);font-size:12px;font-weight:900;text-transform:uppercase}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#2f7437}.product-prodentim .product-art img{object-fit:contain;background:#2f7437;padding:16px}.product-audifort .product-art,.product-sugardef .product-art{display:grid;place-items:center;background:#fff}.product-audifort .product-art img{object-fit:contain;object-position:center;background:#fff;padding:16px 14px;transform:scale(1.05)}.product-sugardef .product-art img{object-fit:contain;object-position:center;background:#fff;padding:10px 8px;transform:scale(1.08)}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after,.product-sugardef .product-art:after{display:none}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}.card-title-link{color:inherit;text-decoration:none}.card-title-link:hover{text-decoration:underline}.card-review-link{display:block;margin-top:10px;color:var(--green);font-size:13px;font-weight:900;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-card{display:flex;flex-direction:column;min-height:100%;border:1px solid var(--line);border-radius:8px;background:var(--panel);box-shadow:0 22px 52px rgba(18,21,19,.08);overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.gallery-card:hover{transform:translateY(-4px);box-shadow:0 28px 70px rgba(18,21,19,.14)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 2}.product-art{position:relative;background:#dfe7e2}.product-art img{width:100%;height:280px;object-fit:cover;display:block}.gallery-card:nth-child(1) .product-art img,.gallery-card:nth-child(2) .product-art img{height:390px}.product-prodentim .product-art{background:#2f7437}.product-prodentim .product-art img{object-fit:contain;background:#2f7437;padding:16px}.product-audifort .product-art,.product-sugardef .product-art,.product-lymphtonic .product-art{display:grid;place-items:center;background:#fff}.product-audifort .product-art img{object-fit:contain;object-position:center;background:#fff;padding:16px 14px;transform:scale(1.05)}.product-sugardef .product-art img{object-fit:contain;object-position:center;background:#fff;padding:10px 8px;transform:scale(1.08)}.product-lymphtonic .product-art img{object-fit:contain;object-position:center;background:#fff;padding:12px 10px;transform:scale(1.08)}.product-tinapsc .product-art{display:grid;place-items:center;background:#f7f3ee}.product-tinapsc .product-art img{object-fit:contain;object-position:center top;background:#f7f3ee;padding:0}.product-art:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(0deg,rgba(18,21,19,.58),rgba(18,21,19,0))}.product-prodentim .product-art:after{height:26%;background:linear-gradient(0deg,rgba(18,21,19,.34),rgba(18,21,19,0))}.product-audifort .product-art:after,.product-sugardef .product-art:after,.product-lymphtonic .product-art:after{display:none}.product-tinapsc .product-art:after{height:12%;background:linear-gradient(0deg,rgba(18,21,19,.12),rgba(18,21,19,0))}.product-art span{position:absolute;left:14px;bottom:14px;z-index:1;padding:8px 10px;border-radius:8px;background:rgba(255,253,250,.94);color:var(--ink);font-size:11px;font-weight:950;text-transform:uppercase}.gallery-body{display:flex;flex-direction:column;flex:1;padding:22px}.category{margin-bottom:8px;color:var(--coral);font-size:12px;font-weight:950;text-transform:uppercase}.gallery-card h3{margin:0 0 10px;font-family:Georgia,serif;font-size:32px;line-height:1}.gallery-card p{color:var(--muted);line-height:1.55;margin:0 0 18px}.trust-indicators{display:flex;flex-direction:column;gap:6px;margin:12px 0 16px;font-size:12px;color:var(--green);font-weight:900}.trust-indicators span{display:flex;align-items:center;gap:6px}.trust-indicators span:before{content:"✓";font-weight:900}.buy-button{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:auto;border-radius:8px;background:var(--ink);color:#fffdfa;font-weight:950;text-transform:uppercase;letter-spacing:0;transition:all .2s ease}.buy-button:hover{background:var(--green);transform:translateY(-1px)}.buy-button.primary{background:var(--green);box-shadow:0 12px 24px rgba(19,116,92,.32)}.buy-button.primary:hover{background:#0f6249;box-shadow:0 16px 32px rgba(19,116,92,.42)}.microcopy{margin-top:10px;color:#68736e;font-size:12px;line-height:1.4;text-align:center}.card-title-link{color:inherit;text-decoration:none}.card-title-link:hover{text-decoration:underline}.card-review-link{display:block;margin-top:10px;color:var(--green);font-size:13px;font-weight:900;text-align:center}
     .profile{padding:76px 22px;background:#121513;color:#fffdfa}.profile-inner{max-width:1220px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr)1fr;gap:36px;align-items:start}.profile h2{margin:0 0 16px;font-family:Georgia,serif;font-size:clamp(36px,5vw,62px);line-height:1}.profile p{color:#d9dfda;line-height:1.7}.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.profile-card{border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:18px;background:rgba(255,255,255,.05)}.profile-card strong{display:block;margin-bottom:8px;color:#f3c266}.profile-card span{color:#d9dfda;line-height:1.5;font-size:14px}
     .capture{display:grid;grid-template-columns:minmax(0,1fr)420px;gap:34px;border-top:1px solid var(--line);background:#fff}.checklist-items{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}.checklist-items li{position:relative;padding-left:26px;color:var(--muted);line-height:1.5}.checklist-items li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:4px;background:var(--green)}.capture-card{border:1px solid var(--line);border-radius:8px;background:#fffdfa;padding:24px}.capture-card strong{display:block;margin-bottom:14px;font-family:Georgia,serif;font-size:18px}.capture-guides{list-style:none;padding:0;margin:0 0 18px}.capture-guides li{margin-bottom:10px}.capture-guides a{color:var(--ink);font-size:14px;line-height:1.4;display:block}.capture-guides a:hover{color:var(--green)}.capture-card .button{border:0;width:100%}.footer{display:flex;justify-content:space-between;gap:18px;padding:30px 22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
     @media(max-width:980px){.hero-grid,.section-head,.capture,.profile-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.gallery-card:nth-child(1),.gallery-card:nth-child(2){grid-column:span 1}}
@@ -1800,7 +1933,7 @@ function page() {
         </div>
         <aside class="showcase">
           <div class="showcase-media">
-            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg" alt="ProDentim bottle advanced oral probiotics product image">
+            <img class="featured-product-image" src="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg" alt="ProDentim bottle advanced oral probiotics product image" title="ProDentim oral probiotic dental health supplement official bottle">
           </div>
           <div class="showcase-body">
             <div class="showcase-kicker">Featured today</div>
@@ -2069,6 +2202,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/wellness-1559757175.jpg") {
+      return Response.redirect(`${siteUrl}/assets/neurovera-brain-health-memory-focus-supplement-official-bottle-v1.jpg`, 301);
+    }
+    if (url.pathname === "/assets/neurovera-brain-health-memory-focus-supplement-official-bottle-v1.jpg") {
       const binary = Uint8Array.from(atob(img1559757175Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2087,6 +2223,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/joint-genesis-official-v1.webp") {
+      return Response.redirect(`${siteUrl}/assets/joint-genesis-joint-support-mobility-supplement-official-bottle-v2.webp`, 301);
+    }
+    if (url.pathname === "/assets/joint-genesis-joint-support-mobility-supplement-official-bottle-v2.webp") {
       const upstream = "https://jointgenesissupp.com/assets/images/joint-genesis-biodynamix.webp";
       try {
         const response = await fetch(upstream, {
@@ -2112,10 +2251,10 @@ export default {
         }
       });
     }
-    if (url.pathname === "/assets/wellness-150557639927.jpg") {
-      return Response.redirect(`${siteUrl}/assets/sugar-defender-official-hero-4k-v1.webp`, 301);
+    if (url.pathname === "/assets/wellness-150557639927.jpg" || url.pathname === "/assets/sugar-defender-official-hero-4k-v1.webp") {
+      return Response.redirect(`${siteUrl}/assets/sugar-defender-blood-sugar-support-formula-official-bottles-4k-v2.webp`, 301);
     }
-    if (url.pathname === "/assets/sugar-defender-official-hero-4k-v1.webp") {
+    if (url.pathname === "/assets/sugar-defender-blood-sugar-support-formula-official-bottles-4k-v2.webp") {
       const binary = Uint8Array.from(atob(sugarDefenderHero4kV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2125,6 +2264,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/wellness-150939136636.jpg") {
+      return Response.redirect(`${siteUrl}/assets/energy-revolution-system-home-energy-guide-official-image-v1.jpg`, 301);
+    }
+    if (url.pathname === "/assets/energy-revolution-system-home-energy-guide-official-image-v1.jpg") {
       const binary = Uint8Array.from(atob(img150939136636Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2133,16 +2275,22 @@ export default {
         }
       });
     }
-    if (url.pathname === "/assets/wellness-151206977299.jpg") {
-      const binary = Uint8Array.from(atob(img151206977299Base64), (char) => char.charCodeAt(0));
+    if (url.pathname === "/assets/wellness-151206977299.jpg" || url.pathname === "/assets/lymph-tonic-official-hero-4k-v1.webp" || url.pathname === "/assets/lymph-tonic-official-hero-4k-v2.webp") {
+      return Response.redirect(`${siteUrl}/assets/lymph-tonic-official-bottle-lymphatic-drainage-support-4k-v3.webp`, 301);
+    }
+    if (url.pathname === "/assets/lymph-tonic-official-bottle-lymphatic-drainage-support-4k-v3.webp") {
+      const binary = Uint8Array.from(atob(lymphTonicHero4kV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
-          "content-type": "image/jpeg",
+          "content-type": "image/webp",
           "cache-control": "public, max-age=31536000, immutable"
         }
       });
     }
     if (url.pathname === "/assets/wellness-149547447228.jpg") {
+      return Response.redirect(`${siteUrl}/assets/java-burn-coffee-metabolism-routine-supplement-official-image-v1.jpg`, 301);
+    }
+    if (url.pathname === "/assets/java-burn-coffee-metabolism-routine-supplement-official-image-v1.jpg") {
       const binary = Uint8Array.from(atob(img149547447228Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2152,6 +2300,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/wellness-149883716792.jpg") {
+      return Response.redirect(`${siteUrl}/assets/visiflora-eye-gut-wellness-supplement-official-image-v1.jpg`, 301);
+    }
+    if (url.pathname === "/assets/visiflora-eye-gut-wellness-supplement-official-image-v1.jpg") {
       const binary = Uint8Array.from(atob(img149883716792Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2170,6 +2321,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/prodentim-product-hero-v3.jpg") {
+      return Response.redirect(`${siteUrl}/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg`, 301);
+    }
+    if (url.pathname === "/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg") {
       const binary = Uint8Array.from(atob(prodentimProductHeroV2Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2179,6 +2333,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/soulmate-sketch-gallery-v1.png") {
+      return Response.redirect(`${siteUrl}/assets/soulmate-sketch-psychic-soulmate-drawing-reading-official-image-v2.png`, 301);
+    }
+    if (url.pathname === "/assets/soulmate-sketch-psychic-soulmate-drawing-reading-official-image-v2.png") {
       const binary = Uint8Array.from(atob(soulmateSketchGalleryV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
@@ -2188,6 +2345,9 @@ export default {
       });
     }
     if (url.pathname === "/assets/audifort-gallery-v1.png" || url.pathname === "/assets/audifort-official-hero-4k-v1.webp") {
+      return Response.redirect(`${siteUrl}/assets/audifort-hearing-support-supplement-official-bottle-4k-v2.webp`, 301);
+    }
+    if (url.pathname === "/assets/audifort-hearing-support-supplement-official-bottle-4k-v2.webp") {
       const binary = Uint8Array.from(atob(audifortGalleryV1Base64), (char) => char.charCodeAt(0));
       return new Response(binary, {
         headers: {
