@@ -13,12 +13,12 @@ const products = [
     name: "ProDentim",
     vendor: "prodentim",
     category: "Dental Health",
-    badge: "Top ClickBank offer",
+    badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching ProDentim reviews, official website access, price, ingredients, gums, teeth and fresh-breath routines.",
     seoKeywords: ["ProDentim official website", "ProDentim reviews 2026", "ProDentim review", "ProDentim real reviews", "ProDentim customer reviews", "ProDentim negative reviews", "ProDentim before and after", "ProDentim price", "ProDentim ingredients", "ProDentim complaints", "ProDentim side effects", "ProDentim scam", "ProDentim legit", "ProDentim refund policy", "ProDentim bonuses", "ProDentim how to use", "ProDentim Amazon", "ProDentim Walmart", "ProDentim where to buy", "oral probiotic supplement", "dental probiotic supplement", "probiotics for teeth", "best probiotics for teeth", "dental health supplement", "gum health support", "fresh breath routine"],
-    bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink to seller checkout", "Official checkout handles current pricing, bundles, bonuses, shipping and refund terms", "Best for buyers comparing oral probiotics before choosing a dental-health add-on"],
+    bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink to seller checkout", "Official checkout handles current pricing, bundles, bonuses, shipping and refund terms", "Best for buyers comparing oral probiotics before choosing a dental-health add-on"],
     cta: "View ProDentim official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim"
   },
@@ -26,12 +26,12 @@ const products = [
     name: "NeuroVera",
     vendor: "neurovera",
     category: "Brain Wellness",
-    badge: "Top ClickBank offer",
+    badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/wellness-1559757175.jpg",
     summary: "A brain-health supplement offer for adults comparing memory, focus, and daily cognitive-support routines.",
     seoKeywords: ["NeuroVera official website", "NeuroVera reviews 2026", "NeuroVera review", "Neuro Vera reviews", "NeuroVera complaints", "NeuroVera ingredients", "NeuroVera side effects", "NeuroVera scam", "NeuroVera legit", "NeuroVera price", "NeuroVera refund policy", "NeuroVera how to use", "NeuroVera Amazon", "NeuroVera Walmart", "brain health supplement", "memory support supplement", "focus supplement for adults", "mental clarity supplement", "cognitive support routine", "nootropic supplement", "where to buy NeuroVera"],
-    bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets", "Official checkout handles current pricing, bundles, shipping and refund terms"],
+    bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Broad audience fit across English-speaking markets", "Official checkout handles current pricing, bundles, shipping and refund terms"],
     cta: "View NeuroVera official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=neurovera"
   },
@@ -39,12 +39,12 @@ const products = [
     name: "Joint Genesis",
     vendor: "jointgen",
     category: "Joint Support",
-    badge: "Ranked ClickBank offer",
+    badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/wellness-151861101211.jpg",
     summary: "A joint-support supplement offer for adults researching mobility, flexibility, and daily healthy-aging routines.",
     seoKeywords: ["Joint Genesis official website", "Joint Genesis reviews", "Joint Genesis price", "joint support supplement", "mobility support supplement", "flexibility support", "healthy aging supplement", "where to buy Joint Genesis"],
-    bullets: ["Cited by ClickBank among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
+    bullets: ["Cited among top dietary supplement products", "Confirmed affiliate HopLink", "Strong fit for the US 40+ wellness audience"],
     cta: "View Joint Genesis official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=jointgen"
   },
@@ -52,12 +52,12 @@ const products = [
     name: "Sugar Defender",
     vendor: "sugardef",
     category: "Blood Sugar Support",
-    badge: "Ranked ClickBank offer",
+    badge: "Ranked marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/wellness-150557639927.jpg",
     summary: "A blood-sugar support supplement offer for buyers comparing plant-based wellness formulas and energy-focused routines.",
     seoKeywords: ["Sugar Defender official website", "Sugar Defender reviews", "Sugar Defender price", "blood sugar support supplement", "glucose support formula", "plant based wellness drops", "energy support routine", "where to buy Sugar Defender"],
-    bullets: ["Ranked in ClickBank's supplement affiliate list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
+    bullets: ["Ranked in a supplement affiliate marketplace list", "Confirmed affiliate HopLink", "Built for mobile-heavy health audiences"],
     cta: "View Sugar Defender official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=sugardef"
   },
@@ -65,12 +65,12 @@ const products = [
     name: "Audifort",
     vendor: "audifort",
     category: "Hearing Support",
-    badge: "Top ClickBank offer",
+    badge: "Top marketplace offer",
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/audifort-gallery-v1.png",
     summary: "A hearing-support wellness supplement offer for adults comparing natural routines, bundle discounts, and official checkout protection.",
     seoKeywords: ["Audifort official website", "Audifort reviews", "Audifort price", "hearing support supplement", "ear health supplement", "natural hearing support", "hearing wellness routine", "where to buy Audifort"],
-    bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
+    bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Official page confirms current bundles and terms"],
     cta: "Check Audifort availability",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=audifort"
   },
@@ -78,12 +78,12 @@ const products = [
     name: "Soulmate Sketch",
     vendor: "tinapsc",
     category: "Spiritual Reading",
-    badge: "Top ClickBank offer",
+    badge: "Top marketplace offer",
     market: "Digital product; available online after purchase terms are confirmed",
     image: "https://www.bestwellnessguide.com/assets/soulmate-sketch-gallery-v1.png",
     summary: "A long-running digital spirituality offer for buyers interested in soulmate art, relationship insight, and personal readings.",
     seoKeywords: ["Soulmate Sketch official website", "Soulmate Sketch reviews", "Soulmate Sketch price", "soulmate drawing reading", "psychic soulmate sketch", "relationship reading online", "digital soulmate portrait", "where to buy Soulmate Sketch"],
-    bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink", "Digital delivery removes physical shipping friction"],
+    bullets: ["Ranked among August 2026 top marketplace offers", "Confirmed affiliate HopLink", "Digital delivery removes physical shipping friction"],
     cta: "View Soulmate Sketch official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=tinapsc"
   },
@@ -96,7 +96,7 @@ const products = [
     image: "https://www.bestwellnessguide.com/assets/wellness-150939136636.jpg",
     summary: "A digital guide offer for homeowners and preparedness buyers researching lower-cost energy ideas and self-reliance projects.",
     seoKeywords: ["Energy Revolution System official website", "Energy Revolution System reviews", "home energy guide", "alternative energy system", "off grid energy guide", "lower electric bill ideas", "DIY energy plans", "where to buy Energy Revolution System"],
-    bullets: ["Featured by ClickBank in July 2026 top offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
+    bullets: ["Featured among July 2026 top marketplace offers", "Confirmed affiliate HopLink", "Strong angle for English-speaking utility-cost audiences"],
     cta: "View Energy Revolution official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=enrev"
   },
@@ -1671,7 +1671,7 @@ function page() {
           <div class="showcase-body">
             <div class="showcase-kicker">Featured today</div>
             <h2>ProDentim</h2>
-            <p>One of ClickBank's top offers for August 2026, placed first in the storefront because the niche, payout profile and buyer intent are strong.</p>
+            <p>One of the top marketplace offers for August 2026, placed first in the storefront because the niche, payout profile and buyer intent are strong.</p>
             <a class="button primary" href="https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim&tid=bwgprodentimfeat" data-product="ProDentim" data-vendor="prodentim" data-tid="bwgprodentimfeat" rel="nofollow sponsored noopener" target="_blank">Check Official Pricing</a>
           </div>
         </aside>
