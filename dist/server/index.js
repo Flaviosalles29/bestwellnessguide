@@ -17,7 +17,7 @@ const products = [
     market: "Physical product; buyer must confirm delivery country on the official checkout",
     image: "https://www.bestwellnessguide.com/assets/prodentim-product-hero-v3.jpg",
     summary: "A leading dental-health offer built around oral microbiome support, positioned for buyers researching ProDentim reviews, official website access, price, ingredients, gums, teeth and fresh-breath routines.",
-    seoKeywords: ["ProDentim official website", "ProDentim reviews 2026", "ProDentim review", "ProDentim price", "ProDentim ingredients", "ProDentim complaints", "ProDentim where to buy", "oral probiotic supplement", "dental probiotic supplement", "probiotics for teeth", "best probiotics for teeth", "dental health supplement", "gum health support", "fresh breath routine"],
+    seoKeywords: ["ProDentim official website", "ProDentim reviews 2026", "ProDentim review", "ProDentim real reviews", "ProDentim customer reviews", "ProDentim negative reviews", "ProDentim before and after", "ProDentim price", "ProDentim ingredients", "ProDentim complaints", "ProDentim side effects", "ProDentim scam", "ProDentim legit", "ProDentim refund policy", "ProDentim bonuses", "ProDentim how to use", "ProDentim Amazon", "ProDentim Walmart", "ProDentim where to buy", "oral probiotic supplement", "dental probiotic supplement", "probiotics for teeth", "best probiotics for teeth", "dental health supplement", "gum health support", "fresh breath routine"],
     bullets: ["Ranked by ClickBank among August 2026 top offers", "Confirmed affiliate HopLink to seller checkout", "Official checkout handles current pricing, bundles, bonuses, shipping and refund terms", "Best for buyers comparing oral probiotics before choosing a dental-health add-on"],
     cta: "View ProDentim official offer",
     href: "https://hop.clickbank.net/?affiliate=bwellguide&vendor=prodentim"
@@ -514,8 +514,16 @@ const blogPosts = [
       <p>The safest research path is to use our <a href="/offers/prodentim">ProDentim official offer page</a>, then confirm final seller, price, bundle, bonus, shipping region and refund terms on the checkout before payment. Avoid third-party marketplace listings when the seller identity or refund policy is unclear.</p>
       <h2>Ingredients and positioning</h2>
       <p>Competing ProDentim pages commonly discuss oral probiotic strains, prebiotic support, peppermint-style freshness and dental-routine use. Buyers should still confirm the current Supplement Facts panel on the seller page because formulas, labels and package details can change.</p>
-      <h2>Complaints and risk checks</h2>
-      <p>The most useful complaint checks are not hype-based: review shipping time, refund instructions, subscription/billing language, seller identity and whether claims sound like medical promises. A trustworthy ProDentim page should explain those checks before pushing the checkout button.</p>
+      <h2>Complaints, scam checks and side effects</h2>
+      <p>The most useful complaint checks are not hype-based: review shipping time, refund instructions, subscription/billing language, seller identity, side-effect cautions and whether claims sound like medical promises. A trustworthy ProDentim page should explain those checks before pushing the checkout button.</p>
+      <h2>How to use ProDentim</h2>
+      <p>Competitor pages usually describe ProDentim as a daily chewable oral probiotic. Confirm the current directions on the product label and official seller page, especially if you take medication, have allergies, are pregnant, are nursing or have an active dental condition.</p>
+      <h2>Refund policy and bonuses</h2>
+      <p>Many ranking pages emphasize a 60-day guarantee, bundle savings and bonuses. Those are checkout-controlled terms, so verify the current guarantee, bonus availability, shipping cost and return instructions on the seller page before ordering.</p>
+      <h2>Amazon, Walmart and third-party listings</h2>
+      <p>Searchers often look for ProDentim on Amazon or Walmart after reading reviews. The safer approach is to compare seller identity, refund terms, package photos and current availability before buying from any marketplace. If the official seller recommends a specific checkout, use that page to confirm authentic pricing and guarantee language.</p>
+      <h2>Real reviews, negative reviews and before-after claims</h2>
+      <p>Before-after claims can be persuasive, but they are also easy to exaggerate. Prioritize reviews that describe routine, timing, shipping, refund experience and realistic dental-hygiene expectations instead of guaranteed outcomes.</p>
       <h2>Buyer checklist</h2>
       <ul>
         <li>Confirm the current bundle pricing and per-bottle cost on the official page</li>
@@ -536,7 +544,12 @@ const blogPosts = [
       { q: "Where can I confirm the current ProDentim price?", a: "Pricing, bundles, bonuses and refund terms are set and confirmed on the official checkout page linked in this guide." },
       { q: "What ProDentim complaints should buyers check?", a: "Check shipping timing, refund instructions, billing terms, seller identity and whether a page makes unrealistic medical promises." },
       { q: "Is ProDentim FDA approved?", a: "Dietary supplements are not approved by the FDA in the same way prescription drugs are. Confirm manufacturing and label claims on the official seller page." },
-      { q: "Who is ProDentim best suited for?", a: "Adults comparing oral probiotic supplements as an add-on to normal brushing, flossing and dental visits." }
+      { q: "Who is ProDentim best suited for?", a: "Adults comparing oral probiotic supplements as an add-on to normal brushing, flossing and dental visits." },
+      { q: "Are ProDentim bonuses always available?", a: "Bonus availability can change, so confirm any current bonuses on the official checkout page before ordering." },
+      { q: "How should ProDentim be used?", a: "Follow the current directions on the official product label and seller page. Do not use it as a substitute for dental care." },
+      { q: "Is ProDentim a scam?", a: "The safer question is whether the seller page, checkout, refund terms and claims are transparent. Avoid pages promising guaranteed medical outcomes or unclear seller identity." },
+      { q: "Should I buy ProDentim on Amazon or Walmart?", a: "Compare seller identity, refund terms and package details carefully. The official seller checkout is where current pricing, guarantee language and bundle terms should be confirmed." },
+      { q: "Are ProDentim before-and-after reviews reliable?", a: "Use them cautiously. Give more weight to detailed reviews about routine, shipping, refund experience and realistic expectations than dramatic guaranteed-result claims." }
     ]
   },
   {
@@ -775,6 +788,18 @@ const blogAliases = new Map([
   ["prodentim-price", "prodentim-review-best-probiotics-for-teeth"],
   ["prodentim-ingredients", "prodentim-review-best-probiotics-for-teeth"],
   ["prodentim-complaints", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-side-effects", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-scam", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-legit", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-refund-policy", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-bonuses", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-how-to-use", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-amazon", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-walmart", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-customer-reviews", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-real-reviews", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-negative-reviews", "prodentim-review-best-probiotics-for-teeth"],
+  ["prodentim-before-and-after", "prodentim-review-best-probiotics-for-teeth"],
   ["where-to-buy-prodentim", "prodentim-review-best-probiotics-for-teeth"],
   ["probiotics-for-teeth-prodentim", "prodentim-review-best-probiotics-for-teeth"],
   ["java-burn-review-2026", "java-burn-coffee-supplement-review"],
@@ -1013,6 +1038,40 @@ function blogIndexPage() {
 }
 
 function productStructuredData(product, relatedGuide) {
+  const productFaqs = [
+    {
+      "@type": "Question",
+      name: `Is ${product.name} a legitimate offer?`,
+      acceptedAnswer: { "@type": "Answer", text: `${product.name} is listed with an active, confirmed affiliate link. Pricing, guarantees and shipping are set by the official seller and confirmed at checkout.` }
+    },
+    {
+      "@type": "Question",
+      name: `Where can I buy ${product.name}?`,
+      acceptedAnswer: { "@type": "Answer", text: `Through the official checkout page linked from this page. We recommend avoiding third-party marketplaces that are not the seller's own official page.` }
+    },
+    {
+      "@type": "Question",
+      name: `Does ${product.name} offer a refund?`,
+      acceptedAnswer: { "@type": "Answer", text: `Refund terms are set by the seller and disclosed on the official checkout page before you complete payment.` }
+    },
+    ...(product.vendor === "prodentim" ? [
+      {
+        "@type": "Question",
+        name: "What ProDentim complaints should buyers check?",
+        acceptedAnswer: { "@type": "Answer", text: "Check shipping timing, refund instructions, billing terms, seller identity, marketplace listings and whether the page makes unrealistic medical promises." }
+      },
+      {
+        "@type": "Question",
+        name: "Are ProDentim bonuses always available?",
+        acceptedAnswer: { "@type": "Answer", text: "Bonus availability can change. Confirm current bonuses, bundles and checkout terms on the official seller page before ordering." }
+      },
+      {
+        "@type": "Question",
+        name: "How should ProDentim be used?",
+        acceptedAnswer: { "@type": "Answer", text: "Follow the current product label and official seller instructions. Do not use ProDentim as a replacement for brushing, flossing or dental care." }
+      }
+    ] : [])
+  ];
   return JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -1028,23 +1087,7 @@ function productStructuredData(product, relatedGuide) {
       {
         "@type": "FAQPage",
         "@id": `${productUrl(product)}#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: `Is ${product.name} a legitimate offer?`,
-            acceptedAnswer: { "@type": "Answer", text: `${product.name} is listed with an active, confirmed affiliate link. Pricing, guarantees and shipping are set by the official seller and confirmed at checkout.` }
-          },
-          {
-            "@type": "Question",
-            name: `Where can I buy ${product.name}?`,
-            acceptedAnswer: { "@type": "Answer", text: `Through the official checkout page linked from this page. We recommend avoiding third-party marketplaces that are not the seller's own official page.` }
-          },
-          {
-            "@type": "Question",
-            name: `Does ${product.name} offer a refund?`,
-            acceptedAnswer: { "@type": "Answer", text: `Refund terms are set by the seller and disclosed on the official checkout page before you complete payment.` }
-          }
-        ]
+        mainEntity: productFaqs
       },
       {
         "@type": "BreadcrumbList",
@@ -1707,6 +1750,18 @@ export default {
       "/prodentim-price",
       "/prodentim-ingredients",
       "/prodentim-complaints",
+      "/prodentim-side-effects",
+      "/prodentim-scam",
+      "/prodentim-legit",
+      "/prodentim-refund-policy",
+      "/prodentim-bonuses",
+      "/prodentim-how-to-use",
+      "/prodentim-amazon",
+      "/prodentim-walmart",
+      "/prodentim-customer-reviews",
+      "/prodentim-real-reviews",
+      "/prodentim-negative-reviews",
+      "/prodentim-before-and-after",
       "/probiotics-for-teeth",
       "/best-probiotics-for-teeth",
       "/oral-probiotic-supplement",
