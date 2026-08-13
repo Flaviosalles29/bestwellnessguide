@@ -2,6 +2,15 @@ name = "bestwellnessguide"
 main = "dist/server/index.js"
 compatibility_date = "2026-08-01"
 account_id = "c86da53aa7d381a92989bef392330783"
+workers_dev = false
+
+[[routes]]
+pattern = "bestwellnessguide.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.bestwellnessguide.com"
+custom_domain = true
 
 # Daily IndexNow ping at 06:00 UTC (03:00 BRT) so Bing/Yahoo pick up changes
 # without waiting for their own crawl schedule.
