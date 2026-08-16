@@ -2046,7 +2046,7 @@ export default {
   },
   async fetch(request) {
     const url = new URL(request.url);
-    if (url.hostname === "bestwellnessguide.com") {
+    if (url.hostname !== "www.bestwellnessguide.com") {
       url.hostname = "www.bestwellnessguide.com";
       return Response.redirect(url.toString(), 301);
     }
