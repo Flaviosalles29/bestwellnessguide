@@ -1858,8 +1858,8 @@ function supplementsComparisonPage() {
 }
 
 function page() {
-  const title = "Best Wellness Guide - Compare Official Wellness Offers & Independent Reviews";
-  const description = "Best Wellness Guide: independent research on top wellness offers. Compare official prices, reviews, refund terms and buyer guides for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
+  const title = "Supplement Reviews & Official Offers | Best Wellness Guide";
+  const description = "Compare supplement reviews, official website links, prices, ingredients, refund terms and safe checkout information for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
   const canonical = `${siteUrl}/`;
   return `<!doctype html>
 <html lang="en-US">
