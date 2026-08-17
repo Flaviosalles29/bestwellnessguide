@@ -409,9 +409,8 @@ function structuredData() {
         url: `${siteUrl}/`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${siteUrl}/#website` },
-        // Described as an ItemList of pages, not as Offer nodes: we are an
-        // affiliate directory and never set prices, and an Offer without
-        // price/priceCurrency is invalid for Google's product rich results.
+        // Described as an ItemList of pages rather than price-bearing Offer
+        // nodes, because checkout prices and terms are confirmed off-site.
         mainEntity: {
           "@type": "ItemList",
           itemListElement: products.map((product, index) => ({
@@ -1335,12 +1334,16 @@ function productStructuredData(product, relatedGuide) {
       {
         "@type": "WebPage",
         "@id": `${productUrl(product)}#webpage`,
-        name: product.name,
+        name: `${product.name} Review, Price, Ingredients and Official Website`,
         about: product.category,
         image: productContentImage(product),
-        description: product.summary,
+        description: `Compare ${product.name} reviews, price, ingredients, refund terms, official website access and safe checkout information through Best Wellness Guide.`,
         keywords: product.seoKeywords.join(", "),
-        url: productUrl(product)
+        url: productUrl(product),
+        inLanguage: "en-US",
+        dateModified: contentLastModified,
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        publisher: { "@id": `${siteUrl}/#organization` }
       },
       {
         "@type": "ImageObject",
