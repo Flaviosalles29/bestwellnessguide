@@ -1872,6 +1872,7 @@ function page() {
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
   <title>${title}</title>
   <meta name="description" content="${description}">
+  <meta name="keywords" content="${allSeoKeywords().join(", ")}">
   <meta http-equiv="content-language" content="en-US">
   <meta name="language" content="English">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
