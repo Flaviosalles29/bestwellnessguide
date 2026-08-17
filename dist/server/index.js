@@ -1927,7 +1927,7 @@ function page() {
       </nav>
       <div class="hero-grid">
         <div>
-          <h1>Best Wellness Guide: Supplement Reviews, Official Offers, Prices & Buyer Guides</h1>
+          <h1>Best Wellness Guide: Supplement Reviews, Official Offers & Buyer Guides</h1>
           <p>Best Wellness Guide helps buyers compare supplement reviews, official website links, prices, ingredients, refund terms, and safe checkout information before purchasing from the seller.</p>
           <a class="button" href="#products">Browse products</a><a class="button secondary" href="#checklist">Buyer checklist</a>
         </div>
