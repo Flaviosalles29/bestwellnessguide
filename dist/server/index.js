@@ -2012,10 +2012,10 @@ function page() {
 }
 
 function getCommonHeaders(path = "") {
-  const supportsWebp = true; // Cloudflare detects
   return {
     "cache-control": path.startsWith("/assets/") || path.match(/\.(svg|ico|png|jpg)$/) ? "public, max-age=31536000, immutable" : "public, max-age=300",
     "content-language": "en-US",
+    "last-modified": new Date(`${contentLastModified}T00:00:00Z`).toUTCString(),
     "x-content-type-options": "nosniff",
     "x-frame-options": "SAMEORIGIN",
     "x-xss-protection": "1; mode=block",
