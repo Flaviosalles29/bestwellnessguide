@@ -1509,8 +1509,8 @@ function productPage(product) {
     <ul class="blog-related">${otherHtml}</ul>
   `;
   return blogLayout({
-    title: `${product.name} Official Offer, Reviews and Checkout | Best Wellness Guide`,
-    description: `Compare ${product.name} details, reviews, price research and official checkout access through Best Wellness Guide.`,
+    title: `${product.name} Review, Price, Ingredients & Official Website`,
+    description: `Compare ${product.name} reviews, price, ingredients, refund terms, official website access and safe checkout information through Best Wellness Guide.`,
     canonical: productUrl(product),
     bodyHtml: body,
     jsonLd: productStructuredData(product),
