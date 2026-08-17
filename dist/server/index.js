@@ -2149,6 +2149,22 @@ export default {
     if (neuroveraResearchPaths.has(url.pathname.replace(/\/$/, ""))) {
       return Response.redirect(`${siteUrl}/blog/neurovera-brain-supplement-review`, 301);
     }
+    const intentPath = url.pathname.replace(/\/$/, "");
+    const offerIntentSuffixes = ["official", "official-website", "buy", "where-to-buy"];
+    const researchIntentSuffixes = ["review", "reviews", "review-2026", "reviews-2026", "price", "ingredients", "complaints", "side-effects", "refund-policy", "legit", "scam"];
+    for (const product of products) {
+      const canonicalSlug = slugify(product.name);
+      const aliasSlugs = new Set([canonicalSlug, canonicalSlug.replace(/-2-0$/, "")]);
+      const relatedGuide = blogPosts.find((post) => post.product?.vendor === product.vendor);
+      for (const aliasSlug of aliasSlugs) {
+        if (intentPath === `/${aliasSlug}` || offerIntentSuffixes.some((suffix) => intentPath === `/${aliasSlug}-${suffix}`)) {
+          return Response.redirect(productUrl(product), 301);
+        }
+        if (researchIntentSuffixes.some((suffix) => intentPath === `/${aliasSlug}-${suffix}`)) {
+          return Response.redirect(relatedGuide ? blogPostUrl(relatedGuide) : productUrl(product), 301);
+        }
+      }
+    }
     const acceptsWebp = request.headers.get("accept")?.includes("image/webp");
     const productMatch = url.pathname.match(/^\/offers\/([^/]+)\/?$/);
     const activeProduct = productMatch ? products.find((product) => slugify(product.name) === productMatch[1]) : null;
