@@ -2077,7 +2077,12 @@ function getCommonHeaders(path = "") {
     "permissions-policy": "geolocation=(), microphone=(), camera=()",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "link": `<${siteUrl}/favicon.ico?v=${faviconVersion}>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`,
-    ...(isStaticAsset ? {} : { "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" }),
+    // GA4 fans out over several collection hosts (analytics.google.com,
+    // stats.g.doubleclick.net, www.google.com) beyond the obvious
+    // www.google-analytics.com. Listing only the obvious one silently drops
+    // every browser-side pageview, so keep connect-src in sync with the hosts
+    // gtag actually calls.
+    ...(isStaticAsset ? {} : { "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://www.clarity.ms https://*.clarity.ms https://c.bing.com https://cloudflareinsights.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" }),
   };
 }
 
