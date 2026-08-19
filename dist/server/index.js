@@ -1717,15 +1717,21 @@ function supplementsComparisonPage() {
         </tr>
       </thead>
       <tbody>
-        ${products.map((p) => `
+        ${products.map((p) => {
+          const href = trackedHref(p);
+          const tid = new URL(href).searchParams.get("tid");
+          // data-vendor/data-tid are what affiliateGuardianScript keys off; a
+          // link without them is invisible to the tamper check.
+          return `
           <tr>
             <td><strong>${p.name}</strong></td>
             <td>${p.category}</td>
             <td>${p.summary.substring(0, 50)}...</td>
             <td>Check at checkout</td>
-            <td><a href="${trackedHref(p)}" class="table-btn" rel="nofollow sponsored" target="_blank">View Price</a></td>
+            <td><a href="${href}" class="table-btn" data-product="${p.name}" data-vendor="${p.vendor}" data-tid="${tid}" rel="nofollow sponsored noopener" target="_blank">View Price</a></td>
           </tr>
-        `).join("")}
+        `;
+        }).join("")}
       </tbody>
     </table>
   `;
