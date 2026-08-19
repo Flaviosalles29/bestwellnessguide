@@ -465,7 +465,7 @@ const blogPosts = [
     category: "About",
     title: "What is Best Wellness Guide? Our Mission, Research, and Buyer Commitment",
     seoTitle: "What is Best Wellness Guide? Our Mission and Research",
-    description: "About Best Wellness Guide: an independent wellness research platform comparing official wellness offers, pricing, reviews, and checkout information for informed buyers.",
+    description: "About Best Wellness Guide: an independent platform comparing official wellness offers, pricing, reviews and checkout details for buyers.",
     keywords: ["best wellness guide", "wellness guide", "independent wellness research", "supplement research", "wellness product comparison", "official wellness offers"],
     publishDate: "2026-08-03",
     product: null,
@@ -1893,7 +1893,9 @@ function supplementsComparisonPage() {
 
 function page() {
   const title = "Supplement Reviews & Official Offers | Best Wellness Guide";
-  const description = "Compare supplement reviews, official website links, prices, ingredients, refund terms and safe checkout information for ProDentim, NeuroVera, Joint Genesis, Sugar Defender, Audifort, Java Burn and more.";
+  // Google cuts the SERP snippet near 160 characters; the old 202-character
+  // version lost the product names it was there to surface.
+  const description = "Compare supplement reviews, official links, prices, ingredients and refund terms for ProDentim, NeuroVera, Joint Genesis, Sugar Defender and more.";
   const canonical = `${siteUrl}/`;
   return `<!doctype html>
 <html lang="en-US">
