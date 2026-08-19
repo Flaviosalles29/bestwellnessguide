@@ -464,6 +464,7 @@ const blogPosts = [
     slug: "about-best-wellness-guide",
     category: "About",
     title: "What is Best Wellness Guide? Our Mission, Research, and Buyer Commitment",
+    seoTitle: "What is Best Wellness Guide? Our Mission and Research",
     description: "About Best Wellness Guide: an independent wellness research platform comparing official wellness offers, pricing, reviews, and checkout information for informed buyers.",
     keywords: ["best wellness guide", "wellness guide", "independent wellness research", "supplement research", "wellness product comparison", "official wellness offers"],
     publishDate: "2026-08-03",
@@ -603,6 +604,7 @@ const blogPosts = [
     slug: "brain-health-supplements-neurovera-guide",
     category: "Brain Wellness",
     title: "Brain Health Supplements 2026: NeuroVera and Memory Support Guide",
+    seoTitle: "Brain Health Supplements 2026: NeuroVera Memory Guide",
     description: "A 2026 guide to brain health supplements, NeuroVera reviews, memory support, focus routines and what buyers should verify before checkout.",
     keywords: ["brain health supplements 2026", "neurovera reviews", "neuro vera reviews", "memory support supplement", "focus supplement", "brain supplement"],
     publishDate: "2026-08-08",
@@ -631,6 +633,7 @@ const blogPosts = [
     slug: "hearing-support-supplement",
     category: "Hearing Support",
     title: "Hearing Support Supplement 2026: Evidence, Safety and Audifort Buyer Guide",
+    seoTitle: "Hearing Support Supplement 2026: Audifort Buyer Guide",
     description: "A 2026 hearing support supplement guide for US buyers comparing Audifort, ear health routines, evidence, safety, refund terms and official checkout details.",
     keywords: ["hearing support supplement", "hearing support supplements", "best hearing support supplement", "ear health supplement", "natural hearing support", "audifort review", "audifort reviews", "tinnitus supplement"],
     publishDate: "2026-08-09",
@@ -703,6 +706,7 @@ const blogPosts = [
     slug: "prodentim-review-best-probiotics-for-teeth",
     category: "Dental Health",
     title: "ProDentim Reviews 2026: Official Website, Price, Ingredients and Complaints",
+    seoTitle: "ProDentim Reviews 2026: Price, Ingredients, Complaints",
     description: "ProDentim reviews 2026 buyer guide: official website access, price research, ingredients, complaints, oral probiotics, refund terms and where to buy safely.",
     keywords: ["prodentim reviews 2026", "prodentim review", "prodentim official website", "prodentim price", "prodentim ingredients", "prodentim complaints", "where to buy prodentim", "probiotics for teeth", "best probiotics for teeth", "teeth probiotics", "gum health supplement", "oral probiotics", "natural teeth whitening"],
     publishDate: "2026-08-03",
@@ -757,6 +761,7 @@ const blogPosts = [
     slug: "neurovera-brain-supplement-review",
     category: "Brain Wellness",
     title: "NeuroVera Reviews 2026: Official Website, Ingredients, Price and Complaints",
+    seoTitle: "NeuroVera Reviews 2026: Price, Ingredients, Complaints",
     description: "NeuroVera reviews 2026 buyer guide: official website access, ingredients, complaints, side effects, price research, refund policy and where to buy safely.",
     keywords: ["neurovera reviews 2026", "neurovera review", "neuro vera reviews", "neurovera official website", "neurovera complaints", "neurovera ingredients", "neurovera side effects", "neurovera scam", "neurovera legit", "neurovera price", "neurovera refund policy", "neurovera how to use", "brain supplement", "memory supplement", "focus supplement", "mental clarity supplement", "nootropic supplement", "best brain health supplement", "cognitive function supplement", "memory enhancement"],
     publishDate: "2026-08-03",
@@ -805,6 +810,7 @@ const blogPosts = [
     slug: "natural-energy-without-caffeine-energy-revolution-system",
     category: "Alternative Energy",
     title: "Natural Energy Without Caffeine Crash: Energy Revolution System Guide",
+    seoTitle: "Natural Energy Without Caffeine: Energy Revolution",
     description: "What to know about the Energy Revolution System digital guide before buying, including who it fits and what to check at checkout.",
     keywords: ["natural energy supplement", "energy without caffeine", "sustained energy", "best energy supplement", "natural energy drink alternative"],
     publishDate: "2026-08-03",
@@ -832,6 +838,7 @@ const blogPosts = [
     slug: "visiflora-vision-health-supplement-guide",
     category: "Eye + Gut Wellness",
     title: "Vision Health Supplements for Eye Strain and Blue Light: VisiFlora Guide",
+    seoTitle: "Vision Health Supplements for Eye Strain: VisiFlora",
     description: "An overview of VisiFlora for readers comparing eye health and gut wellness supplements, including what to confirm before buying.",
     keywords: ["vision health supplement", "eye health supplement", "best supplement for vision", "natural vision improvement", "eye strain relief", "blue light protection"],
     publishDate: "2026-08-03",
@@ -859,6 +866,7 @@ const blogPosts = [
     slug: "lymph-tonic-lymphatic-immune-support-guide",
     category: "Lymphatic Support",
     title: "Lymphatic System Cleanse and Immune Support: Lymph Tonic Guide",
+    seoTitle: "Lymphatic Cleanse and Immune Support: Lymph Tonic",
     description: "What to know about Lymph Tonic for readers researching lymphatic drainage support and herbal immune-support routines.",
     keywords: ["lymphatic system cleanse", "immune system boost", "natural detox supplement", "lymph drainage support"],
     publishDate: "2026-08-03",
@@ -945,6 +953,7 @@ const blogPosts = [
     slug: "soulmate-sketch-psychic-drawing-review",
     category: "Spiritual Reading",
     title: "Soulmate Sketch Review: Psychic Drawing and Relationship Reading Guide",
+    seoTitle: "Soulmate Sketch Review: Psychic Drawing and Readings",
     description: "What to know about Soulmate Sketch for readers researching psychic soulmate drawings and digital relationship readings before buying.",
     keywords: ["psychic soulmate sketch", "soulmate drawing reading", "relationship reading online", "digital soulmate portrait", "Soulmate Sketch reviews"],
     publishDate: "2026-08-03",
@@ -972,6 +981,7 @@ const blogPosts = [
     slug: "java-burn-coffee-supplement-review",
     category: "Coffee Routine",
     title: "Java Burn Review 2026: Coffee Metabolism Supplement Buyer Guide",
+    seoTitle: "Java Burn Review 2026: Coffee Metabolism Supplement",
     description: "Java Burn review 2026 buyer guide: compare coffee-compatible metabolism supplement claims, ingredients, bundles, and checkout terms.",
     keywords: ["java burn", "java burn review", "java burn reviews", "coffee supplement", "morning metabolism routine", "weight management coffee supplement", "Java Burn 2.0"],
     publishDate: "2026-08-03",
@@ -1246,7 +1256,9 @@ function blogPostPage(post) {
     <ul class="blog-related">${relatedHtml}</ul>
   `;
   return blogLayout({
-    title: post.title,
+    // seoTitle exists only where post.title runs past the ~60 character SERP
+    // cut. The <h1> above still renders post.title, so the page looks the same.
+    title: post.seoTitle || post.title,
     description: post.description,
     canonical: blogPostUrl(post),
     bodyHtml: body,
@@ -1518,8 +1530,11 @@ function productPage(product) {
     <h2>Other featured offers</h2>
     <ul class="blog-related">${otherHtml}</ul>
   `;
+  // Longest product name is "Energy Revolution System", which pushes the rich
+  // variant past the ~60 character SERP cut. Drop "Ingredients" only for those.
+  const richTitle = `${product.name} Review: Price, Ingredients & Official Site`;
   return blogLayout({
-    title: `${product.name} Review, Price, Ingredients & Official Website`,
+    title: richTitle.length <= 60 ? richTitle : `${product.name} Review: Price & Official Site`,
     description: `Compare ${product.name} reviews, price, ingredients, refund terms, official website access and safe checkout information through Best Wellness Guide.`,
     canonical: productUrl(product),
     bodyHtml: body,
@@ -1690,7 +1705,7 @@ function nicheGuidePage(product) {
     <div class="faq"><h3>Where should current pricing be confirmed?</h3><p>Pricing, bundles, delivery region and refund terms should be confirmed on the official seller checkout linked from Best Wellness Guide.</p></div>
   `;
   return blogLayout({
-    title: `Best ${product.category} ${titleSuffix} 2026: ${product.name} Guide`,
+    title: `Best ${product.category} ${titleSuffix} 2026: ${product.name}`,
     description: `Audience-focused ${product.category} guide comparing ${product.name}, search intent, safety checks, refund terms and official checkout details.`,
     canonical: nicheGuideUrl(product),
     bodyHtml: body,
@@ -1702,6 +1717,9 @@ function nicheGuidePage(product) {
 
 function supplementsComparisonPage() {
   const title = "Best Supplements 2026: Complete Comparison Guide & Buying Tips";
+  // Google truncates the SERP link around 60 characters. The <h1> keeps the
+  // full wording; only the meta title is trimmed, so nothing on the page moves.
+  const seoTitle = "Best Supplements 2026: Complete Comparison Guide";
   const description = "Compare top supplements: ProDentim, NeuroVera, Joint Genesis, Sugar Defender & more. Health supplements reviews, pricing, refund terms & where to buy in 2026.";
   const canonical = `${siteUrl}/best-supplements-comparison`;
 
@@ -1788,7 +1806,7 @@ function supplementsComparisonPage() {
   });
 
   return blogLayout({
-    title,
+    title: seoTitle,
     description,
     canonical,
     image: `${siteUrl}/logo.png`,
