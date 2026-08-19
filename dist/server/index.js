@@ -2108,6 +2108,23 @@ export default {
       url.hostname = "www.bestwellnessguide.com";
       return Response.redirect(url.toString(), 301);
     }
+    // Legacy and directory-style entry points crawlers keep requesting. Search
+    // Console reported these as 404s, which wastes crawl budget on a site that
+    // is still building authority, so fold them back onto the real pages.
+    const homeAliasPaths = new Set([
+      "/index.html",
+      "/index.htm",
+      "/index.php",
+      "/home",
+      "/offers",
+      "/blog/index.html"
+    ]);
+    if (homeAliasPaths.has(url.pathname.replace(/\/$/, "") || "/")) {
+      return Response.redirect(`${siteUrl}/`, 301);
+    }
+    if (url.pathname.replace(/\/$/, "") === "/about") {
+      return Response.redirect(`${siteUrl}/blog/about-best-wellness-guide`, 301);
+    }
     if (url.pathname === "/graphql") {
       return new Response("Not found", {
         status: 404,
