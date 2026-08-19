@@ -145,7 +145,7 @@ const products = [
 ];
 
 const siteUrl = "https://www.bestwellnessguide.com";
-const contentLastModified = "2026-08-17";
+const contentLastModified = "2026-08-19";
 // IndexNow key. Public by design: it is served at /<key>.txt to prove we own
 // the domain, which is what lets Bing accept our instant-indexing pings.
 const indexNowKey = "e8031ff2fb29252e6c8d5b0cceb5bc7a";
