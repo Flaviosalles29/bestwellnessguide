@@ -1180,6 +1180,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image, ke
       });
     });
   </script>
+  ${affiliateGuardianScript()}
 </body>
 </html>`;
 }
@@ -2008,13 +2009,55 @@ function page() {
       });
     });
   </script>
+  ${affiliateGuardianScript()}
 </body>
 </html>`;
 }
 
+function affiliateGuardianScript() {
+  const canonicalMap = {};
+  products.forEach((product) => {
+    canonicalMap[product.vendor] = new URL(product.href).origin + new URL(product.href).pathname + "?affiliate=bwellguide&vendor=" + product.vendor;
+  });
+  return `<script>
+  (function(){
+    var CANON = ${JSON.stringify(canonicalMap)};
+    function isTampered(link) {
+      var vendor = link.dataset.vendor;
+      if (!vendor || !CANON[vendor]) return false;
+      try {
+        var u = new URL(link.href);
+        return u.hostname !== "hop.clickbank.net" || u.searchParams.get("affiliate") !== "bwellguide" || u.searchParams.get("vendor") !== vendor;
+      } catch (e) { return true; }
+    }
+    function enforce(root) {
+      (root || document).querySelectorAll("a[data-vendor]").forEach(function(link) {
+        if (isTampered(link)) {
+          var tid = link.dataset.tid;
+          var fixed = CANON[link.dataset.vendor] + (tid ? "&tid=" + encodeURIComponent(tid) : "");
+          link.setAttribute("href", fixed);
+          if (window.gtag) window.gtag("event", "affiliate_link_tamper_blocked", { vendor: link.dataset.vendor });
+        }
+      });
+    }
+    enforce();
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.type === "attributes" && m.target.hasAttribute && m.target.hasAttribute("data-vendor")) {
+          enforce();
+        } else if (m.addedNodes && m.addedNodes.length) {
+          enforce();
+        }
+      });
+    }).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["href"] });
+  })();
+  </script>`;
+}
+
 function getCommonHeaders(path = "") {
+  const isStaticAsset = path.startsWith("/assets/") || path.match(/\.(svg|ico|png|jpg)$/);
   return {
-    "cache-control": path.startsWith("/assets/") || path.match(/\.(svg|ico|png|jpg)$/) ? "public, max-age=31536000, immutable" : "public, max-age=300",
+    "cache-control": isStaticAsset ? "public, max-age=31536000, immutable" : "public, max-age=300",
     "content-language": "en-US",
     "last-modified": new Date(`${contentLastModified}T00:00:00Z`).toUTCString(),
     "x-content-type-options": "nosniff",
@@ -2023,7 +2066,8 @@ function getCommonHeaders(path = "") {
     "referrer-policy": "strict-origin-when-cross-origin",
     "permissions-policy": "geolocation=(), microphone=(), camera=()",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-    "link": `<${siteUrl}/favicon.ico?v=${faviconVersion}>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`
+    "link": `<${siteUrl}/favicon.ico?v=${faviconVersion}>; rel=preload; as=image, <${siteUrl}/logo.png>; rel=preload; as=image`,
+    ...(isStaticAsset ? {} : { "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; frame-ancestors 'self'; base-uri 'self'; form-action 'self'" }),
   };
 }
 
