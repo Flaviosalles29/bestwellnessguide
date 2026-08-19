@@ -1108,6 +1108,7 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image, ke
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
+  <meta name="google-site-verification" content="91c906099c1867d2">
   <title>${title}</title>
   <meta name="description" content="${description}">
   ${keywordsMeta}
@@ -1117,15 +1118,20 @@ function blogLayout({ title, description, canonical, bodyHtml, jsonLd, image, ke
   <meta name="theme-color" content="#fffdfa">
   ${faviconHeadLinks}
   <link rel="canonical" href="${canonical}">
+  <link rel="alternate" hreflang="en" href="${canonical}">
+  <link rel="alternate" hreflang="x-default" href="${canonical}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Best Wellness Guide">
   <meta property="og:image" content="${image}">
   <meta property="og:image:alt" content="${title}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="${image}">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJZLDPC7DZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -1871,6 +1877,7 @@ function page() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="msvalidate.01" content="7E24277E41D6F9190FD24B272A1B3031">
+  <meta name="google-site-verification" content="91c906099c1867d2">
   <title>${title}</title>
   <meta name="description" content="${description}">
   <meta name="keywords" content="${allSeoKeywords().join(", ")}">
@@ -1884,11 +1891,14 @@ function page() {
   <link rel="alternate" hreflang="en" href="${canonical}">
   <link rel="alternate" hreflang="x-default" href="${siteUrl}/">
   <link rel="preconnect" href="https://hop.clickbank.net">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Best Wellness Guide">
   <meta property="og:image" content="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg">
   <meta property="og:image:secure_url" content="https://www.bestwellnessguide.com/assets/prodentim-oral-probiotic-dental-health-supplement-official-bottle-v4.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -2514,10 +2524,10 @@ export default {
       });
     }
     if (url.pathname !== "/") {
-      return new Response("Not found", {
+      return new Response(`<!doctype html><html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page Not Found | Best Wellness Guide</title><meta name="robots" content="noindex,follow"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:Inter,Arial,sans-serif;background:#f7f8f4;color:#121513}main{text-align:center;padding:40px 20px}h1{font-family:Georgia,serif;font-size:48px;margin:0 0 12px}p{color:#5b6560;margin:0 0 24px;font-size:16px}a{display:inline-block;padding:12px 24px;background:#13745c;color:#fff;border-radius:8px;font-weight:700;text-decoration:none}a:hover{background:#0f6249}nav{margin-top:32px;font-size:14px}nav a{background:none;color:#13745c;padding:4px 8px}</style></head><body><main><h1>404</h1><p>This page doesn't exist or has been moved.</p><a href="/">Go to Homepage</a><nav><a href="/best-supplements-comparison">Compare Supplements</a> · <a href="/blog">Read Guides</a></nav></main></body></html>`, {
         status: 404,
         headers: {
-          "content-type": "text/plain; charset=utf-8",
+          "content-type": "text/html; charset=utf-8",
           ...getCommonHeaders(url.pathname)
         }
       });
