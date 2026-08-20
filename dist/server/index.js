@@ -146,6 +146,10 @@ const products = [
 
 const siteUrl = "https://www.bestwellnessguide.com";
 const contentLastModified = "2026-08-19";
+// Niche guide pages shipped in f436ee4 on 2026-08-09. Their datePublished has
+// to stay pinned to that: wiring it to contentLastModified made every deploy
+// advance the claimed publication date, which is simply false.
+const nicheGuidePublishDate = "2026-08-09";
 // IndexNow key. Public by design: it is served at /<key>.txt to prove we own
 // the domain, which is what lets Bing accept our instant-indexing pings.
 const indexNowKey = "e8031ff2fb29252e6c8d5b0cceb5bc7a";
@@ -1625,7 +1629,7 @@ function nicheGuideStructuredData(product) {
         headline: `Best ${product.category} ${product.market.startsWith("Physical product") ? "Supplement" : "Offer"} 2026: ${product.name} Buyer Guide`,
         description: `Audience-focused ${product.category} guide comparing ${product.name}, buyer intent, safety checks, refund terms and official checkout details.`,
         image: productContentImage(product),
-        datePublished: contentLastModified,
+        datePublished: nicheGuidePublishDate,
         dateModified: contentLastModified,
         inLanguage: "en-US",
         author: { "@type": "Organization", name: "Best Wellness Guide" },
@@ -1772,7 +1776,9 @@ function supplementsComparisonPage() {
         headline: title,
         description: description,
         image: `${siteUrl}/logo.png`,
-        dateModified: "2026-08-03",
+        // Published 2026-08-03 in 1b1ff8c and unchanged since; dateModified has
+        // to track deploys or it contradicts the sitemap lastmod for this URL.
+        dateModified: contentLastModified,
         datePublished: "2026-08-03",
         author: { "@id": `${siteUrl}/#organization` },
         publisher: { "@id": `${siteUrl}/#organization` },
